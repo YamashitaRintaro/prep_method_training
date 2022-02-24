@@ -60,10 +60,10 @@ MVP
 ### **スケジュール**
 
 企画〜技術調査：2/7 〆切  
-README〜ER図作成：2/14 〆切  
-メイン機能実装：2/15 - 3/15  
-β版をRUNTEQ内リリース（MVP）：3/15 〆切  
-本番リリース：3/25  
+README〜ER図作成：2/24 〆切  
+メイン機能実装：2/25 - 3/25  
+β版をRUNTEQ内リリース（MVP）：3/25 〆切  
+本番リリース：4/1  
 
 ### **画面遷移図**
 
@@ -71,4 +71,4 @@ https://www.figma.com/file/bIMYuvZYxv60sQgFhBiCv2/%E3%83%9D%E3%83%BC%E3%83%88%E3
 
 ### **ER図**
 
-https://drive.google.com/file/d/1NwuZDXmHmbKEOQ7mMBvnQteDwNtnLSib/view?usp=sharing
+https://drive.google.com/file/d/1QJPlZmem6RefXyoNo8QMGuhtVsstYFuJ/view?usp=sharing
