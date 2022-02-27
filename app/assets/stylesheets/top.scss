@@ -1,0 +1,30 @@
+@import "mixin";
+
+header {
+  width: 100%;
+  height: 80px;
+  border-bottom: solid 0.1px;
+  .container {
+    width: 80%;
+    height: 100%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+
+    .header_left {
+      max-width: 200px;
+      img {
+        width: 100%;
+        height: auto;
+      }
+    }
+
+    .header_right {
+      display: flex;
+      margin-left: auto;
+      .sign_in {
+        margin-left: 24px;
+      }
+    }
+  }
+}
