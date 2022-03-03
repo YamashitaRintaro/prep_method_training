@@ -1,0 +1,12 @@
+<% @question.each do |question| %>
+<p><%= question.category_id %></p>
+<p><%= question.title %></p>
+<p><%= question.question_voice_data %></p>
+
+<% if question.question_voice_data.present? %>
+  <%=audio_tag("#{question.question_voice_data.url}", controls: true) %>
+<% end %>
+  <%= link_to "編集", edit_question_path(question) %>
+<% end %>
+
+<%= link_to "新規登録", new_question_path, class: "btn btn-primary" %>
