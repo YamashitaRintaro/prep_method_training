@@ -1,12 +1,24 @@
-<% @question.each do |question| %>
-<p><%= question.category_id %></p>
-<p><%= question.title %></p>
-<p><%= question.question_voice_data %></p>
-
-<% if question.question_voice_data.present? %>
-  <%=audio_tag("#{question.question_voice_data.url}", controls: true) %>
-<% end %>
-  <%= link_to "編集", edit_question_path(question) %>
-<% end %>
-
+<div class="container">
+<h1>質問リスト</h1>
+<table class = "table">
+  <thead class = "thead-dark">
+    <tr>
+      <th>category_id</th>
+      <th>title</th>
+      <th>question_voice_data</th>
+      <th>編集ボタン</th>
+    </tr>
+  </thead>
+  <% @question.each do |question| %>
+  <tr>
+    <td class="align-middle"><%= question.category_id %></td>
+    <td class="align-middle"><%= question.title %></td>
+    <td class="align-middle"><%=audio_tag("#{question.question_voice_data.url}", controls: true) %></td>
+    <td class="align-middle"><%= link_to "編集", edit_question_path(question), class: "btn btn-primary" %></td>
+  </tr>
+</table>
+  <% end %>
 <%= link_to "新規登録", new_question_path, class: "btn btn-primary" %>
+<%= link_to "トップページへ", root_path, class: "btn btn-success" %>
+</div>
+

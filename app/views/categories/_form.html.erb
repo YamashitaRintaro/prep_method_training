@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-2">
+      <%= form_with model: @category, local: true do |f| %>
+      <%= render 'shared/error_messages', model: f.object %>
+        <div class="form-group">
+          <%= f.label :name %>
+          <%= f.text_field :name, class: 'form-control' %>
+        </div>
+        <%= f.submit '登録', class: 'btn btn-primary' %>
+      <% end %>
+      <div class='text-center'>
+        <%= link_to 'トップページへ', root_path %>
+      </div>
+    </div>
+  </div>
+</div>
