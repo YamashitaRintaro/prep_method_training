@@ -16,8 +16,8 @@
     <td class="align-middle"><%=audio_tag("#{question.question_voice_data.url}", controls: true) %></td>
     <td class="align-middle"><%= link_to "編集", edit_question_path(question), class: "btn btn-primary" %></td>
   </tr>
-</table>
   <% end %>
+</table>
 <%= link_to "新規登録", new_question_path, class: "btn btn-primary" %>
 <%= link_to "トップページへ", root_path, class: "btn btn-success" %>
 </div>
