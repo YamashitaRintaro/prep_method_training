@@ -19,6 +19,10 @@ class CategoriesController < ApplicationController
     end
   end
 
+  def show
+    @category = Category.find(params[:id])
+  end
+
   def edit;end
 
   def update

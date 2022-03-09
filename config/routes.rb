@@ -4,6 +4,13 @@ Rails.application.routes.draw do
   post 'login', to: 'user_sessions#create'
   delete 'logout', to: 'user_sessions#destroy'
   resources :users, only: %i[new create]
-  resources :categories, except: %i[show]
+  resources :categories
   resources :questions
+  resources :trainings, only: %i[create] do
+    collection do
+      get 'new_graduate'
+      get 'job_change'
+      get 'engineer'
+    end
+  end
 end

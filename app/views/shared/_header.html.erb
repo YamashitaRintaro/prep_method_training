@@ -4,8 +4,28 @@
       <%= image_tag "logo.png" %>
     </div>
     <div class="header_right">
-      <%= link_to "練習する", "#", class: "sign_up" %>
-      <%= link_to "振り返る", "#", class: "sign_in" %>
+    <div class="dropdown">
+      <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        練習する
+      </a>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+        <%= link_to "新卒", new_graduate_trainings_path, class: "dropdown-item" %>
+        <%= link_to "転職", job_change_trainings_path, class: "dropdown-item" %>
+        <%= link_to "エンジニア就職", engineer_trainings_path, class: "dropdown-item" %>
+      </div>
+    </div>
+    <div class="dropdown">
+      <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        振り返る
+      </a>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+        <%= link_to "新卒", category_path(1), class: "dropdown-item" %>
+        <%= link_to "転職", category_path(2), class: "dropdown-item" %>
+        <%= link_to "エンジニア就職", category_path(3), class: "dropdown-item" %>
+      </div>
+      </div>
+    </div>
+
       <%= link_to 'ログアウト', logout_path, method: :delete %>
     </div>
   </div>
