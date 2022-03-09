@@ -1,0 +1,16 @@
+<div class="container">
+<h1><%= @category.name %>振り返り</h1>
+<table class = "table">
+  <thead class = "thead-dark">
+    <tr>
+      <th>title</th>
+    </tr>
+  </thead>
+<% @category.questions.each do |question| %>
+  <tr>
+    <td class="align-middle"><%= link_to question.title, question_path(question) %></td>
+  </tr>
+<% end %>
+</table>
+<%= link_to "トップページへ", root_path, class: "btn btn-success" %>
+</div>
