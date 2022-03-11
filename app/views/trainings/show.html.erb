@@ -1,0 +1,13 @@
+<div class="container">
+  <section class="main-controls">
+    <%= image_tag "interviewer.png", class: "img-fluid" %>
+
+    <div id="buttons">
+      <button class="record btn btn-info">録音スタート</button>
+      <button class="stop btn btn-warning">次へ</button>
+    </div>
+    <div class="sound-clips"></div>
+  </section>
+
+</div>
+<%= javascript_pack_tag 'app' %>

@@ -3,13 +3,17 @@
 <table class = "table">
   <thead class = "thead-dark">
     <tr>
-      <th>title</th>
+      <th>日付</th>
+      <th>タイトル</th>
+      <th></th>
     </tr>
   </thead>
 <% @question.trainings.each_with_index do |training, i| %>
   <% if training.user_id == current_user.id %>
     <tr>
+      <td class="align-middle"><%= training.created_at %></td>
       <td class="align-middle"><%= "#{training.title}##{i+1}" %></td>
+      <td class="align-middle"><%= link_to "録音画面へ", training_path(training), class: "btn btn-success" %></td>
     </tr>
   <% end %>
 <% end %>

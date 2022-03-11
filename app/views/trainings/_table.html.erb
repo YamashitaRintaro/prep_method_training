@@ -1,22 +1,17 @@
 <div class="container">
 <h1>質問を選択してください</h1>
-<table class = "table">
-  <thead class = "thead-dark">
-    <tr>
-      <th>質問リスト</th>
-    </tr>
-  </thead>
+
   <%= form_with model: @training, url: trainings_path, local: true do |f| %>
     <% @questions.each do |question| %>
-    <tr>
-      <td class="align-middle">
-        <%= f.radio_button :question_id, question.id %>
-        <%= f.label :queston_id, question.title, value: question.id %>
-        <%= f.hidden_field :title, value: question.title %>
-      </td>
-    </tr>
+ 
+        <div class="align-middle">
+          <%= f.radio_button :question_id, question.id %>
+          <%= f.label :queston_id, question.title, value: question.id %>
+          <%= f.hidden_field :title, value: question.title %>
+        </div>
+ 
     <% end %>
-</table>
     <%= f.submit '録音スタート', class:'btn btn-primary' %>
   <% end %>
+
 </div>
