@@ -1,5 +1,5 @@
 class Voice < ApplicationRecord
-  belongs_to :training
+  belongs_to :training, -> { includes :question }
 
   validates :training_id, presence: true
   validates :voice_data, presence: true

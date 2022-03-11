@@ -4,4 +4,5 @@ class Training < ApplicationRecord
   has_many :voices
   
   validates :title, presence: true, length: { maximum: 255 }
+  scope :published, -> { question.title }
 end
