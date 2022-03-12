@@ -1,6 +1,7 @@
 const record = document.querySelector('.record');
 const stop = document.querySelector('.stop');
 const soundClips = document.querySelector('.sound-clips');
+const questionVoice = document.getElementById('question-voice');
 
 // disable stop button while not recording
 
@@ -18,6 +19,7 @@ if (navigator.mediaDevices.getUserMedia) {
     const mediaRecorder = new MediaRecorder(stream);
 
     record.onclick = function() {
+      questionVoice.play()
       mediaRecorder.start();
       console.log(mediaRecorder.state);
       console.log("recorder started");
@@ -92,6 +94,7 @@ if (navigator.mediaDevices.getUserMedia) {
       chunks.push(e.data);
     }
   }
+  
 
   let onError = function(err) {
     console.log('The following error occured: ' + err);

@@ -10,8 +10,9 @@
       <button class="record btn btn-info">録音スタート</button>
       <button class="stop btn btn-warning">次へ</button>
     </div>
-    <div class="sound-clips"></div>
   </section>
+    <%= audio_tag(@question_voice_data, id: "question-voice") %>
+    <div class="sound-clips"></div>
 
 </div>
 <%= javascript_pack_tag 'app' %>
