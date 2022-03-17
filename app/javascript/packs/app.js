@@ -2,6 +2,7 @@ const record = document.querySelector('.record');
 const stop = document.querySelector('.stop');
 const soundClips = document.querySelector('.sound-clips');
 const questionVoice = document.getElementById('question-voice');
+const voiceForm = document.getElementById('voiceform');
 
 // disable stop button while not recording
 
@@ -9,9 +10,10 @@ stop.disabled = true;
 
 //main block for doing the audio recording
 
+// マイクを使用する許可をユーザーに求める
 if (navigator.mediaDevices.getUserMedia) {
   console.log('getUserMedia supported.');
-
+  // メディアの種類を指定
   const constraints = { audio: true };
   let chunks = [];
 
@@ -44,8 +46,7 @@ if (navigator.mediaDevices.getUserMedia) {
     mediaRecorder.onstop = function(e) {
       console.log("data available after MediaRecorder.stop() called.");
 
-      const clipName = prompt('Enter a name for your sound clip?','My unnamed clip');
-
+      const clipName = 'My unnamed clip';
       const clipContainer = document.createElement('article');
       const clipLabel = document.createElement('p');
       const audio = document.createElement('audio');
@@ -55,12 +56,6 @@ if (navigator.mediaDevices.getUserMedia) {
       audio.setAttribute('controls', '');
       deleteButton.textContent = 'Delete';
       deleteButton.className = 'delete';
-
-      if(clipName === null) {
-        clipLabel.textContent = 'My unnamed clip';
-      } else {
-        clipLabel.textContent = clipName;
-      }
 
       clipContainer.appendChild(audio);
       clipContainer.appendChild(clipLabel);
@@ -78,7 +73,7 @@ if (navigator.mediaDevices.getUserMedia) {
         let evtTgt = e.target;
         evtTgt.parentNode.parentNode.removeChild(evtTgt.parentNode);
       }
-
+      
       clipLabel.onclick = function() {
         const existingName = clipLabel.textContent;
         const newClipName = prompt('Enter a new name for your sound clip?');
@@ -88,13 +83,24 @@ if (navigator.mediaDevices.getUserMedia) {
           clipLabel.textContent = newClipName;
         }
       }
+
+      let xhr = new XMLHttpRequest();
+      let formData = new FormData(voiceForm);
+      formData.append('training_id', document.querySelector('#training_id').value);
+      formData.append('voice_data', audioURL);
+      console.log(formData);
+      // 以下で通信先やメソッドなど、ajax通信の通信方法を設定
+      xhr.open("POST", document.querySelector('#voiceform').action);
+      xhr.setRequestHeader( 'content-type', 'multipart/form-data' );
+      xhr.setRequestHeader( 'X-CSRF-TOKEN', document.getElementsByName('csrf-token')[0].getAttribute('content') );
+      xhr.send(formData);
     }
 
+    // 音声データを収集する
     mediaRecorder.ondataavailable = function(e) {
       chunks.push(e.data);
     }
   }
-  
 
   let onError = function(err) {
     console.log('The following error occured: ' + err);

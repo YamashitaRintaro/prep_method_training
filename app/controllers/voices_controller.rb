@@ -3,7 +3,6 @@ class VoicesController < ApplicationController
   def create
     @voice = Voice.new(voice_params)
     @voice.save!
-    redirect_to root_path
   end
 
   private

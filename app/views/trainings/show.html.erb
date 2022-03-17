@@ -10,9 +10,14 @@
       <button class="record btn btn-info">録音スタート</button>
       <button class="stop btn btn-warning">次へ</button>
     </div>
-  </section>
     <%= audio_tag(@question_voice_data, id: "question-voice") %>
     <div class="sound-clips"></div>
+    <%= form_with model: @voice, url: training_voices_path(@training), id: "voiceform", local: true do |f| %>
+      <%= f.hidden_field :training_id,value: @training.id %>
+      <%= f.hidden_field :phase %>
+      <%= f.hidden_field :voice_data  %>
+    <% end %>
+  </section>
 
 </div>
 <%= javascript_pack_tag 'app' %>
