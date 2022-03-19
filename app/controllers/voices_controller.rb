@@ -8,6 +8,6 @@ class VoicesController < ApplicationController
   private
 
   def voice_params
-    params.require(:voice).permit(:training_id, :phase, :voice_data)
+    params.permit(:training_id, :phase, :voice_data)
   end
 end
