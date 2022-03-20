@@ -3,7 +3,7 @@ axios.defaults.headers['X-Requested-With'] = 'XMLHttpRequest';
 axios.defaults.headers['X-CSRF-TOKEN'] = document.getElementsByName('csrf-token')[0].getAttribute('content');
 const record = document.querySelector('.record');
 const stop = document.querySelector('.stop');
-const reason = document.querySelector('.reason');
+const finish = document.querySelector('.finish');
 const questionVoice = document.getElementById('question-voice');
 const voiceForm = document.getElementById('voiceform');
 let count = 0;
@@ -23,20 +23,31 @@ if (navigator.mediaDevices.getUserMedia) {
     const mediaRecorder = new MediaRecorder(stream);
     
     record.onclick = function() {
-      count++;
-      stop.classList.add('reason');
+      this.classList.add('d-none');
+      stop.classList.remove('d-none');
       questionVoice.play();
       mediaRecorder.start();
       console.log(mediaRecorder.state);
       console.log("recorder started");
       stop.disabled = false;
     }
+
+    mediaRecorder.onstart = function() {
+      count++;
+      console.log(count);
+    }
     
     stop.onclick = function() {
       mediaRecorder.stop();
       console.log(mediaRecorder.state);
       console.log("recorder stopped");
-      // mediaRecorder.requestData();
+      if (count < 5) {
+        mediaRecorder.start();
+        console.log("次のフェーズへ");
+        console.log(mediaRecorder.state);
+      } else {
+        console.log("現在フェーズ3です");
+      }
     }
     
     // 音声データを収集する
@@ -59,7 +70,9 @@ if (navigator.mediaDevices.getUserMedia) {
       } else {
         formData.append('phase', 'second_point');
         count = 0;
-        
+        stop.disabled = true;
+        stop.classList.add('d-none');
+        finish.classList.remove('d-none');
       }
       axios.post(document.querySelector('#voiceform').action, formData, {
         headers: {
@@ -68,11 +81,6 @@ if (navigator.mediaDevices.getUserMedia) {
         }).catch(error => {
         console.log(error.response)
        })
-    }
-
-    reason.onclick = function() {
-      mediaRecorder.start();
-      this.classList.add('example');
     }
   }
 
