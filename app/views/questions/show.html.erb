@@ -5,6 +5,7 @@
     <tr>
       <th>日付</th>
       <th>タイトル</th>
+      <th></th>
     </tr>
   </thead>
 <% @question.trainings.each_with_index do |training, i| %>
@@ -12,6 +13,7 @@
     <tr data-toggle="collapse" data-target="#trainingList<%= i + 1%>">
       <td class="align-middle"><%= training.created_at %></td>
       <td class="align-middle"><%= "#{training.title}##{i+1}" %></td>
+      <td class="align-middle"><%= link_to "録音画面へ", training_path(training), class: "btn btn-success" %></td>
     </tr>
     <tr>
       <td colspan="2" class="p-0">

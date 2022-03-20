@@ -3,9 +3,10 @@ axios.defaults.headers['X-Requested-With'] = 'XMLHttpRequest';
 axios.defaults.headers['X-CSRF-TOKEN'] = document.getElementsByName('csrf-token')[0].getAttribute('content');
 const record = document.querySelector('.record');
 const stop = document.querySelector('.stop');
-const soundClips = document.querySelector('.sound-clips');
+const reason = document.querySelector('.reason');
 const questionVoice = document.getElementById('question-voice');
 const voiceForm = document.getElementById('voiceform');
+let count = 0;
 
 stop.disabled = true;
 
@@ -22,26 +23,20 @@ if (navigator.mediaDevices.getUserMedia) {
     const mediaRecorder = new MediaRecorder(stream);
     
     record.onclick = function() {
-      questionVoice.play()
+      count++;
+      stop.classList.add('reason');
+      questionVoice.play();
       mediaRecorder.start();
       console.log(mediaRecorder.state);
       console.log("recorder started");
-      record.style.background = "red";
-      
       stop.disabled = false;
-      record.disabled = true;
     }
     
     stop.onclick = function() {
       mediaRecorder.stop();
       console.log(mediaRecorder.state);
       console.log("recorder stopped");
-      record.style.background = "";
-      record.style.color = "";
       // mediaRecorder.requestData();
-
-      stop.disabled = true;
-      record.disabled = false;
     }
     
     // 音声データを収集する
@@ -51,35 +46,21 @@ if (navigator.mediaDevices.getUserMedia) {
     
     mediaRecorder.onstop = function(e) {
       console.log("data available after MediaRecorder.stop() called.");
-      
-      const clipName = 'My unnamed clip';
-      const clipContainer = document.createElement('article');
-      const clipLabel = document.createElement('p');
-      const audio = document.createElement('audio');
-      const deleteButton = document.createElement('button');
-      
-      clipContainer.classList.add('clip');
-      audio.setAttribute('controls', '');
-      deleteButton.textContent = 'Delete';
-      deleteButton.className = 'delete';
-      
-      clipContainer.appendChild(audio);
-      clipContainer.appendChild(clipLabel);
-      clipContainer.appendChild(deleteButton);
-      soundClips.appendChild(clipContainer);
-
-      deleteButton.onclick = function(e) {
-        let evtTgt = e.target;
-        evtTgt.parentNode.parentNode.removeChild(evtTgt.parentNode);
-      }
-      
       const blob = new Blob(chunks, { 'type' : 'audio/ogg; codecs=opus' });
-      const audioUrl = URL.createObjectURL(blob);
-      audio.src = audioUrl;
-      
       let formData = new FormData();
       formData.append('training_id', document.querySelector('#training_id').value);
       formData.append('voice_data', blob, 'voicedata');
+      if (count == 1) {
+        formData.append('phase', 'point');
+      } else if (count == 2 ){
+        formData.append('phase', 'reason');
+      } else if (count == 3 ){
+        formData.append('phase', 'example');
+      } else {
+        formData.append('phase', 'second_point');
+        count = 0;
+        
+      }
       axios.post(document.querySelector('#voiceform').action, formData, {
         headers: {
         'content-type': 'multipart/form-data',
@@ -87,6 +68,11 @@ if (navigator.mediaDevices.getUserMedia) {
         }).catch(error => {
         console.log(error.response)
        })
+    }
+
+    reason.onclick = function() {
+      mediaRecorder.start();
+      this.classList.add('example');
     }
   }
 
