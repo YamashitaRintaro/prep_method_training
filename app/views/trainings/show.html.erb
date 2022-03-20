@@ -1,0 +1,23 @@
+<div class="container">
+  <section class="main-controls">
+    <%= image_tag "interviewer.png", class: "img-fluid" %>
+
+  <div class="text-center">
+    <h2><%= @question_title %></h2>
+  </div>
+
+    <div id="buttons", class = 'text-center'>
+      <button class="record btn btn-info">録音スタート</button>
+      <button class="stop d-none btn btn-warning">次のフェーズへ</button>
+      <%= link_to "完了",question_path(@question), class: "finish btn btn-warning d-none" %>
+    </div>
+    <%= audio_tag(@question_voice_data, id: "question-voice") %>
+    <%= form_with model: @voice, url: training_voices_path(@training), id: "voiceform", local: true do |f| %>
+      <%= f.hidden_field :training_id,value: @training.id %>
+      <%= f.hidden_field :phase %>
+      <%= f.hidden_field :voice_data  %>
+    <% end %>
+  </section>
+
+</div>
+<%= javascript_pack_tag 'app' %>

@@ -21,6 +21,7 @@ class QuestionsController < ApplicationController
 
   def show
     @question = Question.find(params[:id])
+    @voices = Question.includes(trainings: :voices)
   end
 
   def edit;end

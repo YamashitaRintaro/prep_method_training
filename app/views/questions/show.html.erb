@@ -3,13 +3,32 @@
 <table class = "table">
   <thead class = "thead-dark">
     <tr>
-      <th>title</th>
+      <th>日付</th>
+      <th>タイトル</th>
+      <th></th>
     </tr>
   </thead>
 <% @question.trainings.each_with_index do |training, i| %>
   <% if training.user_id == current_user.id %>
-    <tr>
+    <tr data-toggle="collapse" data-target="#trainingList<%= i + 1%>">
+      <td class="align-middle"><%= training.created_at %></td>
       <td class="align-middle"><%= "#{training.title}##{i+1}" %></td>
+      <td class="align-middle"><%= link_to "録音画面へ", training_path(training), class: "btn btn-success" %></td>
+    </tr>
+    <tr>
+      <td colspan="2" class="p-0">
+        <div id="trainingList<%= i + 1%>" class="collapse">
+          <div class="px-4 py-2">
+            <% if training.voices.present? %>
+              <% training.voices.each do |voice| %>
+                <%= audio_tag(voice.voice_data,controls: true) %>
+              <% end %>
+            <% else %>
+              <p>まだ練習していません</p>
+            <% end %>
+          </div>
+        </div>
+      </td>
     </tr>
   <% end %>
 <% end %>

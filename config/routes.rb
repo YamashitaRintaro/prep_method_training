@@ -6,7 +6,8 @@ Rails.application.routes.draw do
   resources :users, only: %i[new create]
   resources :categories
   resources :questions
-  resources :trainings, only: %i[create] do
+  resources :trainings, only: %i[show create] do
+    resources :voices, only: %i[create]
     collection do
       get 'new_graduate'
       get 'job_change'

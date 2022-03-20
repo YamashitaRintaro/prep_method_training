@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_05_054108) do
+ActiveRecord::Schema.define(version: 2022_03_09_072846) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,6 +48,15 @@ ActiveRecord::Schema.define(version: 2022_03_05_054108) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
+  end
+
+  create_table "voices", force: :cascade do |t|
+    t.bigint "training_id", null: false
+    t.string "voice_data", null: false
+    t.integer "phase", default: 0, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["training_id"], name: "index_voices_on_training_id"
   end
 
 end
