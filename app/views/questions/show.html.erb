@@ -11,7 +11,7 @@
 <% @question.trainings.each_with_index do |training, i| %>
   <% if training.user_id == current_user.id %>
     <tr data-toggle="collapse" data-target="#trainingList<%= i + 1%>">
-      <td class="align-middle"><%= training.created_at %></td>
+      <td class="align-middle"><%= training.created_at.strftime('%Y/%m/%d') %></td>
       <td class="align-middle"><%= "#{training.title}##{i+1}" %></td>
       <td class="align-middle"><%= link_to "録音画面へ", training_path(training), class: "btn btn-success" %></td>
     </tr>
