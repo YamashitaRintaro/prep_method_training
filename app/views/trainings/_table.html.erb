@@ -1,17 +1,18 @@
 <div class="container">
-<h1>質問を選択してください</h1>
-
+<h2 class = "text-center mt-5 mb-4">質問を選択してください</h2>
   <%= form_with model: @training, url: trainings_path, local: true do |f| %>
-    <% @questions.each do |question| %>
- 
-        <div class="align-middle">
-          <%= f.radio_button :question_id, question.id %>
-          <%= f.label :queston_id, question.title, value: question.id %>
-          <%= f.hidden_field :title, value: question.title %>
-        </div>
- 
-    <% end %>
-    <%= f.submit '録音スタート', class:'btn btn-primary' %>
+    <div class="w-75 mx-auto">
+      <ul class="list-group">
+        <li class = "list-header font">質問リスト</li>
+        <% @questions.each do |question| %>
+          <li class="list-group-item font">
+            <%= f.radio_button :question_id, question.id %>
+            <%= f.label :queston_id, question.title, value: question.id %>
+            <%= f.hidden_field :title, value: question.title %>
+          </li>
+        <% end %>
+      </ul>
+    <%= f.submit '録音画面へ', class:'btn btn-primary' %>
+    </div>
   <% end %>
-
 </div>

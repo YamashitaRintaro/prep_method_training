@@ -2,12 +2,12 @@
   <section class="main-controls">
     <%= image_tag "interviewer.png", class: "img-fluid" %>
 
-  <div class="text-center">
-    <h2><%= @question_title %></h2>
+  <div class="text-center mt-3 mb-3">
+    <h2 id = "question_title"><%= @question_title %></h2>
   </div>
 
     <div id="buttons", class = 'text-center'>
-      <button class="record btn btn-info">録音スタート</button>
+      <button class="record btn btn-info color">録音スタート</button>
       <button class="stop d-none btn btn-warning">次のフェーズへ</button>
       <%= link_to "完了",question_path(@question), class: "finish btn btn-warning d-none" %>
     </div>

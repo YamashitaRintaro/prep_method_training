@@ -2,6 +2,7 @@ header {
   width: 100%;
   height: 80px;
   border-bottom: solid 0.1px;
+  background-color: #B9E3F9;
   .container {
     width: 80%;
     height: 100%;
@@ -30,4 +31,24 @@ header {
 .main-controls { 
   width: 550px;
   margin: 0 auto; 
+}
+
+.font{
+  font-size: 1.25rem;
+}
+
+.color {
+  color: #FC9F26;
+}
+
+.bg{
+  background-color: #FC9F26;
+}
+
+.list-header {
+  background-color: #FC9F26;
+  padding: 0.75rem 1.25rem;
+  list-style: none;
+  color: #fff;
+  text-align: center;
 }

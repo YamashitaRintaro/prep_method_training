@@ -1,18 +1,14 @@
 <div class="container">
-<h1><%= @category.name %>就活</h1>
-<table class = "table">
-  <thead class = "thead-dark">
-    <tr>
-      <th>質問リスト</th>
-      <th></th>
-    </tr>
-  </thead>
-<% @category.questions.each do |question| %>
-  <tr>
-    <td class="align-middle"><%= question.title %></td>
-    <td class="align-middle"><%= link_to "振り返る", question_path(question), class: "btn btn-primary" %></td>
-  </tr>
-<% end %>
-</table>
-<%= link_to "トップページへ", root_path, class: "btn btn-success" %>
+<h2 class = "text-center mt-5 mb-4"><%= @category.name %></h2>
+<div class="w-75 mx-auto">
+  <ul class="list-group">
+    <li class = "list-header font">質問リスト</li>
+    <% @category.questions.each do |question| %>
+      <%= link_to question_path(question), class: "list-group-item d-flex align-items-center font" do %>
+      <i class="fa-solid fa-circle-arrow-right color mr-3"></i>
+      <div><%= question.title %></div>
+      <% end %>
+    <% end %>
+  </ul>
+</div>
 </div>
