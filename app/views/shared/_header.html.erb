@@ -1,11 +1,12 @@
 <header>
   <div class="container">
     <div class="header_left">
-      <%= image_tag "logo.png" %>
+      <%= link_to root_path do %>
+        <%= image_tag "logo.png" %>
+      <% end %>
     </div>
-    <div class="header_right">
     <div class="dropdown">
-      <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <a class="dropdown-toggle ml-4" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         練習する
       </a>
       <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
@@ -15,7 +16,7 @@
       </div>
     </div>
     <div class="dropdown">
-      <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <a class="dropdown-toggle ml-4" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         振り返る
       </a>
       <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
@@ -23,7 +24,8 @@
         <%= link_to "転職", category_path(2), class: "dropdown-item" %>
         <%= link_to "エンジニア就職", category_path(3), class: "dropdown-item" %>
       </div>
-      </div>
+    </div>
+    <div class="header_right">
     </div>
 
       <%= link_to 'ログアウト', logout_path, method: :delete %>
