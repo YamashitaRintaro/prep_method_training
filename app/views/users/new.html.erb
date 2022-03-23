@@ -9,6 +9,10 @@
           <%= f.email_field :email, class: 'form-control' %>
         </div>
         <div class="form-group">
+          <%= f.label :category_id %>
+          <%= f.select :category_id, [['新卒', 1], ['転職', 2], ['エンジニア', 3]],{ selected: 1 }, {class: 'form-control'} %>
+        </div>
+        <div class="form-group">
           <%= f.label :password %>
           <%= f.password_field :password, class: 'form-control' %>
         </div>
