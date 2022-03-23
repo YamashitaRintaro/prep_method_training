@@ -22,6 +22,7 @@ if (navigator.mediaDevices.getUserMedia) {
     let mediaRecorder = new MediaRecorder(stream);
     
     record.onclick = function() {
+      this.classList.add('d-none');
       stop.classList.remove('d-none');
       questionVoice.play();
       mediaRecorder.start();
