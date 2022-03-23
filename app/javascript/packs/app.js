@@ -15,15 +15,13 @@ stop.disabled = true;
 // マイクを使用する許可をユーザーに求める
 if (navigator.mediaDevices.getUserMedia) {
   console.log('getUserMedia supported.');
-  // メディアの種類を指定
-  const constraints = { audio: true };
-  let chunks = [];
+  const constraints = { audio: true };// メディアの種類を指定
+  let chunks = [];// 録音データを保存
 
   let onSuccess = function(stream) {
-    const mediaRecorder = new MediaRecorder(stream);
+    let mediaRecorder = new MediaRecorder(stream);
     
     record.onclick = function() {
-      this.classList.add('d-none');
       stop.classList.remove('d-none');
       questionVoice.play();
       mediaRecorder.start();
@@ -53,11 +51,12 @@ if (navigator.mediaDevices.getUserMedia) {
     // 音声データを収集する
     mediaRecorder.ondataavailable = function(e) {
       chunks.push(e.data);
+      console.log(chunks);
     }
     
     mediaRecorder.onstop = function(e) {
-      console.log("data available after MediaRecorder.stop() called.");
       const blob = new Blob(chunks, { 'type' : 'audio/ogg; codecs=opus' });
+      chunks = [];
       let formData = new FormData();
       formData.append('training_id', document.querySelector('#training_id').value);
       formData.append('voice_data', blob, 'voicedata');
