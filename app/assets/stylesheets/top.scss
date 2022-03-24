@@ -42,7 +42,7 @@ header {
 }
 
 .bg{
-  background-color: #FC9F26;
+  background-color: #FC9F26 !important;
 }
 
 .list-header {
@@ -51,4 +51,8 @@ header {
   list-style: none;
   color: #fff;
   text-align: center;
+}
+
+label{
+  margin-bottom: 4px !important;
 }
