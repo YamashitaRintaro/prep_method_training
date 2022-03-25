@@ -2,31 +2,30 @@
   <div class="container">
     <div class="header_left">
       <%= link_to root_path do %>
-        <%= image_tag "logo.png" %>
+        <%= image_tag "logo" %>
       <% end %>
     </div>
-    <div class="dropdown ml-4">
+    <div class="ml-5">
       <% if current_user.category_id == 1 %>
         <%= link_to "練習する", new_graduate_trainings_path %>
-      <% elsif curremt_user.category_id == 2 %>
+      <% elsif current_user.category_id == 2 %>
         <%= link_to "練習する", job_change_trainings_path %>
       <% else %>
         <%= link_to "練習する", engineer_trainings_path %>
       <% end %>
     </div>
-    <div class="dropdown ml-4">
+    <div class="ml-4">
       <% if current_user.category_id == 1 %>
         <%= link_to "振り返る", category_path(1) %>
-      <% elsif curremt_user.category_id == 2 %>
+      <% elsif current_user.category_id == 2 %>
         <%= link_to "振り返る", category_path(2) %>
       <% else %>
         <%= link_to "振り返る", category_path(3) %>
       <% end %>
     </div>
     <div class="header_right">
-    </div>
       <%= link_to 'ログアウト', logout_path, method: :delete %>
-
+    </div>
     </div>
   </div>
 </header> 
