@@ -3,11 +3,16 @@ axios.defaults.headers['X-Requested-With'] = 'XMLHttpRequest';
 axios.defaults.headers['X-CSRF-TOKEN'] = document.getElementsByName('csrf-token')[0].getAttribute('content');
 const record = document.querySelector('.record');
 const stop = document.querySelector('.stop');
-const finish = document.querySelector('.finish');
+const finish = document.getElementById('finish');
 const questionVoice = document.getElementById('question-voice');
+const questionTitle = document.getElementById('question-title');
 const voiceForm = document.getElementById('voiceform');
-let count = 0;
+const point = document.getElementById('point');
+const reason = document.getElementById('reason');
+const example = document.getElementById('example');
+const second_point = document.getElementById('second-point');
 
+let count = 0;
 stop.disabled = true;
 
 //main block for doing the audio recording
@@ -24,6 +29,8 @@ if (navigator.mediaDevices.getUserMedia) {
     record.onclick = function() {
       this.classList.add('d-none');
       stop.classList.remove('d-none');
+      point.classList.add('text-dark');
+      stop.textContent = '理由フェーズへ';
       questionVoice.play();
       mediaRecorder.start();
       console.log(mediaRecorder.state);
@@ -63,16 +70,23 @@ if (navigator.mediaDevices.getUserMedia) {
       formData.append('voice_data', blob, 'voicedata');
       if (count == 1) {
         formData.append('phase', 'point');
+        stop.textContent = '具体例フェーズへ';
+        point.classList.remove('text-dark');
+        reason.classList.add('text-dark');
       } else if (count == 2 ){
         formData.append('phase', 'reason');
+        stop.textContent = '結論フェーズへ';
+        reason.classList.remove('text-dark');
+        example.classList.add('text-dark');
       } else if (count == 3 ){
         formData.append('phase', 'example');
+        stop.textContent = '保存する';
+        example.classList.remove('text-dark');
+        second_point.classList.add('text-dark');
       } else {
         formData.append('phase', 'second_point');
         count = 0;
-        stop.disabled = true;
-        stop.classList.add('d-none');
-        finish.classList.remove('d-none');
+        finish.click();
       }
       axios.post(document.querySelector('#voiceform').action, formData, {
         headers: {
@@ -93,5 +107,3 @@ if (navigator.mediaDevices.getUserMedia) {
 } else {
    console.log('getUserMedia not supported on your browser!');
 }
-
-window.onresize();

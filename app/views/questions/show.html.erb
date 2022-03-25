@@ -1,17 +1,17 @@
 <div class="container">
 <h2 class = "text-center mt-5 mb-4"><%= @question.title %></h2>
-<table class = "table">
+<table class = "table w-75 mx-auto">
   <thead class = "thead-dark">
     <tr>
-      <th>日付</th>
-      <th>タイトル</th>
+      <th class = "text-center">日付</th>
+      <th class = "text-center">タイトル</th>
     </tr>
   </thead>
 <% @question.trainings.each_with_index do |training, i| %>
   <% if training.user_id == current_user.id %>
     <tr data-toggle="collapse" data-target="#trainingList<%= i + 1%>">
-      <td class="align-middle font"><%= training.created_at.strftime('%Y/%m/%d') %></td>
-      <td class="align-middle font"><%= "#{training.title}##{i+1}" %></td>
+      <td class="align-middle font text-center"><%= training.created_at.strftime('%Y/%m/%d') %></td>
+      <td class="align-middle font text-center"><%= "#{training.title}##{i+1}" %></td>
     </tr>
     <tr>
       <td colspan="2" class="p-0">
@@ -19,9 +19,9 @@
           <div class="px-4 py-2">
             <% if training.voices.present? %>
               <% training.voices.each do |voice| %>
-              <div class = "align-items-center d-flex">
-                <div><%= voice.phase %></div>
-                <div><%= audio_tag(voice.voice_data,controls: true) %></div>
+              <div class = "align-items-center row">
+                <div class = "text-center col-4"><%= voice.phase_i18n %></div>
+                <div class = "text-center col-8"><%= audio_tag(voice.voice_data,controls: true) %></div>
               </div>
               <% end %>
             <% else %>

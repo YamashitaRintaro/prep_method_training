@@ -10,7 +10,7 @@ ja:
       updated_at: 更新日時
       user:
         email: 'メールアドレス'
-        category_id: 'シーン'
+        category_id: 'シーン選択'
         password: 'パスワード'
         password_confirmation: 'パスワード確認'
     date:

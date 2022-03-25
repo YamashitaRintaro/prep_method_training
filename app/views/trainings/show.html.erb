@@ -1,15 +1,35 @@
-<div class="container">
-  <section class="main-controls">
-    <%= image_tag "interviewer.png", class: "img-fluid" %>
+<div class = "container">
+  <div class = "phase d-flex mx-auto justify-content-between mt-3">
+    <div id = "point">
+      <div class = "text-center font-2x"><strong>P</strong>oint</div>
+      <div class = "text-center font">結論</div>
+    </div>
+    <div id = "reason">
+      <div class = "text-center font-2x"><strong>R</strong>eason</div>
+      <div class = "text-center font">理由</div>
+    </div>
+    <div id = "example">
+      <div class = "text-center font-2x"><strong>E</strong>xample</div>
+      <div class = "text-center font">具体例</div>
+    </div>
+    <div id = "second-point">
+      <div class = "text-center font-2x"><strong>P</strong>oint</div>
+      <div class = "text-center font">結論</div>
+    </div>
+  </div>
 
-  <div class="text-center mt-3 mb-3">
+  <div class = "main-controls">
+    <%= image_tag "interviewer.png", class: "img-fluid" %>
+  </div>
+
+  <div class = "text-center mt-3 mb-3">
     <h2 id = "question_title"><%= @question_title %></h2>
   </div>
 
-    <div id="buttons", class = 'text-center'>
-      <button class="record btn btn-info color">録音スタート</button>
-      <button class="stop d-none btn btn-warning">次のフェーズへ</button>
-      <%= link_to "完了",question_path(@question), class: "finish btn btn-warning d-none" %>
+    <div id = "buttons", class = 'text-center'>
+      <button class = "record btn btn-lg bg text-white"><i class="fas fa-microphone fa-lg pr-3"></i>録音スタート</button>
+      <button class = "stop d-none btn btn-lg bg text-white">次のフェーズへ</button>
+      <%= link_to "完了",question_path(@question), id: 'finish', class: "btn btn-warning d-none" %>
     </div>
     <%= audio_tag(@question_voice_data, id: "question-voice") %>
     <%= form_with model: @voice, url: training_voices_path(@training), id: "voiceform", local: true do |f| %>
@@ -17,7 +37,6 @@
       <%= f.hidden_field :phase %>
       <%= f.hidden_field :voice_data  %>
     <% end %>
-  </section>
 
 </div>
 <%= javascript_pack_tag 'app' %>

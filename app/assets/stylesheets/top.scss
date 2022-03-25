@@ -11,7 +11,7 @@ header {
     align-items: center;
 
     .header_left {
-      max-width: 200px;
+      max-width: 130px;
       img {
         width: 100%;
         height: auto;
@@ -28,22 +28,45 @@ header {
   }
 }
 
+/* 汎用
+   ========================================================================== */
+   .font{
+     font-size: 1.25rem;
+   }
+
+   .font-2x {
+    font-size: 2rem;
+   }
+   
+   .color {
+     color: #FC9F26;
+   }
+   
+   .bg{
+     background-color: #FC9F26 !important;
+   }
+
+   label{
+     margin-bottom: 4px !important;
+   }
+   
+   a{
+     color: #000 !important;
+   }
+
+/* Training
+   ========================================================================== */
+
 .main-controls { 
-  width: 550px;
+  max-width: 500px;
   margin: 0 auto; 
 }
 
-.font{
-  font-size: 1.25rem;
+.phase {
+  max-width: 800px;
+  color: #E6E6E6;
 }
 
-.color {
-  color: #FC9F26;
-}
-
-.bg{
-  background-color: #FC9F26;
-}
 
 .list-header {
   background-color: #FC9F26;
