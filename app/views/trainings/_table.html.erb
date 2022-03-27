@@ -6,9 +6,9 @@
         <li class = "list-header font">質問リスト</li>
         <% @questions.each do |question| %>
           <li class="list-group-item font">
-            <%= f.radio_button :question_id, question.id %>
+            <%= f.radio_button :question_id, question.id, id: "question-#{question.id}", class: "radio" %>
             <%= f.label :queston_id, question.title, value: question.id %>
-            <%= f.hidden_field :title, value: question.title %>
+            <%= f.radio_button :title, question.title, class: "d-none", id: "question-#{question.id}-title"%>
           </li>
         <% end %>
       </ul>
@@ -18,3 +18,5 @@
     </div>
   <% end %>
 </div>
+
+<%= javascript_pack_tag 'training' %>
