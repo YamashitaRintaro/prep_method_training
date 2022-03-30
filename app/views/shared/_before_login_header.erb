@@ -1,11 +1,17 @@
 <header>
   <div class="container">
     <div class="header_left">
-      <%= image_tag "logo.png" %>
+      <%= image_tag "logo" %>
     </div>
     <div class="header_right">
-      <%= link_to "新規登録", new_user_path, class: "sign_up" %>
-      <%= link_to "ログイン", login_path, class: "sign_in" %>
+      <%= link_to new_user_path, class: "cta" do %>
+      新規登録
+      <i class="fa-solid fa-angle-right"></i>
+      <% end %>
+      <%= link_to login_path, class: "sign_in" do %>
+      ログイン
+      <i class="fa-solid fa-angle-right"></i>
+      <% end %>
     </div>
   </div>
 </header> 
