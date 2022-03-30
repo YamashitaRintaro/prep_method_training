@@ -85,8 +85,6 @@ if (navigator.mediaDevices.getUserMedia) {
         second_point.classList.add('text-dark');
       } else {
         formData.append('phase', 'second_point');
-        count = 0;
-        finish.click();
       }
       axios.post(document.querySelector('#voiceform').action, formData, {
         headers: {
@@ -95,6 +93,11 @@ if (navigator.mediaDevices.getUserMedia) {
         }).catch(error => {
         console.log(error.response)
        })
+
+      if (count == 4) {
+        count = 0;
+        finish.click();
+      }
     }
   }
 
