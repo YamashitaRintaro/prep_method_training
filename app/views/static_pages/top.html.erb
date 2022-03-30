@@ -1,5 +1,56 @@
 <div class="container">
-  <%= link_to "今すぐはじめる", "#", class: "btn btn-primary" %>
-  <%= link_to "カテゴリーリスト", categories_path, class: "btn btn-primary" %>
-  <%= link_to "質問リスト", questions_path, class: "btn btn-primary" %>
+  <section class = "hero">
+    <div class="hero-text">
+      <h1 class = "hero-title">PREP法で<br>わかりやすく論理的に<br>話せるように</h1>
+      <%= link_to "今すぐはじめる", new_user_path, class: "cta" %>
+    </div>
+    <div class="hero-image">
+      <%= image_tag "main", class: "img-fluid" %>
+    </div>
+  </section>
 </div>
+<section class = "prep text-center">
+  <div class="wrapper">
+  <h2>PREP法とは</h2>
+  <p>「PREP法」とは、分かりやすい文章や説明の構成を作るためのモデルや思考ツールのことです。<br>
+  最初に結論を伝え、次にその理由を説明、事例で理由を補強し、最後にもう一度結論を述べる構成です。</p>
+  <div class="row justify-content-center">
+    <div class="col">
+      <div class="card">
+        <div class="card-body">
+          <h3 class="card-title">P</h3>
+          <p class="card-text">Point</p>
+          <p>結論</p>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card">
+        <div class="card-body">
+          <h3 class="card-title">R</h3>
+          <p class="card-text">Reason</p>
+          <p>理由</p>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card">
+        <div class="card-body">
+          <h3 class="card-title">E</h3>
+          <p class="card-text">Example</p>
+          <p>具体例</p>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card">
+        <div class="card-body">
+          <h3 class="card-title">P</h3>
+          <p class="card-text">Point</p>
+          <p>結論</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+</section>
