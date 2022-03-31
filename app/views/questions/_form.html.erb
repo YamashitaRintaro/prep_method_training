@@ -16,6 +16,10 @@
           <%= f.label :question_voice_data %>
           <%= f.file_field :question_voice_data, class: 'form-control' %>
         </div>
+        <div class="form-group">
+          <%= f.label :question_voice_data_seconds %>
+          <%= f.number_field :question_voice_data_seconds, class: 'form-control' %>
+        </div>
         <%= f.submit '登録', class: 'btn btn-primary' %>
       <% end %>
       <div class='text-center'>

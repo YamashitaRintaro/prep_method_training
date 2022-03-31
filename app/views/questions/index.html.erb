@@ -3,11 +3,12 @@
 <table class = "table">
   <thead class = "thead-dark">
     <tr>
-      <th>question_id</th>
+      <th>id</th>
       <th>title</th>
       <th>category</th>
-      <th>question_voice_data</th>
-      <th>編集ボタン</th>
+      <th>音声</th>
+      <th>秒数</th>
+      <th>編集</th>
     </tr>
   </thead>
   <% @question.each do |question| %>
@@ -16,6 +17,7 @@
     <td class="align-middle"><%= link_to question.title, question_path(question) %></td>
     <td class="align-middle"><%= question.category_id %></td>
     <td class="align-middle"><%=audio_tag("#{question.question_voice_data.url}", controls: true) %></td>
+    <td class="align-middle"><%= question.question_voice_data_seconds %></td>
     <td class="align-middle"><%= link_to "編集", edit_question_path(question), class: "btn btn-primary" %></td>
   </tr>
   <% end %>
