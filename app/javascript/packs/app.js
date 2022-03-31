@@ -11,6 +11,8 @@ const point = document.getElementById('point');
 const reason = document.getElementById('reason');
 const example = document.getElementById('example');
 const second_point = document.getElementById('second-point');
+const seconds = document.getElementById('seconds').textContent;
+console.log(seconds*1000);
 
 let count = 0;
 stop.disabled = true;
@@ -32,7 +34,10 @@ if (navigator.mediaDevices.getUserMedia) {
       point.classList.add('text-dark');
       stop.textContent = '理由フェーズへ';
       questionVoice.play();
-      mediaRecorder.start();
+      setTimeout(function () {
+        mediaRecorder.start();
+      },seconds*1000);
+      // mediaRecorder.start();
       console.log(mediaRecorder.state);
       console.log("recorder started");
       stop.disabled = false;

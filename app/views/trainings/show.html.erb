@@ -32,6 +32,7 @@
       <%= link_to "完了",question_path(@question), id: 'finish', class: "btn btn-warning d-none" %>
     </div>
     <%= audio_tag(@question_voice_data, id: "question-voice") %>
+    <p id = "seconds" class = "d-none"><%= @question_voice_data_seconds %></p>
     <%= form_with model: @voice, url: training_voices_path(@training), id: "voiceform", local: true do |f| %>
       <%= f.hidden_field :training_id,value: @training.id %>
       <%= f.hidden_field :phase %>

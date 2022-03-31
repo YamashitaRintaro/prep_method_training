@@ -21,6 +21,7 @@ class QuestionsController < ApplicationController
 
   def show
     @question = Question.find(params[:id])
+    @trainings = @question.trainings.order("id")
     @voices = Question.includes(trainings: :voices)
   end
 
@@ -42,7 +43,7 @@ class QuestionsController < ApplicationController
   private
 
   def question_params
-    params.require(:question).permit(:category_id, :title, :question_voice_data)
+    params.require(:question).permit(:category_id, :title, :question_voice_data, :question_voice_data_seconds)
   end
 
   def set_question
