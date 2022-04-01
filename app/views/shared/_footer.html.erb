@@ -1,2 +1,12 @@
-  <%= link_to "カテゴリーリスト", categories_path, class: "btn btn-primary" %>
-  <%= link_to "質問リスト", questions_path, class: "btn btn-primary" %>
+<footer>
+<div class="container mx-auto">
+  <div class="d-flex pt-3 pb-3 align-items-center justify-content-center">
+    <%= link_to "プライバシーポリシー", "#" %>
+    <%= link_to "利用規約", "#", class: "ml-3" %>
+    <%= link_to "お問い合わせ", "#", class: "ml-3" %>
+  <% if current_user.admin? %>
+    <%= link_to "質問リスト", questions_path, class: "btn btn-primary" %>
+  <% end %>
+  </div>
+</div>
+</footer>

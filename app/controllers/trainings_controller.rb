@@ -11,17 +11,17 @@ class TrainingsController < ApplicationController
   end
   
   def new_graduate
-    @questions = Question.where(category_id: 1)
+    @questions = Question.where(category_id: 1).order(:id)
     @training = Training.new
   end
   
   def job_change
-    @questions = Question.where(category_id: 2)
+    @questions = Question.where(category_id: 2).order(:id)
     @training = Training.new
   end
   
   def engineer
-    @questions = Question.where(category_id: 3)
+    @questions = Question.where(category_id: 3).order(:id)
     @training = Training.new
   end
 
@@ -32,6 +32,13 @@ class TrainingsController < ApplicationController
     @question_voice_data = @training.question.question_voice_data
     @question_voice_data_seconds = @training.question.question_voice_data_seconds
   end
+
+  def destroy
+    @training = current_user.trainings.find(params[:id])
+    @training.destroy!
+    redirect_back fallback_location: root_path
+  end
+  
   
   private
   

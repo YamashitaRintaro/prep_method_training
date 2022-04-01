@@ -1,26 +1,10 @@
 class CategoriesController < ApplicationController
-  before_action :set_category, only: %i[edit update destroy]
-
-  def index
-    @category = Category.all
-  end
-
-  def new
-    @category = Category.new
-  end
-
-  def create
-    @category = Category.new(category_params)
-    if @category.save
-      redirect_to categories_path
-    else
-      set_categories
-      render :index
-    end
-  end
+  before_action :set_category, only: %i[edit update]
+  before_action :if_not_admin, only: %i[edit update]
 
   def show
     @category = Category.find(params[:id])
+    @questions = @category.questions.order(:id)
   end
 
   def edit;end
@@ -33,11 +17,6 @@ class CategoriesController < ApplicationController
     end
   end
 
-  def destroy
-    @category.destroy
-    redirect_to categories_path
-  end
-
   private
 
   def category_params
@@ -46,6 +25,10 @@ class CategoriesController < ApplicationController
 
   def set_category
     @category = Category.find(params[:id])
+  end
+
+  def if_not_admin
+    redirect_to root_path unless current_user.admin?
   end
 
 end

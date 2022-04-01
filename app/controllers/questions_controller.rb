@@ -1,8 +1,9 @@
 class QuestionsController < ApplicationController
   before_action :set_question, only: %i[show edit update destroy]
+  before_action :if_not_admin, only: [:index, :create, :update]
 
   def index
-    @question = Question.all
+    @question = Question.all.order(:category_id, :id)
   end
 
   def new
@@ -48,5 +49,9 @@ class QuestionsController < ApplicationController
 
   def set_question
     @question = Question.find(params[:id])
+  end
+
+  def if_not_admin
+    redirect_to root_path unless current_user.admin?
   end
 end

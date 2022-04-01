@@ -5,12 +5,14 @@
     <tr>
       <th class = "text-center">日付</th>
       <th class = "text-center">タイトル</th>
+      <th></th>
     </tr>
   </thead>
 <% @trainings.each_with_index do |training, i| %>
     <tr data-toggle="collapse" data-target="#trainingList<%= i + 1%>">
       <td class="align-middle font text-center"><%= training.created_at.strftime('%Y/%m/%d') %></td>
       <td class="align-middle font text-center"><%= "#{training.title}##{i+1}" %></td>
+      <td class="align-middle font text-center"><%= link_to "削除", training, method: :delete %></td>
     </tr>
     <tr>
       <td colspan="2" class="p-0">
