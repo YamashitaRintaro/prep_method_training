@@ -3,7 +3,7 @@
 <div class="w-75 mx-auto">
   <ul class="list-group">
     <li class = "list-header font">質問リスト</li>
-    <% @category.questions.each do |question| %>
+    <% @questions.each do |question| %>
       <%= link_to question_path(question), class: "list-group-item d-flex align-items-center font" do %>
       <i class="fa-solid fa-circle-arrow-right color mr-3"></i>
       <div><%= question.title %></div>

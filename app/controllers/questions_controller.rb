@@ -2,7 +2,7 @@ class QuestionsController < ApplicationController
   before_action :set_question, only: %i[show edit update destroy]
 
   def index
-    @question = Question.all
+    @question = Question.all.order(:category_id, :id)
   end
 
   def new
