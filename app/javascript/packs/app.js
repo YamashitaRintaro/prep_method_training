@@ -96,15 +96,14 @@ if (navigator.mediaDevices.getUserMedia) {
         'content-type': 'multipart/form-data',
         }
       })
-      .then(function (response) {
-        // handle success
+      .catch(function (error) {
+        console.log(error);
+      })
+      .finally(function () {
         if (count == 4) {
           count = 0;
           finish.click();
         }
-      })
-      .catch(function (error) {
-        console.log(error);
       });
     }
   }
