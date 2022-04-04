@@ -95,14 +95,17 @@ if (navigator.mediaDevices.getUserMedia) {
         headers: {
         'content-type': 'multipart/form-data',
         }
-        }).catch(error => {
-        console.log(error.response)
-       })
-
-      if (count == 4) {
-        count = 0;
-        finish.click();
-      }
+      })
+      .then(function (response) {
+        // handle success
+        if (count == 4) {
+          count = 0;
+          finish.click();
+        }
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
     }
   }
 
