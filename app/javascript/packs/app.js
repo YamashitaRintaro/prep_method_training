@@ -91,7 +91,7 @@ if (navigator.mediaDevices.getUserMedia) {
       } else {
         formData.append('phase', 'second_point');
       }
-      axios.post(document.querySelector('#voiceform').action, formData, {
+      axios.post(document.getElementById('voiceform').action, formData, {
         headers: {
         'content-type': 'multipart/form-data',
         }
