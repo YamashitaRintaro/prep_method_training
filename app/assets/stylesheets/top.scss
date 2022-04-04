@@ -136,3 +136,71 @@ header {
   color: #fff;
   text-align: center;
 }
+/* アコーディオン
+   ========================================================================== */
+
+.accordion-container{
+  .accordion-title{
+    position: relative;
+    margin: 0;
+    font-size: 1.25em;
+    font-weight: normal;
+    cursor: pointer;
+    border-bottom: solid 1px #E9E9E7;
+
+    &:hover,
+    &:active,
+    &.open{
+      background-color: #EEF8FC;
+    }
+
+    &::before{
+      content: "";
+      position: absolute;
+      top: 50%;
+      right: 25px;
+      width: 15px;
+      height: 2px;
+      /*縦線に*/
+      transform: rotate(90deg);
+      background: #000;
+      transition: all .3s ease-in-out;
+    }
+
+    &::after{
+      content: "";
+      position: absolute;
+      top: 50%;
+      right: 25px;
+      /*横線*/
+      width: 15px;
+      height: 2px;
+      background: #000;
+      transition: all .2s ease-in-out;
+    }
+
+    &.open::before {
+      transform: rotate(180deg);
+    }
+
+    &.open::after {
+      opacity: 0;
+    }
+
+    .date{
+      padding: 0.625em 0.625em 0.625em 2em;
+      width: 20%;
+    }
+    
+    .list-line{
+      position: relative;
+      padding: 12.5px 20px;
+    }
+  }
+  .accordion-content {
+    display: none;
+    padding-left: 2.3125em;
+    border: 1px solid #EEF8FC;
+  }
+}
+
