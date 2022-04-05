@@ -52,7 +52,7 @@ if (navigator.mediaDevices.getUserMedia) {
       mediaRecorder.stop();
       console.log(mediaRecorder.state);
       console.log("recorder stopped");
-      if (count < 5) {
+      if (count < 4) {
         mediaRecorder.start();
         console.log("次のフェーズへ");
         console.log(mediaRecorder.state);
@@ -91,20 +91,23 @@ if (navigator.mediaDevices.getUserMedia) {
       } else {
         formData.append('phase', 'second_point');
       }
-      axios.post(document.getElementById('voiceform').action, formData, {
-        headers: {
-        'content-type': 'multipart/form-data',
+
+      async function main() {
+        try {
+          await axios.post(document.getElementById('voiceform').action, formData, {
+            headers: {
+            'content-type': 'multipart/form-data',
+            }
+            })
+            if (count == 4) {
+              count = 0;
+              finish.click();
+            }
+        } catch (error) {
+          console.log(error.response);
         }
-      })
-      .catch(function (error) {
-        console.log(error);
-      })
-      .finally(function () {
-        if (count == 4) {
-          count = 0;
-          finish.click();
-        }
-      });
+      }
+      main();
     }
   }
 
