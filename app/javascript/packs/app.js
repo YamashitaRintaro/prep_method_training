@@ -1,6 +1,7 @@
 import axios from 'axios';
 axios.defaults.headers['X-Requested-With'] = 'XMLHttpRequest';
 axios.defaults.headers['X-CSRF-TOKEN'] = document.getElementsByName('csrf-token')[0].getAttribute('content');
+axios.defaults.headers['content-type'] = 'multipart/form-data';
 const record = document.querySelector('.record');
 const stop = document.querySelector('.stop');
 const finish = document.getElementById('finish');
@@ -52,7 +53,7 @@ if (navigator.mediaDevices.getUserMedia) {
       mediaRecorder.stop();
       console.log(mediaRecorder.state);
       console.log("recorder stopped");
-      if (count < 5) {
+      if (count < 4) {
         mediaRecorder.start();
         console.log("次のフェーズへ");
         console.log(mediaRecorder.state);
@@ -91,20 +92,23 @@ if (navigator.mediaDevices.getUserMedia) {
       } else {
         formData.append('phase', 'second_point');
       }
-      axios.post(document.getElementById('voiceform').action, formData, {
-        headers: {
-        'content-type': 'multipart/form-data',
+
+      async function main() {
+        try {
+          const postRecord = await axios.post(document.getElementById('voiceform').action, formData)
+            .catch(error => {
+              console.log(error.response)
+            })
+            if (count == 4) {
+              console.log("画面遷移します");
+              count = 0;
+              finish.click();
+            }
+        } catch (error) {
+          console.log(error.response);
         }
-      })
-      .catch(function (error) {
-        console.log(error);
-      })
-      .finally(function () {
-        if (count == 4) {
-          count = 0;
-          finish.click();
-        }
-      });
+      }
+      main();
     }
   }
 
