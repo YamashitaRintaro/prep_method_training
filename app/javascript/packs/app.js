@@ -1,6 +1,7 @@
 import axios from 'axios';
 axios.defaults.headers['X-Requested-With'] = 'XMLHttpRequest';
 axios.defaults.headers['X-CSRF-TOKEN'] = document.getElementsByName('csrf-token')[0].getAttribute('content');
+axios.defaults.headers['content-type'] = 'multipart/form-data';
 const record = document.querySelector('.record');
 const stop = document.querySelector('.stop');
 const finish = document.getElementById('finish');
@@ -94,12 +95,12 @@ if (navigator.mediaDevices.getUserMedia) {
 
       async function main() {
         try {
-          await axios.post(document.getElementById('voiceform').action, formData, {
-            headers: {
-            'content-type': 'multipart/form-data',
-            }
+          const postRecord = await axios.post(document.getElementById('voiceform').action, formData)
+            .catch(error => {
+              console.log(error.response)
             })
             if (count == 4) {
+              console.log("画面遷移します");
               count = 0;
               finish.click();
             }
