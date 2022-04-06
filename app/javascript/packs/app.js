@@ -16,7 +16,6 @@ const seconds = document.getElementById('seconds').textContent;
 console.log(seconds*1000);
 
 let count = 0;
-stop.disabled = true;
 
 //main block for doing the audio recording
 
@@ -38,10 +37,8 @@ if (navigator.mediaDevices.getUserMedia) {
       setTimeout(function () {
         mediaRecorder.start();
       },seconds*1000);
-      // mediaRecorder.start();
       console.log(mediaRecorder.state);
       console.log("recorder started");
-      stop.disabled = false;
     }
 
     mediaRecorder.onstart = function() {
@@ -51,8 +48,6 @@ if (navigator.mediaDevices.getUserMedia) {
     
     stop.onclick = function() {
       mediaRecorder.stop();
-      console.log(mediaRecorder.state);
-      console.log("recorder stopped");
       if (count < 4) {
         mediaRecorder.start();
         console.log("次のフェーズへ");
@@ -93,22 +88,24 @@ if (navigator.mediaDevices.getUserMedia) {
         formData.append('phase', 'second_point');
       }
 
-      async function main() {
+      async function postRecord() {
         try {
-          const postRecord = await axios.post(document.getElementById('voiceform').action, formData)
+          await axios.post(voiceForm.action, formData)
             .catch(error => {
               console.log(error.response)
             })
-            if (count == 4) {
-              console.log("画面遷移します");
-              count = 0;
-              finish.click();
-            }
+            console.log("POST完了");
         } catch (error) {
           console.log(error.response);
         }
       }
-      main();
+      postRecord().then(()=>{
+        if (count == 4) {
+          console.log("画面遷移します");
+          count = 0;
+          finish.click();
+        }
+      });
     }
   }
 
