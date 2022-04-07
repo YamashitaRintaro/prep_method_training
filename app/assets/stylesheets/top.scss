@@ -223,6 +223,9 @@ header {
 
    .font-2x {
     font-size: 2rem;
+    @include tab(){
+      font-size: 1.25rem;
+    }
    }
    
    .color {
@@ -264,11 +267,16 @@ header {
 .main-controls { 
   max-width: 500px;
   margin: 0 auto; 
+  margin-top: 15px;
 }
 
 .phase {
   max-width: 800px;
   color: #E6E6E6;
+  justify-content: space-between;
+  @include tab(){
+    justify-content: space-around;
+  }
 }
 
 .list-group-item{
