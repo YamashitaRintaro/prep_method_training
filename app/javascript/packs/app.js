@@ -15,7 +15,6 @@ const second_point = document.getElementById('second-point');
 const seconds = document.getElementById('seconds').textContent;
 console.log(seconds*1000);
 
-let count = 0;
 
 //main block for doing the audio recording
 
@@ -24,9 +23,10 @@ if (navigator.mediaDevices.getUserMedia) {
   console.log('getUserMedia supported.');
   const constraints = { audio: true };// メディアの種類を指定
   let chunks = [];// 録音データを保存
-
+  
   let onSuccess = function(stream) {
     let mediaRecorder = new MediaRecorder(stream);
+    let count = 0;
     
     record.onclick = function() {
       this.classList.add('d-none');
