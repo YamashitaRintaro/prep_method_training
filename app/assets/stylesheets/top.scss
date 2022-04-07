@@ -216,6 +216,9 @@ header {
    ========================================================================== */
    .font{
      font-size: 1.25rem;
+     @include tab(){
+       font-size: 14px;
+     }
    }
 
    .font-2x {
@@ -241,10 +244,18 @@ header {
 
    label{
      margin-bottom: 4px !important;
+     @include tab(){
+       margin-bottom: 0 !important;
+     }
    }
 
    a:hover{
     text-decoration: none !important;
+   }
+
+   .table-container{
+     max-width: 800px;
+     margin: 0 auto;
    }
 
 /* Training
@@ -260,6 +271,18 @@ header {
   color: #E6E6E6;
 }
 
+.list-group-item{
+  @include tab(){
+    display: flex !important;
+    align-items: center;
+  }
+
+  label{
+    @include tab(){
+      padding-left: 5px;
+    }
+  }
+}
 
 .list-header {
   background-color: #FC9F26;
