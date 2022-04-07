@@ -38,23 +38,10 @@ if (navigator.mediaDevices.getUserMedia) {
         mediaRecorder.start();
       },seconds*1000);
       console.log(mediaRecorder.state);
-      console.log("recorder started");
-    }
-
-    mediaRecorder.onstart = function() {
-      count++;
-      console.log(count);
     }
     
     stop.onclick = function() {
       mediaRecorder.stop();
-      if (count < 4) {
-        mediaRecorder.start();
-        console.log("次のフェーズへ");
-        console.log(mediaRecorder.state);
-      } else {
-        console.log("現在フェーズ3です");
-      }
     }
     
     // 音声データを収集する
@@ -64,6 +51,9 @@ if (navigator.mediaDevices.getUserMedia) {
     }
     
     mediaRecorder.onstop = function(e) {
+      count++;
+      console.log(count);
+
       const blob = new Blob(chunks, { 'type' : 'audio/ogg; codecs=opus' });
       chunks = [];
       let formData = new FormData();
@@ -95,11 +85,16 @@ if (navigator.mediaDevices.getUserMedia) {
             finish.click();
           }
         }
-        console.log(response);
       })
       .catch(error => {
         console.log(error.response)
        })
+
+       if (count < 4) {
+        mediaRecorder.start();
+      } else {
+        console.log("現在フェーズ4です");
+      }
     }
   }
 
