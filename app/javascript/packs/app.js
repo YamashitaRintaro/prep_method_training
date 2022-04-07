@@ -34,7 +34,7 @@ if (navigator.mediaDevices.getUserMedia) {
       point.classList.add('text-dark');
       stop.textContent = '理由フェーズへ';
       questionVoice.play();
-      setTimeout(function () {
+      setTimeout(function () { //最初の録音の際に、質問の音声が含まれないように
         mediaRecorder.start();
       },seconds*1000);
       console.log(mediaRecorder.state);
@@ -87,25 +87,19 @@ if (navigator.mediaDevices.getUserMedia) {
       } else {
         formData.append('phase', 'second_point');
       }
-
-      async function postRecord() {
-        try {
-          await axios.post(voiceForm.action, formData)
-            .catch(error => {
-              console.log(error.response)
-            })
-            console.log("POST完了");
-        } catch (error) {
-          console.log(error.response);
-        }
-      }
-      postRecord().then(()=>{
+      axios.post(voiceForm.action, formData)
+      .then(function (response) {
         if (count == 4) {
-          console.log("画面遷移します");
-          count = 0;
-          finish.click();
+          if( response.status === 204 ) {
+            count = 0;
+            finish.click();
+          }
         }
-      });
+        console.log(response);
+      })
+      .catch(error => {
+        console.log(error.response)
+       })
     }
   }
 
