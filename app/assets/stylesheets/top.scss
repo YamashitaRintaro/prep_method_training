@@ -1,3 +1,46 @@
+$lg: 1200px;
+$pc: 1024px; // PC
+$tab: 768px; // タブレット
+$sp: 480px; // スマホ
+
+@mixin pc {
+  @media (max-width: ($pc)) {
+    @content;
+  }
+}
+
+@mixin tab {
+  @media (max-width: ($tab)) {
+    @content;
+  }
+}
+
+@mixin sp {
+  @media (max-width: ($sp)) {
+    @content;
+  }
+}
+
+$sizes: lg,
+pc,
+tab,
+sm,
+sp; //冒頭に使うサイズを明記するとわかりやすい
+
+$breakpoint-up: ('sp': 'screen and (min-width: 480px)',
+  'sm': 'screen and (min-width: 750px)',
+  'tab': 'screen and (min-width: 769px)',
+  'pc': 'screen and (min-width: 1024px)',
+  'lg': 'screen and (min-width: 1201px)',
+) !default;
+
+//mixinを定義（初期値はmd）
+@mixin mq-up($breakpoint: md) {
+  @media #{map-get($breakpoint-up, $breakpoint)} {
+    @content;
+  }
+}
+
 body {
   margin: 0;
   display: flex;
