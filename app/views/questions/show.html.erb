@@ -1,7 +1,7 @@
 <div class="container">
 <h2 class = "text-center mt-5 mb-4">行をクリックして、練習内容を振り返りましょう</h2>
-  <div id="accordion" class="accordion-container w-75 mx-auto">
-    <div class = "list-header font">質問タイトル：<%= @question.title %></div>
+  <div id="accordion" class="accordion-container">
+    <div class = "list-header">質問タイトル：<%= @question.title %></div>
   <% @trainings.each_with_index do |training, i| %>
     <li class="accordion-title js-accordion-title d-flex font">
       <span class = "date"><%= training.created_at.strftime('%Y/%m/%d') %></span>
@@ -11,8 +11,8 @@
       <% if training.voices.present? %>
         <% training.voices.each do |voice| %>
         <div class = "align-items-center row">
-          <div class = "text-center col-4"><%= voice.phase_i18n %></div>
-          <div class = "text-center col-8"><%= audio_tag(voice.voice_data, controls: true) %></div>
+          <div class = "text-center col-md-4"><%= voice.phase_i18n %></div>
+          <div class = "text-center col-md-8"><%= audio_tag(voice.voice_data, controls: true) %></div>
         </div>
         <% end %>
       <% else %>
