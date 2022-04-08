@@ -129,17 +129,69 @@ header {
 .prep{
   background-color: #EEF8FC;
   margin: 0 auto;
-
   .container{
-    max-width: 750px;
+    max-width: 900px;
     margin: 0 auto;
-    padding: 80px 0;
+    padding-top: 80px;
+    padding-bottom: 80px;
+    .text-left{
+      display: inline-block;
+    }
+    .prep-flow{
+      text-align: left;
+      .flow-item{
+        display: flex;
+        align-items: center;
+        margin-bottom: 8px;
+        height: 64px;
+        .prep-initial{
+          padding: 16px 24px;
+          font-size: 1.25rem;
+          color: #FFF;
+          font-weight: bold;
+          text-align: center;
+          background-color: #F5A623;
+          @include tab(){
+            padding: 17px 16px;
+            font-size: 1rem;
+          }
+        }
+        .flow-bg{
+          position: relative;
+          width: 100%;
+          display: flex;
+          align-items: center;
+          height: 64px;
+          background-color: #fff;
 
-    .card{
-      border: none;
-      
-      .card-text{
-        font-weight: 200;
+          :before {
+            content: "";
+            position: absolute;
+            display: inline-block;
+            background-color: #C3C3C3;
+            top: 17px;
+            left: 22%;
+            width: 1px;
+            height: 29px;
+            @include tab(){
+              left: 25%;
+            }
+          }
+          .prep-title{
+            flex: 0 0 25%;
+            padding-left: 20px;
+            @include tab(){
+              font-size: 14px;
+              padding-left: 5px;
+            }
+          }
+          .prep-example{
+            @include tab(){
+              font-size: 12px;
+              padding-left: 10px;
+            };
+          }
+        }
       }
     }
   }
@@ -268,6 +320,10 @@ header {
   max-width: 500px;
   margin: 0 auto; 
   margin-top: 15px;
+}
+
+#question_title{
+  font-size: 1.75rem;
 }
 
 .phase {
