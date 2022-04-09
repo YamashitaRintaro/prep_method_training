@@ -1,4 +1,17 @@
 class TrainingsController < ApplicationController
+
+  def new
+    @training = Training.new
+    case current_user.category_id
+    when 1
+      @questions = Question.where(category_id: 1).order(:id)
+    when 2
+      @questions = Question.where(category_id: 2).order(:id)
+    else
+      @questions = Question.where(category_id: 3).order(:id)
+    end
+  end
+  
   
   def create
     @training = current_user.trainings.new(training_params)
@@ -8,21 +21,6 @@ class TrainingsController < ApplicationController
       flash.now[:danger] = '質問を選択してください'
       redirect_back fallback_location: root_path
     end
-  end
-  
-  def new_graduate
-    @questions = Question.where(category_id: 1).order(:id)
-    @training = Training.new
-  end
-  
-  def job_change
-    @questions = Question.where(category_id: 2).order(:id)
-    @training = Training.new
-  end
-  
-  def engineer
-    @questions = Question.where(category_id: 3).order(:id)
-    @training = Training.new
   end
 
   def show
