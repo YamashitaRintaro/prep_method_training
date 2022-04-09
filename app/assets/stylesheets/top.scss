@@ -119,9 +119,12 @@ header {
           display: none;
         }
       }
-      
-      .dropdown-toggle::after{
-        display: none;
+
+      .dropdown-toggle{
+        max-width: 60px;
+        &::after{
+          display: none;
+        }
       }
     }
   }
