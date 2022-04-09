@@ -131,8 +131,7 @@ header {
   @include mq-up(tab){
     display: flex;
   }
-  padding: 80px 0 100px;
-  align-items: center;
+  padding: 80px 0;
 
   .hero-title{
     padding-bottom: 40px;
@@ -140,11 +139,12 @@ header {
     line-height: 1.5;
     @include mq-up(tab){
       font-size: 3rem;
+      padding-top: 25px;
     }
   }
 
   .hero-image {
-    max-width: 600px;
+    max-width: 520px;
     margin-left: auto;
   }
 }
