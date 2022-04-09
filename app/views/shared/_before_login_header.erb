@@ -6,13 +6,16 @@
       <% end %>
     </div>
     <div class="header_right">
-      <%= link_to new_user_path, class: "cta" do %>
+      <%= link_to new_user_path, class: "sign-up" do %>
       新規登録
       <i class="fa-solid fa-angle-right"></i>
       <% end %>
-      <%= link_to login_path, class: "sign_in" do %>
+      <%= link_to login_path, class: "sign-in" do %>
       ログイン
       <i class="fa-solid fa-angle-right"></i>
+      <% end %>
+      <%= link_to login_path, class: "sign-in-img" do %>
+        <%= image_tag "login.png", class: "img-fluid" %>
       <% end %>
     </div>
   </div>

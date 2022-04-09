@@ -66,6 +66,9 @@ header {
 
     .header_left {
       max-width: 130px;
+      @include tab(){
+        max-width: 100px;
+      }
       img {
         width: 100%;
         height: auto;
@@ -75,20 +78,40 @@ header {
     .header_right {
       margin-left: auto;
       display: flex;
-      .cta{
+      .sign-up{
         padding: 10px 22px;
+        background-color: #FC9F26 !important;
+        color: #fff;
+        text-align: center;
+        vertical-align: middle;
+        border-radius: 43px;
+        @include tab(){
+          padding: 10px 15px;
+          display: none;
+        }
       }
       
-      .sign_in {
+      .sign-in {
         margin-left: 16px;
         padding: 10px 22px;
         border: solid 1px #3399FF;
         border-radius: 43px;
         text-decoration: none;
+        @include tab(){
+          padding: 10px 15px;
+          display: none;
+        }
         &:hover {
           background-color: #3399FF;
           color: #fff;
           transition: 0.3s;
+        }
+      }
+
+      .sign-in-img{
+        max-width: 35px;
+        @include mq-up(tab){
+          display: none;
         }
       }
     }
