@@ -7,6 +7,7 @@
     </div>
     <div class="ml-5">
       <% if current_user.category_id == 1 %>
+      <i class="fas fa-microphone"></i>
         <%= link_to "練習する", new_graduate_trainings_path %>
       <% elsif current_user.category_id == 2 %>
         <%= link_to "練習する", job_change_trainings_path %>
@@ -15,6 +16,7 @@
       <% end %>
     </div>
     <div class="ml-4">
+      <i class="fas fa-pencil-alt"></i>
       <% if current_user.category_id == 1 %>
         <%= link_to "振り返る", category_path(1) %>
       <% elsif current_user.category_id == 2 %>
@@ -24,7 +26,15 @@
       <% end %>
     </div>
     <div class="header_right">
-      <%= link_to 'ログアウト', logout_path, method: :delete %>
+        <div class="dropdown">
+      <div class="dropdown-toggle font-2x" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
+        <i class="fa-solid fa-circle-user"></i>
+      </div>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <a class="dropdown-item" href="#">プロフィール</a>
+        <%= link_to 'ログアウト', logout_path, method: :delete, class: "dropdown-item"%>
+      </div>
+    </div>
     </div>
     </div>
   </div>
