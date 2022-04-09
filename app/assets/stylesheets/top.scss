@@ -75,6 +75,17 @@ header {
       }
     }
 
+    .ml-5{
+      @include tab(){
+        display: none;
+      }
+    }
+    .ml-4{
+      @include tab(){
+        display: none;
+      }
+    }
+
     svg{
       color: #3399FF;
       padding-right: 3px;
@@ -94,8 +105,14 @@ header {
           padding: 10px 15px;
           display: none;
         }
+        &:hover {
+          opacity: 0.8;
+          transition: 0.3s;
+        }
+        .fa-angle-right{
+          color: #FFF;
+        }
       }
-      
       .sign-in {
         margin-left: 16px;
         padding: 10px 22px;
@@ -120,8 +137,22 @@ header {
         }
       }
 
+      .header-icon-container{
+        display: flex;
+        .header-icon{
+          max-width: 40px;
+          margin-right: 10px;
+          @include mq-up(tab){
+            display: none;
+          }
+        }
+      }
+
       .dropdown-toggle{
         max-width: 60px;
+        @include tab(){
+          max-width: 50px;
+        }
         &::after{
           display: none;
         }
