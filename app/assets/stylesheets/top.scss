@@ -66,29 +66,64 @@ header {
 
     .header_left {
       max-width: 130px;
+      @include tab(){
+        max-width: 100px;
+      }
       img {
         width: 100%;
         height: auto;
       }
     }
 
+    svg{
+      color: #3399FF;
+      padding-right: 3px;
+    }
+
     .header_right {
       margin-left: auto;
       display: flex;
-      .cta{
+      .sign-up{
         padding: 10px 22px;
+        background-color: #FC9F26 !important;
+        color: #fff;
+        text-align: center;
+        vertical-align: middle;
+        border-radius: 43px;
+        @include tab(){
+          padding: 10px 15px;
+          display: none;
+        }
       }
       
-      .sign_in {
+      .sign-in {
         margin-left: 16px;
         padding: 10px 22px;
         border: solid 1px #3399FF;
         border-radius: 43px;
         text-decoration: none;
+        @include tab(){
+          padding: 10px 15px;
+          display: none;
+        }
         &:hover {
           background-color: #3399FF;
           color: #fff;
           transition: 0.3s;
+        }
+      }
+
+      .sign-in-img{
+        max-width: 35px;
+        @include mq-up(tab){
+          display: none;
+        }
+      }
+
+      .dropdown-toggle{
+        max-width: 60px;
+        &::after{
+          display: none;
         }
       }
     }
@@ -105,11 +140,10 @@ header {
 /* トップページ
    ========================================================================== */
 .hero{
+  padding: 80px 0;
   @include mq-up(tab){
     display: flex;
   }
-  padding: 80px 0 100px;
-  align-items: center;
 
   .hero-title{
     padding-bottom: 40px;
@@ -117,11 +151,12 @@ header {
     line-height: 1.5;
     @include mq-up(tab){
       font-size: 3rem;
+      padding-top: 25px;
     }
   }
 
   .hero-image {
-    max-width: 600px;
+    max-width: 520px;
     margin-left: auto;
   }
 }
@@ -129,17 +164,70 @@ header {
 .prep{
   background-color: #EEF8FC;
   margin: 0 auto;
-
   .container{
-    max-width: 750px;
+    max-width: 900px;
     margin: 0 auto;
-    padding: 80px 0;
+    padding-top: 80px;
+    padding-bottom: 80px;
+    .text-left{
+      display: inline-block;
+      margin-top: 22px;
+    }
+    .prep-flow{
+      text-align: left;
+      .flow-item{
+        display: flex;
+        align-items: center;
+        margin-bottom: 8px;
+        height: 64px;
+        .prep-initial{
+          padding: 16px 24px;
+          font-size: 1.25rem;
+          color: #FFF;
+          font-weight: bold;
+          text-align: center;
+          background-color: #F5A623;
+          @include tab(){
+            padding: 17px 16px;
+            font-size: 1rem;
+          }
+        }
+        .flow-bg{
+          position: relative;
+          width: 100%;
+          display: flex;
+          align-items: center;
+          height: 64px;
+          background-color: #fff;
 
-    .card{
-      border: none;
-      
-      .card-text{
-        font-weight: 200;
+          :before {
+            content: "";
+            position: absolute;
+            display: inline-block;
+            background-color: #C3C3C3;
+            top: 17px;
+            left: 22%;
+            width: 1px;
+            height: 29px;
+            @include tab(){
+              left: 25%;
+            }
+          }
+          .prep-title{
+            flex: 0 0 25%;
+            padding-left: 20px;
+            @include tab(){
+              font-size: 14px;
+              padding-left: 5px;
+            }
+          }
+          .prep-example{
+            @include tab(){
+              font-size: 12px;
+              padding-left: 10px;
+            };
+          }
+        }
       }
     }
   }
@@ -216,10 +304,16 @@ header {
    ========================================================================== */
    .font{
      font-size: 1.25rem;
+     @include tab(){
+       font-size: 14px;
+     }
    }
 
    .font-2x {
     font-size: 2rem;
+    @include tab(){
+      font-size: 1.25rem;
+    }
    }
    
    .color {
@@ -241,10 +335,18 @@ header {
 
    label{
      margin-bottom: 4px !important;
+     @include tab(){
+       margin-bottom: 0 !important;
+     }
    }
 
    a:hover{
     text-decoration: none !important;
+   }
+
+   .table-container{
+     max-width: 800px;
+     margin: 0 auto;
    }
 
 /* Training
@@ -253,13 +355,34 @@ header {
 .main-controls { 
   max-width: 500px;
   margin: 0 auto; 
+  margin-top: 15px;
+}
+
+#question_title{
+  font-size: 1.75rem;
 }
 
 .phase {
   max-width: 800px;
   color: #E6E6E6;
+  justify-content: space-between;
+  @include tab(){
+    justify-content: space-around;
+  }
 }
 
+.list-group-item{
+  @include tab(){
+    display: flex !important;
+    align-items: center;
+  }
+
+  label{
+    @include tab(){
+      padding-left: 5px;
+    }
+  }
+}
 
 .list-header {
   background-color: #FC9F26;
@@ -268,10 +391,22 @@ header {
   color: #fff;
   text-align: center;
 }
-/* アコーディオン
+/* question
    ========================================================================== */
 
 .accordion-container{
+  max-width: 750px;
+  margin: 0 auto;
+  @include tab(){
+    font-size: 14px;
+  }
+
+  .list-header{
+    @include mq-up(tab){
+      font-size: 1.25rem;
+    }
+  }
+
   .accordion-title{
     position: relative;
     margin: 0;
@@ -321,7 +456,6 @@ header {
 
     .date{
       padding: 0.625em 0.625em 0.625em 2em;
-      width: 20%;
     }
     
     .list-line{
@@ -333,6 +467,19 @@ header {
     display: none;
     padding-left: 2.3125em;
     border: 1px solid #EEF8FC;
+    @include tab(){
+      padding: 0;
+    }
+
+    .row{
+      flex-wrap: nowrap;
+    }
+
+    audio{
+      @include tab(){
+        max-width: 250px;
+      }
+    }
   }
 }
 

@@ -1,7 +1,7 @@
 <div class="container">
 <h2 class = "text-center mt-5 mb-4">質問を選択してください</h2>
   <%= form_with model: @training, url: trainings_path, local: true do |f| %>
-    <div class="w-75 mx-auto">
+    <div class="table-container">
       <ul class="list-group">
         <li class = "list-header font">質問リスト</li>
         <% @questions.each do |question| %>
