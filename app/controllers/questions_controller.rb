@@ -22,7 +22,7 @@ class QuestionsController < ApplicationController
   def show
     @question = Question.find(params[:id])
     @trainings = @question.trainings.order("id")
-    @voices = Question.includes(trainings: :voices)
+    @voices = Question.includes(trainings: :voices).order("id")
   end
 
   def edit;end
