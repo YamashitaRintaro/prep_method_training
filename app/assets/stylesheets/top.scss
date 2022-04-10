@@ -88,7 +88,6 @@ header {
 
     svg{
       color: #3399FF;
-      padding-right: 3px;
     }
 
     .header_right {
@@ -486,7 +485,7 @@ header {
     }
 
     .date{
-      padding: 0.625em 0.625em 0.625em 2em;
+      padding: 12.5px 11px 12.5px 35px;
     }
     
     .list-line{
@@ -501,14 +500,19 @@ header {
     @include tab(){
       padding: 0;
     }
-
     .row{
       flex-wrap: nowrap;
     }
-
     audio{
       @include tab(){
         max-width: 250px;
+      }
+    }
+
+    .yet{
+      padding: 12.5px 0px;
+      @include tab(){
+        text-align: center;
       }
     }
   }
