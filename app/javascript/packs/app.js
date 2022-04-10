@@ -82,7 +82,7 @@ if (navigator.mediaDevices.getUserMedia) {
         if (count == 4) {
           if( response.status === 204 ) {
             count = 0;
-            finish.click();
+            setTimeout(function(){finish.click()},1000);
           }
         }
       })
