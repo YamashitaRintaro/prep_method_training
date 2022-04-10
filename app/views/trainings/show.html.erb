@@ -29,7 +29,7 @@
     <div id = "buttons", class = 'text-center'>
       <button class = "record btn btn-lg bg text-white"><i class="fas fa-microphone fa-lg pr-3"></i>録音スタート</button>
       <button class = "stop d-none btn btn-lg bg text-white">次のフェーズへ</button>
-      <%= link_to "完了",question_path(@question), id: 'finish', class: "d-none" %>
+      <%= link_to "完了",question_path(@question), id: 'finish', class: "d-none", data: { 'turbolinks': false } %>
     </div>
     <%= audio_tag(@question_voice_data, id: "question-voice") %>
     <p id = "seconds" class = "d-none"><%= @question_voice_data_seconds %></p>
