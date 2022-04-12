@@ -12,7 +12,9 @@ class ProfilesController < ApplicationController
     end
   end
 
-  def show; end
+  def show
+    @category = current_user.category.name
+  end
 
   private
 
