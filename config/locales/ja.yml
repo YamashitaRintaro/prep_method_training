@@ -1,4 +1,21 @@
 ja:
+  defaults:
+    register: '登録'
+    login: 'ログイン'
+    logout: 'ログアウト'
+    show: '詳細'
+    post: '投稿'
+    update: '更新'
+    edit: '編集'
+    delete: '削除'
+    message:
+      require_login: 'ログインしてください'
+      created: "%{item}を作成しました"
+      not_created: "%{item}を作成できませんでした"
+      delete: "%{item}を削除しました"
+      delete_confirm: "削除しますか？"
+      updated: "%{item}を更新しました"
+      not_update: "%{item}を更新できませんでした"
   activerecord:
     # User.model_name.human
     models:

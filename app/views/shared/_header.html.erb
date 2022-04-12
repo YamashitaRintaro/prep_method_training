@@ -31,7 +31,7 @@
           <%= image_tag "mypage.png", class: "img-fluid" %>
         </div>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-          <a class="dropdown-item" href="#">プロフィール</a>
+          <%= link_to 'プロフィール', profile_path, class: "dropdown-item"%>
           <%= link_to 'ログアウト', logout_path, method: :delete, class: "dropdown-item"%>
         </div>
       </div>
