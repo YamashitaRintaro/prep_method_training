@@ -39,7 +39,11 @@ module PrepMethodTraining
       g.skip_routes true
       g.assets false
       g.helper false
-      g.test_framework false
+      g.test_framework :rspec,
+                    view_specs: false,
+                    routing_specs: false,
+                    helper_specs: false,
+                    controller_specs: false
     end
 
     config.i18n.default_locale = :ja
