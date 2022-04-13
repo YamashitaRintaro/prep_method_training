@@ -58,6 +58,15 @@ RSpec.configure do |config|
   #
   # The different available types are documented in the features, such as in
   # https://relishapp.com/rspec/rspec-rails/docs
+
+  config.include ActionDispatch::TestProcess
+
+  FactoryBot::SyntaxRunner.class_eval do
+    include ActionDispatch::TestProcess
+    include ActiveSupport::Testing::FileFixtures
+    self.file_fixture_path = "spec/fixtures"
+  end
+
   config.infer_spec_type_from_file_location!
 
   # Filter lines from Rails gems in backtraces.
