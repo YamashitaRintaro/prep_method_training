@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "Question#show", type: :system do
 
-  describe '質問詳細画面' do
+  describe 'カテゴリー詳細画面' do
     let(:user) { create(:user) }
     let(:category) { create(:category, :category2) }
     let(:question) { create(:question, category_id: user.category_id) }
