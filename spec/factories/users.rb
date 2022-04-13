@@ -6,14 +6,6 @@ FactoryBot.define do
     password_confirmation { 'password' }
   end
 
-  trait :category2 do
-    association :category2
-  end
-
-  trait :category3 do
-    association :category3
-  end
-
   trait :admin do
     role { 1 }
   end

@@ -1,10 +1,12 @@
 require 'rails_helper'
 
-RSpec.describe "Questions", type: :system do
+RSpec.describe "Question#show", type: :system do
 
   describe '質問詳細画面' do
     let(:user) { create(:user) }
-    let(:question) { create(:question) }
+    let(:category) { create(:category, :category2) }
+    let(:question) { create(:question, category_id: user.category_id) }
+    let(:question_category2) { create(:question, :question_category2, category_id: category.id ) }
 
     context 'ログイン前' do
       it 'ページにアクセスできないこと' do
@@ -16,10 +18,18 @@ RSpec.describe "Questions", type: :system do
 
     context 'ログイン後' do
       before { login_as(user) }
-      fit 'ページにアクセスできること' do
+      it 'ページにアクセスできること' do
         question
         visit category_path(user.category_id)
         expect(page).to have_content question.title
+      end
+
+      it '選択したカテゴリー以外の質問は表示されないこと' do
+        question
+        question_category2
+        visit category_path(user.category_id)
+        expect(page).to have_content question.title
+        expect(page).not_to have_content question_category2.title
       end
     end
   end
