@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe "Users", type: :system do
-  let(:category) { create(:category1) }
+  let(:category) { create(:category) }
 
   describe 'ユーザー新規登録' do
     context 'フォームの入力値が正常' do
