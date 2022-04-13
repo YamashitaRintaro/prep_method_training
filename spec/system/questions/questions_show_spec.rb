@@ -17,6 +17,7 @@ RSpec.describe "Questions", type: :system do
     context 'ログイン後' do
       before { login_as(user) }
       fit 'ページにアクセスできること' do
+        question
         visit category_path(user.category_id)
         expect(page).to have_content question.title
       end
