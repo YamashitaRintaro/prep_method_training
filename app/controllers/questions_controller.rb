@@ -15,7 +15,7 @@ class QuestionsController < ApplicationController
     if @question.save
       redirect_to questions_path, success: t('defaults.message.created', item: Question.model_name.human)
     else
-      render :index
+      render :new
     end
   end
 
