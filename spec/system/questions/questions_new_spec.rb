@@ -8,7 +8,7 @@ RSpec.describe "Question#new", type: :system do
     context 'ログイン前' do
       it 'ページにアクセスできないこと' do
         visit new_question_path
-        expect(page).to have_content 'please login first'
+        expect(page).to have_content 'ログインしてください'
         expect(current_path).to eq login_path
       end
     end

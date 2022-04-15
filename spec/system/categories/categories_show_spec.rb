@@ -11,7 +11,7 @@ RSpec.describe "Question#show", type: :system do
     context 'ログイン前' do
       it 'ページにアクセスできないこと' do
         visit category_path(user.category_id)
-        expect(page).to have_content 'please login first'
+        expect(page).to have_content 'ログインしてください'
         expect(current_path).to eq login_path
       end
     end
