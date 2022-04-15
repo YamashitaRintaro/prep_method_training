@@ -3,10 +3,10 @@
 <p class = "text-center">※音声が全て表示されない場合があります。その場合、お手数ですが、画面をリロードしていただくと表示されるようになります。</p>
   <div id="accordion" class="accordion-container">
     <div class = "list-header">質問タイトル：<%= @question.title %></div>
-  <% @trainings.each_with_index do |training, i| %>
+  <% @current_user_trainings.each_with_index do |training, i| %>
     <li class="accordion-title js-accordion-title d-flex font">
       <span class = "date"><%= training.created_at.strftime('%Y/%m/%d') %></span>
-      <span class = "list-line"><%= i+1 %>回目の練習</span>
+      <span class = "list-line"><%= i+1 %>回目の練習</span><%= training.user_id %>
     </li>
     <div class="accordion-content">
       <% if training.voices.present? %>
