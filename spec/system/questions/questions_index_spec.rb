@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Question#new", type: :system do
+RSpec.describe "Question#index", type: :system do
   describe '質問新規追加' do
     let(:user) { create(:user) }
     let(:admin) { create(:user, :admin) }
