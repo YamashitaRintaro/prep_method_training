@@ -3,24 +3,31 @@
 <p class = "text-center">※音声が全て表示されない場合があります。その場合、お手数ですが、画面をリロードしていただくと表示されるようになります。</p>
   <div id="accordion" class="accordion-container">
     <div class = "list-header">質問タイトル：<%= @question.title %></div>
-  <% @trainings.each_with_index do |training, i| %>
-    <li class="accordion-title js-accordion-title d-flex font">
-      <span class = "date"><%= training.created_at.strftime('%Y/%m/%d') %></span>
-      <span class = "list-line"><%= i+1 %>回目の練習</span>
-    </li>
-    <div class="accordion-content">
-      <% if training.voices.present? %>
-        <% training.voices.each do |voice| %>
-        <div class = "align-items-center row">
-          <div class = "text-center col-md-4"><%= voice.phase_i18n %></div>
-          <div class = "text-center col-md-8"><%= audio_tag(voice.voice_data, controls: true) %></div>
-        </div>
+    
+  <% if @current_user_trainings.present? %>
+    <% @current_user_trainings.each_with_index do |training, i| %>
+      <li class="accordion-title js-accordion-title d-flex font">
+        <span class = "date"><%= training.created_at.strftime('%Y/%m/%d') %></span>
+        <span class = "list-line"><%= i+1 %>回目の練習</span>
+      </li>
+      <div class="accordion-content">
+        <% if training.voices.present? %>
+          <% training.voices.each do |voice| %>
+          <div class = "align-items-center row">
+            <div class = "text-center col-md-4"><%= voice.phase_i18n %></div>
+            <div class = "text-center col-md-8"><%= audio_tag(voice.voice_data, controls: true) %></div>
+          </div>
+          <% end %>
+        <% else %>
+          <div class = "yet">まだ練習していません  
+            <%= link_to "練習する", training_path(training) %>
+          </div>
         <% end %>
-      <% else %>
-        <div class = "yet">まだ練習していません  
-          <%= link_to "練習する", training_path(training) %>
-        </div>
-      <% end %>
+      </div>
+    <% end %>
+  <% else %>
+    <div class = "text-center yet font">まだ練習していません  
+      <%= link_to "練習する", new_training_path %>
     </div>
   <% end %>
   </div>

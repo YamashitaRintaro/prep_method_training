@@ -6,12 +6,16 @@
       <% end %>
     </div>
     <div class="ml-5">
+      <%= link_to new_training_path do %>
       <i class="fas fa-microphone"></i>
-      <%= link_to "練習する", new_training_path %>
+      練習する
+      <% end %>
     </div>
     <div class="ml-4">
+      <%= link_to category_path(current_user.category_id) do %>
       <i class="fas fa-pencil-alt"></i>
-      <%= link_to "振り返る", category_path(current_user.category_id) %>
+      振り返る
+      <% end %>
     </div>
     <div class="header_right">
       <div class="header-icon-container">
