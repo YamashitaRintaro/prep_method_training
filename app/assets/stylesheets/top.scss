@@ -508,12 +508,11 @@ header {
         max-width: 250px;
       }
     }
-
-    .yet{
-      padding: 12.5px 0px;
-      @include tab(){
-        text-align: center;
-      }
+  }
+  .yet{
+    padding: 12.5px 0px;
+    @include tab(){
+      text-align: center;
     }
   }
 }
