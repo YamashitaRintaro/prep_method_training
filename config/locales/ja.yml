@@ -20,6 +20,7 @@ ja:
     # User.model_name.human
     models:
       user: ユーザー
+      question: 質問
     # User.human_attributes_name(:name)
     attributes:
       id: ID

@@ -1,6 +1,6 @@
 class QuestionsController < ApplicationController
   before_action :set_question, only: %i[show edit update destroy]
-  before_action :require_admin, only: [:index, :create, :edit]
+  before_action :require_admin, except: %i[show]
 
   def index
     @question = Question.all.order(:category_id, :id)
@@ -13,7 +13,7 @@ class QuestionsController < ApplicationController
   def create
     @question = Question.new(question_params)
     if @question.save
-      redirect_to questions_path
+      redirect_to questions_path, success: t('defaults.message.created', item: Question.model_name.human)
     else
       render :index
     end
