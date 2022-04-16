@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe "Question#edit", type: :system do
-  fdescribe '質問編集' do
+  describe '質問編集' do
       let(:user) { create(:user) }
       let(:admin) { create(:user, :admin) }
       let(:category) { create(:category) }
