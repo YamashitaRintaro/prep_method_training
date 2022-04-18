@@ -1,6 +1,6 @@
 class ProfilesController < ApplicationController
   before_action :set_user
-  
+
   def edit; end
 
   def update

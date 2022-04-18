@@ -1,18 +1,16 @@
 class TrainingsController < ApplicationController
-
   def new
     @training = Training.new
-    case current_user.category_id
-    when 1
-      @questions = Question.where(category_id: 1).order(:id)
-    when 2
-      @questions = Question.where(category_id: 2).order(:id)
-    else
-      @questions = Question.where(category_id: 3).order(:id)
-    end
+    @questions = case current_user.category_id
+                 when 1
+                   Question.where(category_id: 1).order(:id)
+                 when 2
+                   Question.where(category_id: 2).order(:id)
+                 else
+                   Question.where(category_id: 3).order(:id)
+                 end
   end
-  
-  
+
   def create
     @training = current_user.trainings.new(training_params)
     if @training.save
@@ -36,10 +34,9 @@ class TrainingsController < ApplicationController
     @training.destroy!
     redirect_back fallback_location: root_path
   end
-  
-  
+
   private
-  
+
   def training_params
     params.require(:training).permit(:user_id, :question_id, :title)
   end
