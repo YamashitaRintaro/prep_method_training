@@ -8,7 +8,7 @@ RSpec.describe "Question#new", type: :system do
     context 'ログイン前' do
       it 'ページにアクセスできないこと' do
         visit new_question_path
-        expect(page).to have_content 'please login first'
+        expect(page).to have_content 'ログインしてください'
         expect(current_path).to eq login_path
       end
     end
@@ -28,6 +28,42 @@ RSpec.describe "Question#new", type: :system do
           visit new_question_path
           expect(page).to have_content '質問登録'
         end
+
+        context "正常系" do          
+          it '新規追加できること' do
+            visit new_question_path
+            fill_in "Category",	with: user.category_id 
+            fill_in "Title",	with: "自己紹介をしてください"
+            attach_file "Question voice data", "#{Rails.root}/spec/fixtures/question1.wav"
+            fill_in "Question voice data seconds",	with: 2
+            click_button '登録'
+            expect(page).to have_content '質問を作成しました'
+          end
+        end
+
+        context "異常系" do
+          context "category_idが未入力" do          
+            it '新規追加できないこと' do
+              visit new_question_path
+              fill_in "Title",	with: "自己紹介をしてください"
+              attach_file "Question voice data", "#{Rails.root}/spec/fixtures/question1.wav"
+              fill_in "Question voice data seconds",	with: 2
+              click_button '登録'
+              expect(page).to have_content 'Categoryを入力してください'
+            end
+          end
+
+          context "titleが未入力" do          
+            it '新規追加できないこと' do
+              visit new_question_path
+              fill_in "Category",	with: user.category_id 
+              attach_file "Question voice data", "#{Rails.root}/spec/fixtures/question1.wav"
+              fill_in "Question voice data seconds",	with: 2
+              click_button '登録'
+              expect(page).to have_content 'Titleを入力してください'
+            end
+          end
+        end 
       end
     end
   end

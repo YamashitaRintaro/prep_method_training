@@ -1,6 +1,7 @@
 import axios from 'axios';
+import { csrfToken } from 'rails-ujs';
+axios.defaults.headers['X-CSRF-TOKEN'] = csrfToken();
 axios.defaults.headers['X-Requested-With'] = 'XMLHttpRequest';
-axios.defaults.headers['X-CSRF-TOKEN'] = document.getElementsByName('csrf-token')[0].getAttribute('content');
 axios.defaults.headers['content-type'] = 'multipart/form-data';
 const record = document.querySelector('.record');
 const stop = document.querySelector('.stop');
