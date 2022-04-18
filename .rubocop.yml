@@ -1,5 +1,7 @@
 # This file overrides https://github.com/bbatsov/rubocop/blob/master/config/default.yml
-require: rubocop-rails
+require: 
+  - rubocop-rails
+  - rubocop-rspec
 
 AllCops:
   Exclude:
