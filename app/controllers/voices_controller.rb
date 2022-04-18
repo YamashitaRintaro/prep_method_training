@@ -1,5 +1,4 @@
 class VoicesController < ApplicationController
-
   def create
     @voice = Voice.new(voice_params)
     @voice.save!

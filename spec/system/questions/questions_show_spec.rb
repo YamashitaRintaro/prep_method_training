@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe "Question#show", type: :system do
-  fdescribe '質問詳細' do
+  describe '質問詳細' do
     let(:user) { create(:user) }
     let(:question) { create(:question, category_id: user.category_id) }
     let(:training) { create(:training, user_id: user.id, question_id: question.id, title: question.title) }
