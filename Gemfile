@@ -39,6 +39,7 @@ group :development, :test do
   gem 'rubocop-rspec', require: false
   gem 'rspec-rails', '~> 5.0.0'
   gem 'rspec_junit_formatter'
+  gem 'bullet'
 end
 
 group :development do
