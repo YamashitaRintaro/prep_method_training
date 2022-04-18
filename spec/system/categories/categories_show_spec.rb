@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Question#show", type: :system do
+RSpec.describe "Category#show", type: :system do
 
   describe 'カテゴリー詳細画面' do
     let(:user) { create(:user) }
