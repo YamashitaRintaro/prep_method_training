@@ -86,10 +86,6 @@ header {
       }
     }
 
-    svg{
-      color: #3399FF;
-    }
-
     .header_right {
       margin-left: auto;
       display: flex;
@@ -185,9 +181,45 @@ header {
     }
   }
 
+  .cta {
+    background-color: #FC9F26 !important;
+    color: #fff;
+    text-align: center;
+    vertical-align: middle;
+    padding: 20px 39px;
+    border-radius: 43px;
+    @include tab(){
+      padding: 16px 24px;
+    }
+    &:hover {
+      opacity: 0.8;
+    }
+   }
+
+   .guest {
+    border: solid 1px #3399FF;
+    color: #3399FF;
+    text-align: center;
+    vertical-align: middle;
+    padding: 19px 39px;
+    border-radius: 43px;
+    margin-left: 20px;
+    @include tab(){
+      padding: 16px 24px;
+    }
+    &:hover {
+      background-color: #3399FF;
+      color: #fff;
+      transition: 0.3s;
+    }
+   }
+
   .hero-image {
     max-width: 520px;
     margin-left: auto;
+    @include tab(){
+      margin-top: 30px;
+    }
   }
 }
 
@@ -352,15 +384,6 @@ header {
    
    .bg{
      background-color: #FC9F26 !important;
-   }
-
-   .cta {
-    background-color: #FC9F26 !important;
-    color: #fff;
-    text-align: center;
-    vertical-align: middle;
-    padding: 20px 27px;
-    border-radius: 43px;
    }
 
    label{
