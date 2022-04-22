@@ -1,6 +1,6 @@
 class CategoriesController < ApplicationController
   before_action :set_category, only: %i[edit update]
-  before_action :if_not_admin, only: %i[edit update]
+  before_action :require_admin, only: %i[edit update]
 
   def show
     @category = Category.find(params[:id])
@@ -27,7 +27,7 @@ class CategoriesController < ApplicationController
     @category = Category.find(params[:id])
   end
 
-  def if_not_admin
+  def require_admin
     redirect_to root_path unless current_user.admin?
   end
 end
