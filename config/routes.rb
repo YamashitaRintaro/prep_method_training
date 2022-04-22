@@ -1,4 +1,13 @@
 Rails.application.routes.draw do
+  namespace :admin do
+      resources :questions
+      resources :trainings
+      resources :categories
+      resources :voices
+      resources :users
+
+      root to: "questions#index"
+    end
   root 'static_pages#top'
   get 'login', to: 'user_sessions#new'
   post 'login', to: 'user_sessions#create'
