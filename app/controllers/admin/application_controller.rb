@@ -9,7 +9,7 @@ module Admin
     before_action :authenticate_admin
 
     def authenticate_admin
-      # TODO Add authentication logic here.
+      redirect_to root_path, warning: '権限がありません' unless logged_in? && current_user.admin?
     end
 
     # Override this value to specify the number of elements to display at a time
