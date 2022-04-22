@@ -13,7 +13,7 @@ class QuestionsController < ApplicationController
   def create
     @question = Question.new(question_params)
     if @question.save
-      redirect_to questions_path, success: t('defaults.message.created', item: Question.model_name.human)
+      redirect_to admin_questions_path, success: t('defaults.message.created', item: Question.model_name.human)
     else
       render :new
     end

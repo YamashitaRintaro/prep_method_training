@@ -1,12 +1,12 @@
 Rails.application.routes.draw do
   namespace :admin do
       resources :questions
+      resources :users
       resources :trainings
       resources :categories
       resources :voices
-      resources :users
 
-      root to: "questions#index"
+      root to: "users#index"
     end
   root 'static_pages#top'
   get 'login', to: 'user_sessions#new'

@@ -9,7 +9,7 @@ class QuestionDashboard < Administrate::BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     category: Field::BelongsTo,
-    # trainings: Field::HasMany,
+    trainings: Field::HasMany,
     id: Field::Number,
     title: Field::String,
     question_voice_data: Field::String,
