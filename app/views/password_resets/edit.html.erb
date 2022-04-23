@@ -1,11 +1,11 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-2">
+    <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-2 mt-5">
       <h2 class="password-reset"><%= t '.title' %></h2>
       <%= form_with model: @user, url: password_reset_path(@token), local: true do |f| %>
         <%= render 'shared/error_messages', model: f.object %>
 
-        <div class="mb-3">
+        <div class="mb-3 mt-4">
           <%= f.label :email, class: 'form-label' %>
           <%= @user.email %>
         </div>
@@ -18,9 +18,7 @@
           <%= f.password_field :password_confirmation, class: 'form-control' %>
         </div>
         <div class="actions">
-          <p class="text-center">
-          <%= f.submit class: 'btn btn-primary' %>
-          </p>
+          <%= f.submit class: 'btn btn-bg text-white mt-3' %>
         </div>
       <% end %>
     </div>

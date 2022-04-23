@@ -19,8 +19,8 @@ ja:
       not_update: "%{item}を更新できませんでした"
   password_resets:
     new:
-      title: 'パスワードリセット申請'
-      submit: '送信'
+      title: 'パスワード再設定'
+      submit: '送信する'
     edit:
       title: 'パスワードリセット'
     create:
