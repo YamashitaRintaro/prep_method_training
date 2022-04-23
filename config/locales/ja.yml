@@ -17,6 +17,17 @@ ja:
       delete_confirm: "削除しますか？"
       updated: "%{item}を更新しました"
       not_update: "%{item}を更新できませんでした"
+  password_resets:
+    new:
+      title: 'パスワードリセット申請'
+      submit: '送信'
+    edit:
+      title: 'パスワードリセット'
+    create:
+      success: 'パスワードリセット手順を送信しました'
+    update:
+      success: 'パスワードを変更しました'
+      fail: 'パスワードの変更に失敗しました'
   activerecord:
     # User.model_name.human
     models:
