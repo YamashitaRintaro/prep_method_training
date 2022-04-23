@@ -20,4 +20,5 @@ Rails.application.routes.draw do
   resources :trainings, only: %i[show new create destroy] do
     resources :voices, only: %i[create]
   end
+  resources :password_resets, only: %i[new create edit update]
 end
