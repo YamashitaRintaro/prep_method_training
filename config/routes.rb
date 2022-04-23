@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
   namespace :admin do
       resources :questions
       resources :users
@@ -20,4 +21,5 @@ Rails.application.routes.draw do
   resources :trainings, only: %i[show new create destroy] do
     resources :voices, only: %i[create]
   end
+  resources :password_resets, only: %i[new create edit update]
 end

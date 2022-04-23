@@ -8,6 +8,7 @@ ja:
     update: '更新'
     edit: '編集'
     delete: '削除'
+    password_reset: 'パスワードリセット'
     message:
       require_login: 'ログインしてください'
       created: "%{item}を作成しました"
@@ -16,6 +17,17 @@ ja:
       delete_confirm: "削除しますか？"
       updated: "%{item}を更新しました"
       not_update: "%{item}を更新できませんでした"
+  password_resets:
+    new:
+      title: 'パスワード再設定'
+      submit: '送信する'
+    edit:
+      title: 'パスワードリセット'
+    create:
+      success: 'パスワードリセット手順を送信しました'
+    update:
+      success: 'パスワードを変更しました'
+      fail: 'パスワードの変更に失敗しました'
   activerecord:
     # User.model_name.human
     models:

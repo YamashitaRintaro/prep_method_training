@@ -40,6 +40,7 @@ group :development, :test do
   gem 'rspec-rails', '~> 5.0.0'
   gem 'rspec_junit_formatter'
   gem 'bullet'
+  gem 'letter_opener_web', '~> 1.0'
 end
 
 group :development do
@@ -74,3 +75,4 @@ gem 'pry-byebug'
 gem 'seed-fu' 
 gem 'rails-i18n'
 gem 'administrate'
+gem 'config'
