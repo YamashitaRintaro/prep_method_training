@@ -81,3 +81,18 @@ RSpec/MultipleExpectations:
 # Start context description with 'when', 'with', or 'without'を無視
 RSpec/ContextWording:
   Enabled: false
+
+RSpec/NestedGroups:
+  Max: 5
+
+MethodLength:
+  Max: 15
+
+RSpec/ExampleLength:
+  Enabled: false
+
+RSpec/MultipleExpectations:
+  Enabled: false
+
+RSpec/MultipleMemoizedHelpers:
+  Max: 8
