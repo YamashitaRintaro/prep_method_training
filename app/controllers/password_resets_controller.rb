@@ -28,4 +28,4 @@ class PasswordResetsController < ApplicationController
       redirect_to edit_password_reset_path, danger: t('.fail')
     end
   end
-end 
+end

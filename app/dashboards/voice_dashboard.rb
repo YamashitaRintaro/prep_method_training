@@ -1,4 +1,4 @@
-require "administrate/base_dashboard"
+require 'administrate/base_dashboard'
 
 class VoiceDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
@@ -13,7 +13,7 @@ class VoiceDashboard < Administrate::BaseDashboard
     voice_data: Field::String,
     phase: Field::Select.with_options(searchable: false, collection: ->(field) { field.resource.class.send(field.attribute.to_s.pluralize).keys }),
     created_at: Field::DateTime,
-    updated_at: Field::DateTime,
+    updated_at: Field::DateTime
   }.freeze
 
   # COLLECTION_ATTRIBUTES
