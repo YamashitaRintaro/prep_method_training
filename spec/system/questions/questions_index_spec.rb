@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Question#index", type: :system do
+RSpec.describe 'Question#index', type: :system do
   describe '質問新規追加' do
     let(:user) { create(:user) }
     let(:admin) { create(:user, :admin) }
@@ -10,21 +10,23 @@ RSpec.describe "Question#index", type: :system do
       it 'ページにアクセスできないこと' do
         visit questions_path
         expect(page).to have_content 'ログインしてください'
-        expect(current_path).to eq login_path
+        expect(page).to have_current_path login_path, ignore_query: true
       end
     end
-    
+
     context 'ログイン後' do
       before { login_as(user) }
+
       context '一般ユーザー' do
         it 'ページにアクセスできないこと' do
           visit questions_path
-          expect(current_path).to eq root_path
+          expect(page).to have_current_path root_path, ignore_query: true
         end
       end
-      
+
       context 'アドミンユーザー' do
         before { login_as(admin) }
+
         it 'ページにアクセスできること' do
           visit questions_path
           expect(page).to have_content '質問一覧'

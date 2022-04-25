@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Question#show", type: :system do
+RSpec.describe 'Question#show', type: :system do
   describe '質問詳細' do
     let(:user) { create(:user) }
     let(:question) { create(:question, category_id: user.category_id) }
@@ -9,16 +9,16 @@ RSpec.describe "Question#show", type: :system do
     let(:reason) { create(:voice, :reason, training_id: training.id) }
     let(:example) { create(:voice, :example, training_id: training.id) }
     let(:second_point) { create(:voice, :second_point, training_id: training.id) }
-    
+
     context 'ログイン前' do
       it 'ページにアクセスできないこと' do
         visit question_path(question.id)
         expect(page).to have_content 'ログインしてください'
-        expect(current_path).to eq login_path
+        expect(page).to have_current_path login_path, ignore_query: true
       end
     end
 
-    context "ログイン後" do
+    context 'ログイン後' do
       before do
         login_as(user)
         question
@@ -41,7 +41,7 @@ RSpec.describe "Question#show", type: :system do
 
       context 'アコーディオン' do
         it 'クリックすると音声が表示されること', js: true do
-          find(".accordion-title").click
+          find('.accordion-title').click
           expect(page).to have_content '結論'
           expect(page).to have_content '理由'
           expect(page).to have_content '具体例'

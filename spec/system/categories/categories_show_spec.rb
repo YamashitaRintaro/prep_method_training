@@ -1,23 +1,23 @@
 require 'rails_helper'
 
-RSpec.describe "Category#show", type: :system do
-
+RSpec.describe 'Category#show', type: :system do
   describe 'カテゴリー詳細画面' do
     let(:user) { create(:user) }
     let(:category) { create(:category, :category2) }
     let(:question) { create(:question, category_id: user.category_id) }
-    let(:question_category2) { create(:question, :question_category2, category_id: category.id ) }
+    let(:question_category2) { create(:question, :question_category2, category_id: category.id) }
 
     context 'ログイン前' do
       it 'ページにアクセスできないこと' do
         visit category_path(user.category_id)
         expect(page).to have_content 'ログインしてください'
-        expect(current_path).to eq login_path
+        expect(page).to have_current_path login_path, ignore_query: true
       end
     end
 
     context 'ログイン後' do
       before { login_as(user) }
+
       it 'ページにアクセスできること' do
         question
         visit category_path(user.category_id)

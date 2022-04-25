@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "UserSessions", type: :system do
+RSpec.describe 'UserSessions', type: :system do
   let(:user) { create(:user) }
 
   describe 'ログイン前' do
@@ -10,7 +10,7 @@ RSpec.describe "UserSessions", type: :system do
         fill_in 'email', with: user.email
         fill_in 'password', with: 'password'
         click_button 'ログイン'
-        expect(current_path).to eq new_training_path
+        expect(page).to have_current_path new_training_path, ignore_query: true
       end
     end
 
@@ -21,7 +21,7 @@ RSpec.describe "UserSessions", type: :system do
         fill_in 'password', with: 'password'
         click_button 'ログイン'
         expect(page).to have_content 'ログインに失敗しました'
-        expect(current_path).to eq login_path
+        expect(page).to have_current_path login_path, ignore_query: true
       end
     end
   end
@@ -33,7 +33,7 @@ RSpec.describe "UserSessions", type: :system do
         find_by_id('dropdownMenuButton').click
         click_link 'ログアウト'
         expect(page).to have_content 'ログアウトしました'
-        expect(current_path).to eq root_path
+        expect(page).to have_current_path root_path, ignore_query: true
       end
     end
   end
