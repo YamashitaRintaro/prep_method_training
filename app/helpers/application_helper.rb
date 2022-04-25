@@ -17,7 +17,7 @@ module ApplicationHelper
         locale: 'ja_JP'
       },
       twitter: {
-        creator: '@',
+        creator: '@yamarin_shu',
         card: 'summary_large_image'
       }
     }

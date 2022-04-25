@@ -4,12 +4,13 @@ require:
   - rubocop-rspec
 
 AllCops:
+  TargetRubyVersion: 3.0.2
+  TargetRailsVersion: 6.1.4
   Exclude:
     - "vendor/**/*"
     - "db/**/*"
     - "bin/**/*"
     - "lib/**/*"
-    - "spec/**/*"
     - "config/**/*"
     - "app/validators/attachment_validator.rb"
     - "node_modules/**/*"
@@ -21,6 +22,18 @@ Rails:
 
 Metrics/AbcSize:
   Max: 30
+
+Metrics/BlockLength:
+  Exclude:
+    - "Rakefile"
+    - "**/*.rake"
+    - "spec/**/*"
+    - "Gemfile"
+    - "Guardfile"
+    - "config/environments/*.rb"
+    - "config/routes.rb"
+    - "config/routes/**/*.rb"
+    - "*.gemspec"
 
 Metrics/ClassLength:
   CountComments: false
@@ -60,3 +73,26 @@ Style/WhileUntilModifier:
 
 Rails/HasManyOrHasOneDependent:
   Enabled: false
+
+# itブロック内のexpectの許容数を1→3に変更
+RSpec/MultipleExpectations:
+  Max: 3
+
+# Start context description with 'when', 'with', or 'without'を無視
+RSpec/ContextWording:
+  Enabled: false
+
+RSpec/NestedGroups:
+  Max: 5
+
+MethodLength:
+  Max: 15
+
+RSpec/ExampleLength:
+  Enabled: false
+
+RSpec/MultipleExpectations:
+  Enabled: false
+
+RSpec/MultipleMemoizedHelpers:
+  Max: 8

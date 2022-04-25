@@ -1,4 +1,4 @@
-require "administrate/base_dashboard"
+require 'administrate/base_dashboard'
 
 class QuestionDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
@@ -15,7 +15,7 @@ class QuestionDashboard < Administrate::BaseDashboard
     question_voice_data: Field::String,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
-    question_voice_data_seconds: Field::Number,
+    question_voice_data_seconds: Field::Number
   }.freeze
 
   # COLLECTION_ATTRIBUTES

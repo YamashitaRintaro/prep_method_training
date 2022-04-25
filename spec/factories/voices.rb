@@ -5,7 +5,7 @@ FactoryBot.define do
     trait :point do
       phase { 0 }
     end
-  
+
     trait :reason do
       phase { 1 }
     end

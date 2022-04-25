@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Training#show", type: :system do
+RSpec.describe 'Training#show', type: :system do
   describe 'トレーニング詳細（録音画面）' do
     let(:user) { create(:user) }
     let(:question) { create(:question, category_id: user.category_id) }
@@ -10,15 +10,16 @@ RSpec.describe "Training#show", type: :system do
       it 'ページにアクセスできないこと' do
         visit training_path(training.id)
         expect(page).to have_content 'ログインしてください'
-        expect(current_path).to eq login_path
+        expect(page).to have_current_path login_path, ignore_query: true
       end
     end
-    
+
     context 'ログイン後' do
       before { login_as(user) }
+
       it 'ページにアクセスできること' do
         visit training_path(training.id)
-        expect(current_path).to eq training_path(training.id)
+        expect(page).to have_current_path training_path(training.id), ignore_query: true
       end
 
       it '質問のタイトルが表示されていること' do
@@ -42,7 +43,7 @@ RSpec.describe "Training#show", type: :system do
       #     click_button '理由フェーズへ'
       #     expect(page).to have_content '具体例フェーズへ'
       #   end
-        
+
       #   it '理由フェーズ後に具体例フェーズの録音が始まること', js: true do
       #     click_button '理由フェーズへ'
       #     click_button '具体例フェーズへ'
