@@ -168,7 +168,6 @@ header {
    ========================================================================== */
 .hero{
   padding: 80px 0;
-  background-color: #E6F4FF;
   .container{
     @include mq-up(tab){
       display: flex;
@@ -208,7 +207,6 @@ header {
     padding: 19px 39px;
     border-radius: 43px;
     margin-left: 20px;
-    background-color: #fff;
     @include tab(){
       padding: 16px 24px;
     }
@@ -230,6 +228,7 @@ header {
 
 .prep{
   margin: 0 auto;
+  background-color: #E6F4FF;
   .title{
     color: #0D6CBE;
   }
@@ -267,7 +266,7 @@ header {
           display: flex;
           align-items: center;
           height: 64px;
-          background-color: #F8F8F8;
+          background-color: #fff;
 
           :before {
             content: "";
