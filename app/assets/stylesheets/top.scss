@@ -374,25 +374,27 @@ header {
     @include mq-up(tab){
       display: flex;
     }
+    
     .use-flow-item{
       margin-bottom: 25px;
       @include mq-up(tab){
         width: 31%;
       }
       h3{
+        font-size: 24px;
         font-weight: 600;
         color: #0D6CBE;
       }
       .list-number{
         display: inline-block;
-        width: 40px;
-        height: 40px;
+        width: 36px;
+        height: 36px;
         margin-right: 10px;
         font-size: 24px;
         background-color: #0D6CBE;
         color: rgb(255, 255, 255);
         text-align: center;
-        line-height: 40px;
+        line-height: 36px;
         border-radius: 50%;
       }
       p{
