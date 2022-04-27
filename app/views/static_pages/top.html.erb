@@ -1,15 +1,15 @@
-<div class="container">
-  <section class = "hero">
-    <div class="hero-text">
-      <h1 class = "hero-title">PREP法で<br>わかりやすく論理的に<br>話せるように</h1>
-      <%= link_to "今すぐはじめる", new_user_path, class: "cta" %>
-      <%= link_to "ゲストログイン", guest_login_path, method: :post, class: "guest" %>
-    </div>
-    <div class="hero-image">
-      <%= image_tag "main2.png", class: "img-fluid" %>
-    </div>
-  </section>
-</div>
+<section class = "hero">
+  <div class="container">
+      <div class="hero-text">
+        <h1 class = "hero-title">PREP法で<br>わかりやすく論理的に<br>話せるように</h1>
+        <%= link_to "今すぐはじめる", new_user_path, class: "cta" %>
+        <%= link_to "ゲストログイン", guest_login_path, method: :post, class: "guest" %>
+      </div>
+      <div class="hero-image">
+        <%= image_tag "main2.png", class: "img-fluid" %>
+      </div>
+  </div>
+</section>
 <section class = "prep">
   <div class="container text-center">
   <h2 class = "title">PREP法とは</h2>
@@ -67,3 +67,7 @@
     </div>
   </div>
 </section>
+<script>
+  var header = document.getElementById('header'); 
+  header.style.backgroundColor = '#E6F4FF';
+</script>
