@@ -224,8 +224,11 @@ header {
 }
 
 .prep{
-  background-color: #EEF8FC;
+  background-color: #E6F4FF;
   margin: 0 auto;
+  .title{
+    color: #0D6CBE;
+  }
   .container{
     max-width: 900px;
     margin: 0 auto;
@@ -364,13 +367,18 @@ header {
 .use-flow{
   padding: 80px 0;
   .use-flow-items{
-    display: flex;
     justify-content: space-between;
-    max-width: 900px;
+    max-width: 905px;
     margin: 0 auto;
     margin-top: 40px;
+    @include mq-up(tab){
+      display: flex;
+    }
     .use-flow-item{
-      width: 31%;
+      margin-bottom: 25px;
+      @include mq-up(tab){
+        width: 31%;
+      }
       h3{
         font-weight: 600;
         color: #0D6CBE;
