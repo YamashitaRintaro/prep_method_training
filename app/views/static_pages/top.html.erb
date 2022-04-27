@@ -1,18 +1,18 @@
-<div class="container">
-  <section class = "hero">
-    <div class="hero-text">
-      <h1 class = "hero-title">PREP法で<br>わかりやすく論理的に<br>話せるように</h1>
-      <%= link_to "今すぐはじめる", new_user_path, class: "cta" %>
-      <%= link_to "ゲストログイン", guest_login_path, method: :post, class: "guest" %>
-    </div>
-    <div class="hero-image">
-      <%= image_tag "main2.png", class: "img-fluid" %>
-    </div>
-  </section>
-</div>
+<section class = "hero">
+  <div class="container">
+      <div class="hero-text">
+        <h1 class = "hero-title">PREP法で<br>わかりやすく論理的に<br>話せるように</h1>
+        <%= link_to "今すぐはじめる", new_user_path, class: "cta" %>
+        <%= link_to "ゲストログイン", guest_login_path, method: :post, class: "guest" %>
+      </div>
+      <div class="hero-image">
+        <%= image_tag "main2.png", class: "img-fluid" %>
+      </div>
+  </div>
+</section>
 <section class = "prep">
   <div class="container text-center">
-  <h2>PREP法とは</h2>
+  <h2 class = "title">PREP法とは</h2>
   <p class = "text-left">「PREP法」とは、分かりやすい文章や説明の構成を作るための文章構成法です。<br>
   最初に結論を伝え、次にその理由を説明、事例で理由を補強し、最後にもう一度結論を述べる構成です。</p>
   <div class="prep-flow">
@@ -46,5 +46,24 @@
     </div>
     </div>
   </div>
+  </div>
+</section>
+<section class="use-flow">
+  <div class="container">
+    <h2 class = "text-center">ご利用の流れ</h2>
+    <div class="use-flow-items">
+      <div class="use-flow-item">
+        <h3><span class = "list-number">1</span>質問を選択</h3>
+        <p>練習したい質問を選択して「次へ」ボタンを押してください</p>
+      </div>
+      <div class="use-flow-item">
+        <h3><span class = "list-number">2</span>回答を録音</h3>
+        <p>「録音スタート」ボタンを押すと面接官があなたに質問します。結論・理由・具体例・結論の順番で回答してください。</p>
+      </div>
+      <div class="use-flow-item">
+        <h3><span class = "list-number">3</span>振り返る</h3>
+        <p>録音した音声を振り返って課題を見つけ、PDCAサイクルを回しましょう！</p>
+      </div>
+    </div>
   </div>
 </section>
