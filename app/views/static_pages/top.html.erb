@@ -2,8 +2,10 @@
   <div class="container">
       <div class="hero-text">
         <h1 class = "hero-title">PREP法で<br>わかりやすく論理的に<br>話せるように</h1>
-        <%= link_to "今すぐはじめる", new_user_path, class: "cta" %>
-        <%= link_to "ゲストログイン", guest_login_path, method: :post, class: "guest" %>
+          <%= link_to "今すぐはじめる", new_user_path, class: "cta" %>
+          <% unless logged_in? %>   
+            <%= link_to "ゲストログイン", guest_login_path, method: :post, class: "guest" %>
+          <% end %>
       </div>
       <div class="hero-image">
         <%= image_tag "main2.png", class: "img-fluid" %>
