@@ -1,6 +1,8 @@
 class UserSessionsController < ApplicationController
   skip_before_action :require_login, only: %i[new create guest_login]
-  def new; end
+  def new
+    return redirect_to root_path, info: t('defaults.message.logged_in') if logged_in?
+  end
 
   def create
     @user = login(params[:email], params[:password])

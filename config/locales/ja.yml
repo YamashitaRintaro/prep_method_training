@@ -11,6 +11,7 @@ ja:
     password_reset: 'パスワードリセット'
     message:
       require_login: 'ログインしてください'
+      logged_in: 'ログインしています。'
       created: "%{item}を作成しました"
       not_created: "%{item}を作成できませんでした"
       delete: "%{item}を削除しました"
