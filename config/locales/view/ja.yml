@@ -48,35 +48,4 @@ ja:
     update:
       success: 'パスワードを変更しました'
       fail: 'パスワードの変更に失敗しました'
-  activerecord:
-    # User.model_name.human
-    models:
-      user: ユーザー
-      question: 質問
-    # User.human_attributes_name(:name)
-    attributes:
-      id: ID
-      created_at: 作成日時
-      updated_at: 更新日時
-      user:
-        email: 'メールアドレス'
-        category: '面接シーン'
-        password: 'パスワード'
-        password_confirmation: 'パスワード確認'
-    date:
-      formats:
-        default: "%Y/%m/%d"
-        long: "%Y年%m月%d日(%a)"
-        short: "%m/%d"
-
-  enums:
-    user:
-      role:
-        admin: 管理者
-        general: 一般
-    voice:
-      phase:
-        point: 結論
-        reason: 理由
-        example: 具体例
-        second_point: 結論
+  
