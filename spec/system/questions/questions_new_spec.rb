@@ -14,9 +14,9 @@ RSpec.describe 'Question#new', type: :system do
     end
 
     context 'ログイン後' do
-      before { login_as(user) }
-
+      
       context '一般ユーザー' do
+        before { login_as(user) }
         it 'ページにアクセスできないこと' do
           visit new_question_path
           expect(page).to have_current_path root_path, ignore_query: true

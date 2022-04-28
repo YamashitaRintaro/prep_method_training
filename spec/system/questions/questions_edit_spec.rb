@@ -16,9 +16,9 @@ RSpec.describe 'Question#edit', type: :system do
     end
 
     context 'ログイン後' do
-      before { login_as(user) }
-
+      
       context '一般ユーザー' do
+        before { login_as(user) }
         it 'ページにアクセスできないこと' do
           visit edit_question_path(question.id)
           expect(page).to have_current_path root_path, ignore_query: true

@@ -13,9 +13,9 @@ RSpec.describe 'Admin', type: :system do
     end
 
     context 'ログイン後' do
-      before { login_as(user) }
-
+      
       context '一般ユーザー' do
+        before { login_as(user) }
         it 'ページにアクセスできないこと' do
           visit admin_root_path
           expect(page).to have_current_path root_path, ignore_query: true
