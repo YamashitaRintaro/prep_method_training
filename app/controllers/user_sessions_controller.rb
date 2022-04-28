@@ -1,7 +1,8 @@
 class UserSessionsController < ApplicationController
   skip_before_action :require_login, only: %i[new create guest_login]
   def new
-    return redirect_to root_path, info: t('defaults.message.logged_in') if logged_in?
+    # ログイン済みユーザーの場合はログイン画面を表示しない
+    logged_in
   end
 
   def create
@@ -9,7 +10,7 @@ class UserSessionsController < ApplicationController
     if @user
       redirect_back_or_to new_training_path
     else
-      flash.now[:danger] = 'ログインに失敗しました'
+      flash.now[:danger] = t('.fail')
       render :new
     end
   end
@@ -17,11 +18,11 @@ class UserSessionsController < ApplicationController
   def destroy
     current_user.destroy! if current_user.guest?
     logout
-    redirect_to root_path, success: 'ログアウトしました'
+    redirect_to root_path, success: t('.success')
   end
 
   def guest_login
-    redirect_to root_path, alert: 'すでにログインしています' if current_user # ログインしてる場合はユーザーを作成しない
+    redirect_to root_path, alert: t('defaults.message.logged_in') if current_user # ログインしてる場合はユーザーを作成しない
 
     random_value = SecureRandom.hex
     user = User.create!(email: "guest_#{random_value}@example.com", role: :guest, category_id: 1, password: random_value, password_confirmation: random_value)

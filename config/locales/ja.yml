@@ -11,13 +11,32 @@ ja:
     password_reset: 'パスワードリセット'
     message:
       require_login: 'ログインしてください'
-      logged_in: 'ログインしています。'
+      logged_in: 'ログインしています'
       created: "%{item}を作成しました"
       not_created: "%{item}を作成できませんでした"
       delete: "%{item}を削除しました"
       delete_confirm: "削除しますか？"
       updated: "%{item}を更新しました"
       not_update: "%{item}を更新できませんでした"
+      failed: "%{item}に失敗しました"
+  users:
+    new:
+      title: 'ユーザー登録'
+      forgot_password?: パスワードをお忘れの方はこちら
+    create:
+      success: 'ユーザー登録しました'
+      fail: 'ユーザー登録に失敗しました'
+  user_sessions:
+    new:
+      title: 'ログイン'
+    create:
+      success: 'ログインしました'
+      fail: 'ログインに失敗しました'
+    destroy:
+      success: 'ログアウトしました。'
+  trainings:
+    create:
+      fail: '質問を選択してください'
   password_resets:
     new:
       title: 'パスワード再設定'
