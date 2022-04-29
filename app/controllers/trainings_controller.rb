@@ -16,7 +16,7 @@ class TrainingsController < ApplicationController
     if @training.save
       redirect_to training_path(@training)
     else
-      flash.now[:danger] = '質問を選択してください'
+      flash.now[:danger] = t('.fail')
       redirect_back fallback_location: root_path
     end
   end

@@ -11,12 +11,32 @@ ja:
     password_reset: 'パスワードリセット'
     message:
       require_login: 'ログインしてください'
+      logged_in: 'ログインしています'
       created: "%{item}を作成しました"
       not_created: "%{item}を作成できませんでした"
       delete: "%{item}を削除しました"
       delete_confirm: "削除しますか？"
       updated: "%{item}を更新しました"
       not_update: "%{item}を更新できませんでした"
+      failed: "%{item}に失敗しました"
+  users:
+    new:
+      title: 'ユーザー登録'
+      forgot_password?: パスワードをお忘れの方はこちら
+    create:
+      success: 'ユーザー登録しました'
+      fail: 'ユーザー登録に失敗しました'
+  user_sessions:
+    new:
+      title: 'ログイン'
+    create:
+      success: 'ログインしました'
+      fail: 'ログインに失敗しました'
+    destroy:
+      success: 'ログアウトしました。'
+  trainings:
+    create:
+      fail: '質問を選択してください'
   password_resets:
     new:
       title: 'パスワード再設定'
@@ -28,35 +48,4 @@ ja:
     update:
       success: 'パスワードを変更しました'
       fail: 'パスワードの変更に失敗しました'
-  activerecord:
-    # User.model_name.human
-    models:
-      user: ユーザー
-      question: 質問
-    # User.human_attributes_name(:name)
-    attributes:
-      id: ID
-      created_at: 作成日時
-      updated_at: 更新日時
-      user:
-        email: 'メールアドレス'
-        category: '面接シーン'
-        password: 'パスワード'
-        password_confirmation: 'パスワード確認'
-    date:
-      formats:
-        default: "%Y/%m/%d"
-        long: "%Y年%m月%d日(%a)"
-        short: "%m/%d"
-
-  enums:
-    user:
-      role:
-        admin: 管理者
-        general: 一般
-    voice:
-      phase:
-        point: 結論
-        reason: 理由
-        example: 具体例
-        second_point: 結論
+  

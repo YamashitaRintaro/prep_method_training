@@ -31,7 +31,7 @@ RSpec.describe 'Question#show', type: :system do
       end
 
       it 'ページにアクセスできること' do
-        expect(page).to have_content '行をクリックして、練習内容を振り返りましょう'
+        expect(page).to have_content '練習内容を振り返りましょう'
         expect(page).to have_content question.title
       end
 

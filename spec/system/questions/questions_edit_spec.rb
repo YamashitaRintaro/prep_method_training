@@ -16,9 +16,9 @@ RSpec.describe 'Question#edit', type: :system do
     end
 
     context 'ログイン後' do
-      before { login_as(user) }
-
       context '一般ユーザー' do
+        before { login_as(user) }
+
         it 'ページにアクセスできないこと' do
           visit edit_question_path(question.id)
           expect(page).to have_current_path root_path, ignore_query: true
@@ -55,7 +55,7 @@ RSpec.describe 'Question#edit', type: :system do
 
           it 'question_voice_dataを編集できること' do
             visit edit_question_path(question.id)
-            attach_file 'Question voice data', "#{Rails.root}/spec/fixtures/question24.wav"
+            attach_file 'Question voice data', Rails.root.join('spec/fixtures/question24.wav')
             click_button '登録'
             expect(page).to have_content 'question24.wav'
             expect(page).to have_current_path questions_path, ignore_query: true
