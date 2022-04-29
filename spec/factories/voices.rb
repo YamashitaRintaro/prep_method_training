@@ -1,6 +1,7 @@
 FactoryBot.define do
   factory :voice do
-    voice_data { File.open(File.join(Rails.root, 'spec/fixtures/question1.wav')) }
+    # voice_data { File.open(File.join(Rails.root, 'spec/fixtures/question1.wav')) }
+    voice_data { File.open(Rails.root.join('spec/fixtures/question1.wav')) }
 
     trait :point do
       phase { 0 }

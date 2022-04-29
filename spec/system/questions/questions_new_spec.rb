@@ -14,9 +14,9 @@ RSpec.describe 'Question#new', type: :system do
     end
 
     context 'ログイン後' do
-      
       context '一般ユーザー' do
         before { login_as(user) }
+
         it 'ページにアクセスできないこと' do
           visit new_question_path
           expect(page).to have_current_path root_path, ignore_query: true
@@ -36,7 +36,7 @@ RSpec.describe 'Question#new', type: :system do
             visit new_question_path
             fill_in 'Category',	with: user.category_id
             fill_in 'Title',	with: '自己紹介をしてください'
-            attach_file 'Question voice data', "#{Rails.root}/spec/fixtures/question1.wav"
+            attach_file 'Question voice data', Rails.root.join('spec/fixtures/question1.wav')
             fill_in 'Question voice data seconds',	with: 2
             click_button '登録'
             expect(page).to have_content '質問を作成しました'
@@ -48,7 +48,7 @@ RSpec.describe 'Question#new', type: :system do
             it '新規追加できないこと' do
               visit new_question_path
               fill_in 'Title',	with: '自己紹介をしてください'
-              attach_file 'Question voice data', "#{Rails.root}/spec/fixtures/question1.wav"
+              attach_file 'Question voice data', Rails.root.join('spec/fixtures/question1.wav')
               fill_in 'Question voice data seconds',	with: 2
               click_button '登録'
               expect(page).to have_content 'Categoryを入力してください'
@@ -59,7 +59,7 @@ RSpec.describe 'Question#new', type: :system do
             it '新規追加できないこと' do
               visit new_question_path
               fill_in 'Category',	with: user.category_id
-              attach_file 'Question voice data', "#{Rails.root}/spec/fixtures/question1.wav"
+              attach_file 'Question voice data', Rails.root.join('spec/fixtures/question1.wav')
               fill_in 'Question voice data seconds',	with: 2
               click_button '登録'
               expect(page).to have_content 'Titleを入力してください'

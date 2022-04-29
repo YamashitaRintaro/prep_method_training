@@ -15,9 +15,9 @@ RSpec.describe 'Question#index', type: :system do
     end
 
     context 'ログイン後' do
-      
       context '一般ユーザー' do
         before { login_as(user) }
+
         it 'ページにアクセスできないこと' do
           visit questions_path
           expect(page).to have_current_path root_path, ignore_query: true
