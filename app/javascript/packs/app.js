@@ -14,10 +14,6 @@ const reason = document.getElementById('reason');
 const example = document.getElementById('example');
 const second_point = document.getElementById('second-point');
 const seconds = document.getElementById('seconds').textContent;
-console.log(seconds*1000);
-
-
-//main block for doing the audio recording
 
 // マイクを使用する許可をユーザーに求める
 if (navigator.mediaDevices.getUserMedia) {
@@ -38,7 +34,6 @@ if (navigator.mediaDevices.getUserMedia) {
       setTimeout(function () { //最初の録音の際に、質問の音声が含まれないように
         mediaRecorder.start();
       },seconds*1000);
-      console.log(mediaRecorder.state);
     }
     
     stop.onclick = function() {
@@ -83,7 +78,7 @@ if (navigator.mediaDevices.getUserMedia) {
         if (count == 4) {
           if( response.status === 204 ) {
             count = 0;
-            finish.click();
+            setTimeout(function(){finish.click()},500); //保存よりも先に画面遷移させないように
           }
         }
       })
