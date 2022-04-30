@@ -4,6 +4,7 @@ class UsersController < ApplicationController
     # ログイン済みユーザーの場合は新規登録画面を表示しない
     logged_in
     @user = User.new
+    @category = Category.all
   end
 
   def create
