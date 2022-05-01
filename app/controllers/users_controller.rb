@@ -4,9 +4,11 @@ class UsersController < ApplicationController
     # ログイン済みユーザーの場合は新規登録画面を表示しない
     logged_in
     @user = User.new
+    @category = Category.all
   end
 
   def create
+    @category = Category.all
     @user = User.new(user_params)
     if @user.save
       redirect_to login_path, success: t('.success')
