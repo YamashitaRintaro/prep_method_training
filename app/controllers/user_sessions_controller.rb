@@ -22,7 +22,7 @@ class UserSessionsController < ApplicationController
   end
 
   def guest_login
-    redirect_to root_path, alert: t('defaults.message.logged_in') if current_user # ログインしてる場合はユーザーを作成しない
+    logged_in and return
 
     random_value = SecureRandom.hex
     user = User.create!(email: "guest_#{random_value}@example.com", role: :guest, category_id: 1, password: random_value, password_confirmation: random_value)
