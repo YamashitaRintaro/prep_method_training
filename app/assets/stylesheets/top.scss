@@ -235,8 +235,7 @@ header {
   .container{
     max-width: 900px;
     margin: 0 auto;
-    padding-top: 80px;
-    padding-bottom: 80px;
+    padding: 80px 0;
     .text-left{
       display: inline-block;
       margin-top: 22px;
@@ -247,8 +246,8 @@ header {
       .flow-item{
         display: flex;
         align-items: center;
-        margin-bottom: 8px;
-        height: 64px;
+        margin-bottom: 12px;
+        height: 68px;
         .prep-initial{
           padding: 16px 24px;
           font-size: 1.25rem;
@@ -257,7 +256,7 @@ header {
           text-align: center;
           background-color: #F5A623;
           @include tab(){
-            padding: 17px 16px;
+            padding: 17px 13px;
             font-size: 1rem;
           }
         }
@@ -268,6 +267,7 @@ header {
           align-items: center;
           height: 64px;
           background-color: #fff;
+          padding-right: 20px;
 
           :before {
             content: "";
@@ -278,9 +278,7 @@ header {
             left: 22%;
             width: 1px;
             height: 29px;
-            @include tab(){
-              left: 25%;
-            }
+
           }
           .prep-title{
             flex: 0 0 25%;
@@ -292,7 +290,7 @@ header {
           }
           .prep-example{
             @include tab(){
-              font-size: 12px;
+              font-size: 11px;
               padding-left: 10px;
             };
           }
@@ -432,11 +430,17 @@ header {
    .bg{
      background-color: #FC9F26 !important;
     }
+
+    .br{
+      @include mq-up(tab){
+        display: none;
+      }
+    }
     
     .btn-bg{
-     background-color: #FC9F26 !important;
-     padding: 0.5rem 1rem !important;
-   }
+      background-color: #FC9F26 !important;
+      padding: 0.5rem 1rem !important;
+    }
 
    label{
      margin-bottom: 4px !important;
