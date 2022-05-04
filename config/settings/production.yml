@@ -1,2 +1,5 @@
 default_url_options:
   host: 'https://www.prep-method-training.com/'
+
+sorcery:
+  callback_url: https://www.prep-method-training.com/oauth/callback?provider=twitter
