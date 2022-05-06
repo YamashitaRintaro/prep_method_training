@@ -12,7 +12,7 @@ class OauthsController < ApplicationController
       redirect_to root_path, notice: "#{provider.titleize}でログインしました"
     else
       begin
-        @user = create_from(provider)
+        @user = create_from(provider) { |user| user.category_id = 1} # 一時的な対処。category_idをnull許容したら修正する
         reset_session
         auto_login(@user)
         redirect_to root_path, notice: "#{provider.titleize}でログインしました"
