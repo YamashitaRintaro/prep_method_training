@@ -1,14 +1,9 @@
 class TrainingsController < ApplicationController
+  before_action :current_user_training, only: %i[show destory]
+
   def new
     @training = Training.new
-    @questions = case current_user.category_id
-                 when 1
-                   Question.where(category_id: 1).order(:id)
-                 when 2
-                   Question.where(category_id: 2).order(:id)
-                 else
-                   Question.where(category_id: 3).order(:id)
-                 end
+    @questions = Question.where(category_id: current_user.category_id).order(:id)
   end
 
   def create
@@ -22,7 +17,6 @@ class TrainingsController < ApplicationController
   end
 
   def show
-    @training = current_user.trainings.find(params[:id])
     @question = @training.question
     @question_title = @training.question.title
     @question_voice_data = @training.question.question_voice_data
@@ -30,12 +24,15 @@ class TrainingsController < ApplicationController
   end
 
   def destroy
-    @training = current_user.trainings.find(params[:id])
     @training.destroy!
     redirect_back fallback_location: root_path
   end
 
   private
+
+  def current_user_training
+    @training = current_user.trainings.find(params[:id])
+  end
 
   def training_params
     params.require(:training).permit(:user_id, :question_id, :title)
