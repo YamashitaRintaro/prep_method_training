@@ -1,5 +1,6 @@
 class OauthsController < ApplicationController
   skip_before_action :require_login
+  skip_before_action :require_category_id
 
   def oauth
     login_at(auth_params[:provider])
@@ -9,13 +10,13 @@ class OauthsController < ApplicationController
     provider = auth_params[:provider]
 
     if (@user = login_from(provider))
-      redirect_to root_path, notice: "#{provider.titleize}でログインしました"
+      redirect_to new_training_path
     else
       begin
-        @user = create_from(provider) { |user| user.category_id = 1} # 一時的な対処。category_idをnull許容したら修正する
+        @user = create_from(provider)
         reset_session
         auto_login(@user)
-        redirect_to root_path, notice: "#{provider.titleize}でログインしました"
+        redirect_to edit_user_category_path
       rescue
         redirect_to root_path, notice: "#{provider.titleize}でログインできませんでした"
       end
