@@ -9,6 +9,12 @@ class OauthsController < ApplicationController
   def callback
     provider = auth_params[:provider]
 
+    # 認証前のキャンセル後にリダイレクト処理を行う
+    if auth_params[:denied].present?
+      redirect_to root_path, notice: "#{provider.titleize}ログインをキャンセルしました"
+      return
+    end
+
     if (@user = login_from(provider))
       redirect_to new_training_path
     else
@@ -27,5 +33,11 @@ class OauthsController < ApplicationController
 
   def auth_params
     params.permit(:code, :provider, :denied)
+  end
+
+  def create_user_from(provider)
+    @user = create_from(provider)
+    reset_session
+    auto_login(@user)
   end
 end
