@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   skip_before_action :require_login, only: %i[new create]
+   skip_before_action :require_category_id
   def new
     # ログイン済みユーザーの場合は新規登録画面を表示しない
     logged_in

@@ -12,10 +12,12 @@
       <% end %>
     </div>
     <div class="ml-4">
+    <% if current_user.category_id.present? %>  
       <%= link_to category_path(current_user.category_id) do %>
       <i class="fas fa-pencil-alt"></i>
       振り返る
       <% end %>
+    <% end %>
     </div>
     <div class="header_right">
       <div class="header-icon-container">
@@ -25,8 +27,10 @@
         <% end %>
         </div>
         <div class="header-icon">
-        <%= link_to category_path(current_user.category_id) do %>
-          <%= image_tag "review.png", class: "img-fluid" %>
+        <% if current_user.category_id.present? %>
+          <%= link_to category_path(current_user.category_id) do %>
+            <%= image_tag "review.png", class: "img-fluid" %>
+          <% end %>
         <% end %>
         </div>
       </div>

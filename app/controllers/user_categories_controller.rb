@@ -1,5 +1,6 @@
 class UserCategoriesController < ApplicationController
   before_action :set_user
+  skip_before_action :require_category_id
 
   def edit
    @category = Category.all
@@ -22,6 +23,6 @@ class UserCategoriesController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:email, :category_id)
+    params.require(:user).permit(:category_id)
   end
 end

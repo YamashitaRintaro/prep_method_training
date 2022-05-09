@@ -1,5 +1,6 @@
 class ProfilesController < ApplicationController
   before_action :set_user
+  skip_before_action :require_category_id
 
   def edit; end
 
@@ -13,7 +14,7 @@ class ProfilesController < ApplicationController
   end
 
   def show
-    @category = current_user.category.name
+    @category = current_user.category.name if current_user.category_id.present?
   end
 
   private
