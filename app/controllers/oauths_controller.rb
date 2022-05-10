@@ -23,7 +23,7 @@ class OauthsController < ApplicationController
         reset_session
         auto_login(@user)
         redirect_to edit_user_category_path
-      rescue
+      rescue StandardError
         redirect_to root_path, notice: "#{provider.titleize}でログインできませんでした"
       end
     end
@@ -33,11 +33,5 @@ class OauthsController < ApplicationController
 
   def auth_params
     params.permit(:code, :provider, :denied)
-  end
-
-  def create_user_from(provider)
-    @user = create_from(provider)
-    reset_session
-    auto_login(@user)
   end
 end

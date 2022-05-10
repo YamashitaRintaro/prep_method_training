@@ -1,5 +1,5 @@
 class TrainingsController < ApplicationController
-  before_action :current_user_training, only: %i[show destory]
+  before_action :current_user_training, only: %i[show]
 
   def new
     @training = Training.new
@@ -21,11 +21,6 @@ class TrainingsController < ApplicationController
     @question_title = @training.question.title
     @question_voice_data = @training.question.question_voice_data
     @question_voice_data_seconds = @training.question.question_voice_data_seconds
-  end
-
-  def destroy
-    @training.destroy!
-    redirect_back fallback_location: root_path
   end
 
   private

@@ -27,7 +27,7 @@ class ProfilesController < ApplicationController
   def category_all
     @category = Category.all
   end
-  
+
   def user_params
     params.require(:user).permit(:email, :category_id)
   end

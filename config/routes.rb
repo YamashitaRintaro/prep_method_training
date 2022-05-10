@@ -17,9 +17,9 @@ Rails.application.routes.draw do
   resources :users, only: %i[new create]
   resource :profile, only: %i[show edit update]
   resource :user_category, only: %i[edit update]
-  resources :categories
+  resources :categories, only: %i[show]
   resources :questions
-  resources :trainings, only: %i[show new create destroy] do
+  resources :trainings, only: %i[show new create] do
     resources :voices, only: %i[create]
   end
   resources :password_resets, only: %i[new create edit update]
