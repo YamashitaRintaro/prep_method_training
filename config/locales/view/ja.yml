@@ -12,6 +12,7 @@ ja:
     message:
       require_login: 'ログインしてください'
       logged_in: 'ログインしています'
+      require_category: '面接シーンを選択してください'
       created: "%{item}を作成しました"
       not_created: "%{item}を作成できませんでした"
       delete: "%{item}を削除しました"

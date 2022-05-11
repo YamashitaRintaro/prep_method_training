@@ -16,10 +16,14 @@ Rails.application.routes.draw do
   post 'guest_login', to: 'user_sessions#guest_login'
   resources :users, only: %i[new create]
   resource :profile, only: %i[show edit update]
-  resources :categories
+  resource :user_category, only: %i[edit update]
+  resources :categories, only: %i[show]
   resources :questions
-  resources :trainings, only: %i[show new create destroy] do
+  resources :trainings, only: %i[show new create] do
     resources :voices, only: %i[create]
   end
   resources :password_resets, only: %i[new create edit update]
+  post "oauth/callback", to: "oauths#callback"
+  get "oauth/callback", to: "oauths#callback"
+  get "oauth/:provider", to: "oauths#oauth", as: :auth_at_provider
 end

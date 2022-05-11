@@ -20,7 +20,6 @@ class QuestionsController < ApplicationController
   end
 
   def show
-    @question = Question.find(params[:id])
     @trainings = @question.trainings.order('id')
     @current_user_trainings = @trainings.where(user_id: current_user.id).includes(:voices)
     @voices = Question.includes(trainings: :voices).all.order('id')

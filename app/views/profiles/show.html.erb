@@ -9,7 +9,11 @@
         </tr>
         <tr>
           <th scope="row">面接シーン</th>
-          <td><%= @category %></td>
+          <% if current_user.category_id.present? %>
+            <td><%= @category %></td>
+          <% else %>
+            <td>未設定</td>
+          <% end %>
         </tr>
       </table>
       <%= link_to t('defaults.edit'), edit_profile_path, class: 'btn btn-lg bg text-white mt-3' %>

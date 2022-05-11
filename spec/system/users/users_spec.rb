@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'Users', type: :system do
-  fdescribe 'ユーザー新規登録' do
+  describe 'ユーザー新規登録' do
     let!(:existed_user) { create(:user) }
     let!(:category) { create(:category, :category2) }
 

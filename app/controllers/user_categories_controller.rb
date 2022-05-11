@@ -1,4 +1,4 @@
-class ProfilesController < ApplicationController
+class UserCategoriesController < ApplicationController
   before_action :set_user
   before_action :category_all, only: %i[edit update]
   skip_before_action :require_category_id
@@ -7,15 +7,11 @@ class ProfilesController < ApplicationController
 
   def update
     if @user.update(user_params)
-      redirect_to profile_path, success: t('defaults.message.updated', item: User.model_name.human)
+      redirect_to new_training_path
     else
       flash.now['danger'] = t('defaults.message.not_updated', item: User.model_name.human)
       render :edit
     end
-  end
-
-  def show
-    @category = current_user.category.name if current_user.category_id.present?
   end
 
   private
@@ -29,6 +25,6 @@ class ProfilesController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:email, :category_id)
+    params.require(:user).permit(:category_id)
   end
 end

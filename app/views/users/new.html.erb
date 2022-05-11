@@ -1,12 +1,22 @@
 <div class="container">
-  <div class="row">
-    <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-2">
-      <h2 class = "mt-5 mb-4">新規登録</h2>
+  <h2 class = "mt-5 mb-5 text-center">ユーザー登録</h2>
+  <div class="user-wrapper">
+    <div class="sns-form">
+    <h3>SNSアカウントで登録</h3>
+      <%= link_to auth_at_provider_path(provider: :twitter) do %>
+      <div class="twitter">
+        <i class="fa-brands fa-twitter"></i>
+        Twitterアカウントで登録
+      </div>
+      <% end %>
+    </div>
+    <div class="email-form">
+    <h3>メールアドレスで登録</h3>
       <%= form_with model: @user, local: true do |f| %>
       <%= render 'shared/error_messages', model: f.object %>
         <div class="form-group">
           <%= f.label :email, class: 'font-weight-bold' %>
-          <%= f.email_field :email, placeholder: "sample@exaple.com", class: 'form-control' %>
+          <%= f.email_field :email, class: 'form-control' %>
         </div>
         <div class="form-group">
         <%= f.label '面接シーンを選択してください', class: 'font-weight-bold' %>
@@ -19,11 +29,11 @@
         </div>
         <div class="form-group">
           <%= f.label :password, class: 'font-weight-bold' %>
-          <%= f.password_field :password, placeholder: "password", class: 'form-control' %>
+          <%= f.password_field :password, class: 'form-control' %>
         </div>
         <div class="form-group">
           <%= f.label :password_confirmation, class: 'font-weight-bold' %>
-          <%= f.password_field :password_confirmation, placeholder: "password", class: 'form-control' %>
+          <%= f.password_field :password_confirmation, class: 'form-control' %>
         </div>
         <%= f.submit '登録する', class: 'btn btn-lg bg text-white w-100 mt-3' %>
       <% end %>

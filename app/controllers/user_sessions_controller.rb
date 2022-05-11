@@ -1,5 +1,6 @@
 class UserSessionsController < ApplicationController
   skip_before_action :require_login, only: %i[new create guest_login]
+  skip_before_action :require_category_id
   def new
     # ログイン済みユーザーの場合はログイン画面を表示しない
     logged_in
