@@ -18,11 +18,13 @@
       <% end %>
       <div class="text-center mt-4">または</div>
       <div class="mt-3">
-        <%= link_to auth_at_provider_path(provider: :twitter) do %>
-          <div class="twitter">
-            <i class="fa-brands fa-twitter"></i>
-            Twitterアカウントでログイン
-          </div>
+        <%= link_to auth_at_provider_path(provider: :twitter), class: "twitter" do %>
+          <i class="fa-brands fa-twitter"></i>
+          Twitterアカウントでログイン
+        <% end %>
+        <%= link_to auth_at_provider_path(provider: :google), class: "twitter" do %>
+          <i class="fa-brands fa-google"></i>
+          Googleアカウントでログイン
         <% end %>
       </div>
     </div>

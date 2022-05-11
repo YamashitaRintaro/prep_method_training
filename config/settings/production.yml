@@ -3,3 +3,6 @@ default_url_options:
 
 sorcery:
   callback_url: https://www.prep-method-training.com/oauth/callback?provider=twitter
+
+google:
+  callback_url: https://www.prep-method-training.com/oauth/callback?provider=google

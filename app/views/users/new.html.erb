@@ -9,6 +9,10 @@
         Twitterアカウントで登録
       </div>
       <% end %>
+      <%= link_to auth_at_provider_path(provider: :google), class: "twitter" do %>
+        <i class="fa-brands fa-google"></i>
+        Googleアカウントで登録
+      <% end %>
     </div>
     <div class="email-form">
     <h3>メールアドレスで登録</h3>
