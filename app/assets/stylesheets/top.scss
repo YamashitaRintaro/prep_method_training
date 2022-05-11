@@ -422,6 +422,10 @@ header {
       font-size: 1.25rem;
     }
    }
+
+   .font-min{
+     font-size: 14px;
+   }
    
    .color {
      color: #FC9F26;
@@ -457,6 +461,40 @@ header {
      max-width: 800px;
      margin: 0 auto;
    }
+
+   .twitter {
+     background-color: #1DA1F2;
+     display: flex;
+     color: #FFF;
+     text-align: center;
+     width: 50%;
+     height: 50px;
+     align-items: center;
+     justify-content: center;
+     border-radius: 2px;
+
+     .fa-twitter{
+      font-size: 24px;
+      padding-right: 8px;
+     }
+   }
+
+/* User
+   ========================================================================== */
+.user-wrapper{
+  max-width: 900px;
+  margin: 0 auto;
+
+  .sns-form{
+    margin-bottom: 40px;
+  }
+
+  h3{
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+}
 
 /* Training
    ========================================================================== */
