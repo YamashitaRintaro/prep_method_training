@@ -26,8 +26,8 @@ class UserSessionsController < ApplicationController
     logged_in and return
 
     random_value = SecureRandom.hex
-    user = User.create!(email: "guest_#{random_value}@example.com", role: :guest, category_id: 1, password: random_value, password_confirmation: random_value)
+    user = User.create!(email: "guest_#{random_value}@example.com", role: :guest, password: random_value, password_confirmation: random_value)
     auto_login(user)
-    redirect_to new_training_path
+    redirect_to edit_user_category_path
   end
 end
