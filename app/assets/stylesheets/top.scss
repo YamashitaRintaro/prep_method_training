@@ -478,7 +478,9 @@ header {
 
 .sns-form{
   margin-bottom: 56px;
-  display: flex;
+  @include mq-up(tab){  
+    display: flex;
+  }
 }
 
 .twitter {
@@ -486,12 +488,17 @@ header {
   display: flex;
   color: #FFF !important;
   text-align: center;
-  width: 50%;
   height: 50px;
   align-items: center;
   justify-content: center;
   border-radius: 2px;
-  margin-right: 16px;
+  @include mq-up(tab){
+    width: 50%;
+    margin-right: 16px;
+  }
+  @include tab(){
+    margin-bottom: 1rem;
+  }
 
   &:hover{
     opacity: 0.8;
@@ -507,12 +514,14 @@ header {
  color: #000 !important;
  display: flex;
  text-align: center;
- width: 50%;
  height: 50px;
  align-items: center;
  justify-content: center;
  border: solid 1px;
  border-radius: 2px;
+ @include mq-up(tab){
+   width: 50%;
+ }
 
  &:hover{
    border: none;
