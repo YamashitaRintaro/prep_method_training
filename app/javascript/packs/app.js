@@ -17,7 +17,6 @@ const seconds = document.getElementById('seconds').textContent;
 
 // マイクを使用する許可をユーザーに求める
 if (navigator.mediaDevices.getUserMedia) {
-  console.log('getUserMedia supported.');
   const constraints = { audio: true };// メディアの種類を指定
   let chunks = [];// 録音データを保存
   
@@ -43,12 +42,10 @@ if (navigator.mediaDevices.getUserMedia) {
     // 音声データを収集する
     mediaRecorder.ondataavailable = function(e) {
       chunks.push(e.data);
-      console.log(chunks);
     }
     
     mediaRecorder.onstop = function(e) {
       count++;
-      console.log(count);
 
       const blob = new Blob(chunks, { 'type' : 'audio/ogg; codecs=opus' });
       chunks = [];
