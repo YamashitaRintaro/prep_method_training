@@ -6,9 +6,9 @@
         <li class = "list-header font">質問リスト</li>
         <% @questions.each do |question| %>
           <li class="list-group-item font">
-            <%= f.radio_button :question_id, question.id, id: "question-#{question.id}", class: "radio" %>
-            <%= f.label :queston_id, question.title, value: question.id %>
-            <%= f.radio_button :title, question.title, class: "d-none", id: "question-#{question.id}-title"%>
+            <%= f.radio_button :question_id, question.id, id: "training_question_#{question.id}", class: "radio" %>
+            <%= f.label :question, question.title, value: question.id %>
+            <%= f.radio_button :title, question.title, class: "d-none", id: "training_question_#{question.id}_title"%>
           </li>
         <% end %>
       </ul>
