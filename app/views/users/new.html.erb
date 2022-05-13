@@ -1,17 +1,21 @@
 <div class="container">
-  <h2 class = "mt-5 mb-5 text-center">ユーザー登録</h2>
   <div class="user-wrapper">
-    <div class="sns-form">
+  <h2 class = "mt-5 mb-5 font-weight-bold">ユーザー登録</h2>
     <h3>SNSアカウントで登録</h3>
-      <%= link_to auth_at_provider_path(provider: :twitter) do %>
-      <div class="twitter">
+    <div class="sns-form">
+      <%= link_to auth_at_provider_path(provider: :twitter), class: "twitter" do %>
         <i class="fa-brands fa-twitter"></i>
         Twitterアカウントで登録
-      </div>
+      <% end %>
+      <%= link_to auth_at_provider_path(provider: :google), class: "google" do %>
+        <div class="google-img">
+          <%= image_tag "google.png", class: "img-fluid"  %>
+        </div>
+        Googleアカウントで登録
       <% end %>
     </div>
     <div class="email-form">
-    <h3>メールアドレスで登録</h3>
+    <h3>またはメールアドレスで登録</h3>
       <%= form_with model: @user, local: true do |f| %>
       <%= render 'shared/error_messages', model: f.object %>
         <div class="form-group">

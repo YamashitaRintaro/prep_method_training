@@ -462,38 +462,76 @@ header {
      margin: 0 auto;
    }
 
-   .twitter {
-     background-color: #1DA1F2;
-     display: flex;
-     color: #FFF;
-     text-align: center;
-     width: 50%;
-     height: 50px;
-     align-items: center;
-     justify-content: center;
-     border-radius: 2px;
-
-     .fa-twitter{
-      font-size: 24px;
-      padding-right: 8px;
-     }
-   }
-
 /* User
    ========================================================================== */
 .user-wrapper{
-  max-width: 900px;
+  max-width: 750px;
   margin: 0 auto;
 
-  .sns-form{
-    margin-bottom: 40px;
-  }
-
+  
   h3{
     font-size: 20px;
     font-weight: bold;
     margin-bottom: 20px;
   }
+}
+
+.sns-form{
+  margin-bottom: 56px;
+  @include mq-up(tab){  
+    display: flex;
+  }
+}
+
+.twitter {
+  background-color: #1DA1F2;
+  display: flex;
+  color: #FFF !important;
+  text-align: center;
+  height: 50px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 2px;
+  @include mq-up(tab){
+    width: 50%;
+    margin-right: 16px;
+  }
+  @include tab(){
+    margin-bottom: 1rem;
+  }
+
+  &:hover{
+    opacity: 0.8;
+  }
+
+  .fa-twitter{
+   font-size: 24px;
+   padding-right: 8px;
+  }
+}
+
+.google{
+ color: #000 !important;
+ display: flex;
+ text-align: center;
+ height: 50px;
+ align-items: center;
+ justify-content: center;
+ border: solid 1px;
+ border-radius: 2px;
+ @include mq-up(tab){
+   width: 50%;
+ }
+
+ &:hover{
+   border: none;
+   background-color: #C4C4C4;
+ }
+
+ .google-img{
+   max-width: 24px;
+   margin-right: 8px;
+ }
 }
 
 /* Training

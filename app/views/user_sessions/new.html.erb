@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class=" col-md-10 offset-md-1 col-lg-8 offset-lg-2">
-      <h2 class = "mt-5 mb-4">ログイン</h2>
+      <h2 class = "mt-5 mb-4 font-weight-bold">ログイン</h2>
       <%= form_with url: login_path, local: true do |f| %>
         <div class="form-group">
           <%= f.label :email, User.human_attribute_name(:email), class: 'font-weight-bold' %>
@@ -16,13 +16,17 @@
           <%= f.submit 'ログイン', class: 'btn btn-lg bg text-white w-100 mt-3' %>
         </div>
       <% end %>
-      <div class="text-center mt-4">または</div>
-      <div class="mt-3">
-        <%= link_to auth_at_provider_path(provider: :twitter) do %>
-          <div class="twitter">
-            <i class="fa-brands fa-twitter"></i>
-            Twitterアカウントでログイン
+      <div class="text-center mt-3 font-min">または</div>
+      <div class="sns-form mt-3">
+        <%= link_to auth_at_provider_path(provider: :twitter), class: "twitter" do %>
+          <i class="fa-brands fa-twitter"></i>
+          Twitterアカウントでログイン
+        <% end %>
+        <%= link_to auth_at_provider_path(provider: :google), class: "google" do %>
+          <div class="google-img">
+            <%= image_tag "google.png", class: "img-fluid"  %>
           </div>
+          Googleアカウントでログイン
         <% end %>
       </div>
     </div>

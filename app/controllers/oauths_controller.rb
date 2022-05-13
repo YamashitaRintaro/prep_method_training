@@ -11,7 +11,7 @@ class OauthsController < ApplicationController
 
     # 認証前のキャンセル後にリダイレクト処理を行う
     if auth_params[:denied].present?
-      redirect_to root_path, notice: "#{provider.titleize}ログインをキャンセルしました"
+      redirect_to root_path, warning: "#{provider.titleize}ログインをキャンセルしました"
       return
     end
 
@@ -24,7 +24,7 @@ class OauthsController < ApplicationController
         auto_login(@user)
         redirect_to edit_user_category_path
       rescue StandardError
-        redirect_to root_path, notice: "#{provider.titleize}でログインできませんでした"
+        redirect_to root_path, danger: "#{provider.titleize}でログインできませんでした"
       end
     end
   end
