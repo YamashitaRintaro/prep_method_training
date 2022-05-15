@@ -233,9 +233,9 @@ header {
     color: #0D6CBE;
   }
   .container{
-    max-width: 900px;
+    max-width: 930px;
     margin: 0 auto;
-    padding: 80px 0;
+    padding: 80px 15px;
     .text-left{
       display: inline-block;
       margin-top: 22px;
@@ -256,7 +256,7 @@ header {
           text-align: center;
           background-color: #F5A623;
           @include tab(){
-            padding: 17px 13px;
+            padding: 22px 13px;
             font-size: 1rem;
           }
         }
