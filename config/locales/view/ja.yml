@@ -34,10 +34,34 @@ ja:
       success: 'ログインしました'
       fail: 'ログインに失敗しました'
     destroy:
-      success: 'ログアウトしました。'
+      success: 'ログアウトしました'
+  profiles:
+    edit:
+      title: 'プロフィール編集'
+    show:
+      title: 'プロフィール'
+  user_categories:
+    edit:
+      title: '面接シーン登録'
+  categories:
+    show:
+      title: '練習一覧'
   trainings:
+    new:
+      title: '質問選択'
     create:
       fail: '質問を選択してください'
+    show:
+      title: '録音'
+  questions:
+    index:
+      title: '質問一覧'
+    new:
+      title: '質問新規追加'
+    show:
+      title: '質問詳細'
+    edit:
+      title: '質問編集'
   password_resets:
     new:
       title: 'パスワード再設定'
