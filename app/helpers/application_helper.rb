@@ -1,10 +1,6 @@
 module ApplicationHelper
-  def page_title(page_title = '', admin = false)
-    base_title = if admin
-                   'Prep(管理画面)'
-                 else
-                   'Prep'
-                 end
+  def page_title(page_title = '')
+    base_title = 'Prep'
 
     page_title.empty? ? base_title : page_title + ' | ' + base_title
   end
