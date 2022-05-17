@@ -23,11 +23,6 @@ RSpec.describe User, type: :model do
       expect(other_user).to be_valid
     end
 
-    it 'category_idが無ければ無効であること' do
-      user.category_id = nil
-      expect(user).to be_invalid
-    end
-
     it 'passwordが無ければ無効であること' do
       user = build(:user, password: nil)
       expect(user).to be_invalid

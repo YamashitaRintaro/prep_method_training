@@ -21,16 +21,16 @@ RSpec.describe 'Training#new', type: :system do
         expect(page).to have_content '質問を選択してください'
       end
 
-      # context "正常系" do
-      #   it '新規追加できること' do  すでにcategory_id: 1~3はトランザクションで削除されているため、質問を画面に表示できない
-      #     question
-      #     visit new_training_path
-      #     choose question.title
-      #     click_button '次へ'
-      #     expect(page).to have_content question.title
-      #     expect(page).to have_content '録音スタート'
-      #   end
-      # end
+      context '正常系' do
+        it '新規追加できること' do
+          question
+          visit new_training_path
+          choose question.title
+          click_button '次へ'
+          expect(page).to have_content question.title
+          expect(page).to have_content '録音スタート'
+        end
+      end
     end
   end
 end
