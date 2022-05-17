@@ -46,7 +46,7 @@ RSpec.describe 'Users', type: :system do
     end
 
     context 'category_idが未入力' do
-      it 'ユーザーの新規作成が失敗する' do
+      it 'カテゴリー選択ページに遷移する' do
         fill_in 'メールアドレス', with: 'exam2@example.com'
         fill_in 'パスワード', with: 'password'
         fill_in 'パスワード確認', with: 'password'
