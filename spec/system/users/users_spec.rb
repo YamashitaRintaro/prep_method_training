@@ -45,18 +45,6 @@ RSpec.describe 'Users', type: :system do
       end
     end
 
-    context 'category_idが未入力' do
-      it 'カテゴリー選択ページに遷移する' do
-        fill_in 'メールアドレス', with: 'exam2@example.com'
-        fill_in 'パスワード', with: 'password'
-        fill_in 'パスワード確認', with: 'password'
-        click_button '登録する'
-        expect(page).to have_content '面接シーンを入力してください'
-        expect(page).to have_current_path users_path, ignore_query: true
-        expect(page).to have_field 'メールアドレス', with: 'exam2@example.com'
-      end
-    end
-
     context 'パスワードが未入力' do
       it 'ユーザーの新規作成が失敗する' do
         fill_in 'メールアドレス', with: 'exam@example.com'
