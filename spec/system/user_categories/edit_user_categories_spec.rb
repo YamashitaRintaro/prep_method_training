@@ -4,16 +4,16 @@ RSpec.describe 'UserCategories', type: :system do
   let(:user) { create(:user) }
   let(:user_category_nil) { create(:user, category_id: '') }
 
-  fdescribe 'カテゴリー選択' do
-    context "ログイン前" do
+  describe 'カテゴリー選択' do
+    context 'ログイン前' do
       it 'ページにアクセスできないこと' do
         visit edit_user_category_path
         expect(page).to have_content 'ログインしてください'
         expect(page).to have_current_path login_path, ignore_query: true
       end
     end
-    
-    context "ログイン後" do
+
+    context 'ログイン後' do
       it 'ページにアクセスできること' do
         login_as(user)
         visit edit_user_category_path
@@ -38,20 +38,20 @@ RSpec.describe 'UserCategories', type: :system do
           visit profile_path
           expect(page).to have_content 'プロフィール'
         end
-        
+
         it '質問選択画面に遷移させない' do
           visit new_training_path
           expect(page).to have_content '面接シーンを選択してください'
           expect(page).to have_current_path edit_user_category_path, ignore_query: true
         end
-        
+
         it '質問詳細画面に遷移させない' do
           visit new_training_path
           expect(page).to have_content '面接シーンを選択してください'
           expect(page).to have_current_path edit_user_category_path, ignore_query: true
         end
       end
-    
+
       context 'category_id登録済のユーザーの場合' do
         it 'trainings_newページに遷移する' do
           visit login_path
