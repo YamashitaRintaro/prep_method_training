@@ -204,7 +204,7 @@ header {
     color: #3399FF;
     text-align: center;
     vertical-align: middle;
-    padding: 19px 39px;
+    padding: 19px 54px;
     border-radius: 43px;
     margin-left: 20px;
     @include tab(){
@@ -380,7 +380,7 @@ header {
     .use-flow-item{
       margin-bottom: 25px;
       @include mq-up(tab){
-        width: 31%;
+        width: 30%;
       }
       h3{
         font-size: 24px;
@@ -468,11 +468,10 @@ header {
   max-width: 750px;
   margin: 0 auto;
 
-  
   h3{
     font-size: 20px;
     font-weight: bold;
-    margin-bottom: 20px;
+    margin-bottom: 1.5rem;
   }
 }
 
@@ -480,6 +479,14 @@ header {
   margin-bottom: 56px;
   @include mq-up(tab){  
     display: flex;
+  }
+}
+
+.form-group{
+  margin-bottom: 2rem !important;
+
+  .radio-rabel{
+    margin-bottom: 0.5rem !important;
   }
 }
 
