@@ -3,7 +3,7 @@
       <div class="hero-text">
         <h1 class = "hero-title">PREP法で<br>わかりやすく論理的に<br>話せるように</h1>
           <% unless logged_in? %>   
-          <%= link_to "今すぐはじめる", new_user_path, class: "cta" %>
+            <%= link_to "今すぐはじめる", new_user_path, class: "cta", data: { 'turbolinks': false } %>
             <%= link_to "試してみる", guest_login_path, method: :post, class: "guest" %>
           <% else %>
             <%= link_to "練習する", new_training_path, class: "cta font" %>
