@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   resources :questions
   resources :trainings, only: %i[show new create] do
     resources :voices, only: %i[create]
+    resources :memos, only: %i[create update destroy]
   end
   resources :password_resets, only: %i[new create edit update]
   post "oauth/callback", to: "oauths#callback"
