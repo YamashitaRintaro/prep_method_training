@@ -1,9 +1,10 @@
 class QuestionsController < ApplicationController
   before_action :set_question, only: %i[show edit update destroy]
-  before_action :require_admin, except: %i[show]
+  before_action :require_admin, except: %i[index show]
 
   def index
-    @question = Question.all.order(:category_id, :id)
+    @training = Training.new
+    @questions = Question.where(category_id: current_user.category_id).order(:id)
   end
 
   def new

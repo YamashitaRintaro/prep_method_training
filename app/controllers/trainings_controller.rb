@@ -2,8 +2,7 @@ class TrainingsController < ApplicationController
   before_action :current_user_training, only: %i[show]
 
   def new
-    @training = Training.new
-    @questions = Question.where(category_id: current_user.category_id).order(:id)
+
   end
 
   def create

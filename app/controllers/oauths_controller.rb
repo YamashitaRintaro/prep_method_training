@@ -16,7 +16,7 @@ class OauthsController < ApplicationController
     end
 
     if (@user = login_from(provider))
-      redirect_to new_training_path
+      redirect_to questions_path
     else
       begin
         @user = create_from(provider)
