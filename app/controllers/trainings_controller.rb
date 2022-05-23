@@ -1,14 +1,10 @@
 class TrainingsController < ApplicationController
   before_action :current_user_training, only: %i[show]
 
-  def new
-
-  end
-
   def create
     @training = current_user.trainings.new(training_params)
     if @training.save
-      redirect_to training_path(@training)
+      redirect_to new_training_voice_path(@training)
     else
       flash.now[:danger] = t('.fail')
       redirect_back fallback_location: root_path

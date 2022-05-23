@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   resources :categories, only: %i[show]
   resources :questions
   resources :trainings, only: %i[show new create] do
-    resources :voices, only: %i[create]
+    resources :voices, only: %i[new create]
     resources :memos, only: %i[create update destroy]
   end
   resources :password_resets, only: %i[new create edit update]
