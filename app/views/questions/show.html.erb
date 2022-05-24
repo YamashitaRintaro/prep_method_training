@@ -2,13 +2,13 @@
 <div class="container">
 <h2 class = "text-center mt-5 mb-4">練習内容を振り返りましょう</h2>
 <p class = "text-center">※音声が全て表示されない場合があります。その場合、お手数ですが、画面をリロードしていただくと表示されるようになります。</p>
-  <div id="accordion" class="accordion-container">
+  <div id="accordion" class="training-list-container">
     <div class = "list-header">質問タイトル：<%= @question.title %></div>
     
   <% if @current_user_trainings.present? %>
     <% @current_user_trainings.each_with_index do |training, i| %>
-      <%= link_to training_path(training) do%> 
-      <li class="accordion-title js-accordion-title d-flex font">
+      <%= link_to training_path(training) do %> 
+      <li class="training-title js-accordion-title d-flex font">
         <span class = "date"><%= training.created_at.strftime('%Y/%m/%d') %></span>
         <span class = "list-line"><%= i+1 %>回目の練習</span>
       </li>
@@ -16,7 +16,7 @@
     <% end %>
   <% else %>
     <div class = "text-center yet font">まだ練習していません  
-      <%= link_to "練習する", new_training_path %>
+      <%= link_to "練習する", questions_path %>
     </div>
   <% end %>
   </div>

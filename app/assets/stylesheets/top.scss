@@ -586,7 +586,7 @@ header {
 /* question
    ========================================================================== */
 
-.accordion-container{
+.training-list-container{
   max-width: 750px;
   margin: 0 auto;
   @include tab(){
@@ -599,7 +599,7 @@ header {
     }
   }
 
-  .accordion-title{
+  .training-title{
     position: relative;
     margin: 0;
     font-size: 1.25em;
