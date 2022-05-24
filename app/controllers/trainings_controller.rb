@@ -12,10 +12,9 @@ class TrainingsController < ApplicationController
   end
 
   def show
+    @voices = @training.voices.order('id')
     @question = @training.question
     @question_title = @training.question.title
-    @question_voice_data = @training.question.question_voice_data
-    @question_voice_data_seconds = @training.question.question_voice_data_seconds
   end
 
   private
