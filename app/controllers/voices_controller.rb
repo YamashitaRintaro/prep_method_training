@@ -1,5 +1,5 @@
 class VoicesController < ApplicationController
-  before_action :current_user_training, only: %i[new show]
+  before_action :current_user_training, only: %i[new]
 
   def new
     @question = @training.question

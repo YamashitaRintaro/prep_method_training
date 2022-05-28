@@ -15,6 +15,8 @@ class TrainingsController < ApplicationController
     @voices = @training.voices.order('id')
     @question = @training.question
     @question_title = @training.question.title
+    @memo = Memo.new
+    @memos = @training.memo
   end
 
   private

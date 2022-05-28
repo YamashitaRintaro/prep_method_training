@@ -1,10 +1,11 @@
 class MemosController < ApplicationController
   def create
     @memo = Memo.new(memo_params)
+    binding.pry
     if @memo.save
-      redirect_back(fallback_location: root_path)
+      redirect_back fallback_location: root_path
     else
-      redirect_back(fallback_location: root_path), danger: t('defaults.message.not_created', item: Comment.model_name.human)
+      redirect_back fallback_location: root_path, danger: t('defaults.message.not_created', item: Memo.model_name.human)
     end
   end
 
@@ -17,6 +18,6 @@ class MemosController < ApplicationController
   private
 
   def memo_params
-    params.require(:memo).permit(:body, :training_id)
+    params.require(:memo).permit(:body).merge(training_id: params[:training_id])
   end
 end

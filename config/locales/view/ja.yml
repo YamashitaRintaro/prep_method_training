@@ -53,6 +53,9 @@ ja:
       fail: '質問を選択してください'
     show:
       title: '録音'
+  voices:
+    new:
+      title: '録音'
   questions:
     index:
       title: '質問一覧'
