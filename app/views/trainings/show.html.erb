@@ -7,8 +7,8 @@
         <% if @training.voices.present? %>
           <% @voices.each do |voice| %>
           <div class = "align-items-center row border-bottom">
-            <div class = "col-md-2 text-right"><%= voice.phase_i18n %></div>
-            <div class = "col-md-10"><%= audio_tag(voice.voice_data, controls: true) %></div>
+            <div class = "col-md-3 text-center"><%= voice.phase_i18n %></div>
+            <div class = "col-md-9 text-center"><%= audio_tag(voice.voice_data, controls: true) %></div>
           </div>
           <% end %>
         <% else %>
@@ -16,19 +16,14 @@
             <%= link_to "練習する", new_training_voice_path(@training) %>
           </div>
         <% end %>
-        <div class="row">
-          <div class = "col-md-2 text-right">メモ</div>
-          <div class = "col-md-10"><%= simple_format(@memos.body) %></div>
-        </div>
+          <div class = "#">メモ</div>
+          <div class = "#"><%= simple_format(@memos.body) if @memos.present? %></div>
       </div>
-      <div class="row mb-3">
-        <div class="col-lg-8 offset-lg-2">
-          <%= form_with model: @memo, url: training_memos_path(@training), local: true do |f| %>
-            <%= f.label :body %>
-            <%= f.text_area :body, class: 'form-control mb-3', id: 'js-new-comment-body', row: 4, placeholder: Memo.human_attribute_name(:body) %>
-            <%= f.submit t('defaults.post'), class: 'btn btn-primary' %>
-          <% end %>
-        </div>
+      <div class="w-100">
+        <%= form_with model: @memo, url: training_memos_path(@training), local: true do |f| %>
+          <%= f.text_area :body, class: 'form-control mb-3', id: 'js-new-comment-body', row: 4, placeholder: '反省点などのメモ' %>
+          <%= f.submit t('defaults.post'), class: 'btn btn-primary' %>
+        <% end %>
       </div>
     </div>
   </div>
