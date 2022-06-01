@@ -1,0 +1,10 @@
+<% content_for(:title, t('.title')) %>
+<div class="container">
+  <div class="w-100">
+    <%= form_with model: @memo, url: training_memo_path(@training), id: 'new_memo', local: true  do |f| %>
+      <%= f.text_area :body, class: 'form-control mb-3', id: 'js-new-comment-body', row: 4, placeholder: '反省点などのメモ' %>
+      <%= f.hidden_field :training_id, value: @training.id %>
+      <%= f.submit t('defaults.post'), class: 'btn btn-primary' %>
+    <% end %>
+  </div>
+</div>
