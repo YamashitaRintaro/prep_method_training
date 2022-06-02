@@ -1,10 +1,13 @@
 <% content_for(:title, t('.title')) %>
-<div class="container">
-  <div class="w-100">
+<div class="container mt-5">
+  <div class="memo w-75 mx-auto">
+    <div class="memo-items">
+      <div class = "font-weight-bold font">メモ編集</div>
+    </div>
     <%= form_with model: @memo, url: training_memo_path(@training), id: 'new_memo', local: true  do |f| %>
       <%= f.text_area :body, class: 'form-control mb-3', id: 'js-new-comment-body', row: 4, placeholder: '反省点などのメモ' %>
       <%= f.hidden_field :training_id, value: @training.id %>
-      <%= f.submit t('defaults.post'), class: 'btn btn-primary' %>
+      <%= f.submit t('defaults.save'), class: 'btn bg' %>
     <% end %>
   </div>
 </div>

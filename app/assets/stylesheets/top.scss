@@ -47,6 +47,7 @@ body {
   flex-flow: column;
   min-height: 100vh;
 }
+
 .main{
   flex: 1 0 auto;
 }
@@ -69,6 +70,7 @@ header {
       @include tab(){
         max-width: 100px;
       }
+
       img {
         width: 100%;
         height: auto;
@@ -89,6 +91,7 @@ header {
     .header_right {
       margin-left: auto;
       display: flex;
+
       .sign-up{
         padding: 10px 22px;
         background-color: #FC9F26 !important;
@@ -104,10 +107,12 @@ header {
           opacity: 0.8;
           transition: 0.3s;
         }
+
         .fa-angle-right{
           color: #FFF;
         }
       }
+
       .sign-in {
         margin-left: 16px;
         padding: 10px 22px;
@@ -135,6 +140,7 @@ header {
 
       .header-icon-container{
         display: flex;
+
         .header-icon{
           max-width: 40px;
           margin-right: 10px;
@@ -229,25 +235,31 @@ header {
 .prep{
   margin: 0 auto;
   background-color: #E6F4FF;
+
   .title{
     color: #0D6CBE;
   }
+
   .container{
     max-width: 930px;
     margin: 0 auto;
     padding: 80px 15px;
+
     .text-left{
       display: inline-block;
       margin-top: 22px;
       line-height: 1.8;
     }
+
     .prep-flow{
       text-align: left;
+
       .flow-item{
         display: flex;
         align-items: center;
         margin-bottom: 12px;
         height: 68px;
+
         .prep-initial{
           padding: 18px 26px;
           font-size: 1.25rem;
@@ -260,6 +272,7 @@ header {
             font-size: 1rem;
           }
         }
+
         .flow-bg{
           position: relative;
           width: 100%;
@@ -278,8 +291,8 @@ header {
             left: 22%;
             width: 1px;
             height: 30px;
-
           }
+
           .prep-title{
             flex: 0 0 25%;
             padding-left: 20px;
@@ -288,6 +301,7 @@ header {
               padding-left: 5px;
             }
           }
+
           .prep-example{
             @include tab(){
               font-size: 11px;
@@ -339,6 +353,7 @@ header {
 .cause{
   padding: 80px 0;
   .container{
+    
     .text-center{
       @include tab(){
         font-size: 1.5rem;
@@ -364,10 +379,11 @@ header {
       }
     }
   }
-}//cause
+}
 
 .use-flow{
   padding: 80px 0;
+
   .use-flow-items{
     justify-content: space-between;
     max-width: 905px;
@@ -382,12 +398,14 @@ header {
       @include mq-up(tab){
         width: 30%;
       }
+
       h3{
         font-size: 24px;
         font-weight: 600;
         color: #0D6CBE;
         margin-bottom: 1rem;
       }
+
       .list-number{
         display: inline-block;
         width: 36px;
@@ -400,6 +418,7 @@ header {
         line-height: 36px;
         border-radius: 50%;
       }
+
       p{
         line-height: 1.8;
       }
@@ -541,7 +560,7 @@ header {
  }
 }
 
-/* Training
+/* training
    ========================================================================== */
 
 .main-controls { 
@@ -583,6 +602,36 @@ header {
   color: #fff;
   text-align: center;
 }
+
+.training-container{
+  width: 830px;
+  padding: 0 15px;
+  margin: 0 auto;
+}
+
+.memo{
+  margin-top: 2rem;
+
+  .memo-items{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;    
+  }
+
+  .btn{
+    color: #FFF !important;
+    &:hover{
+      opacity: 0.8;
+    }
+  }
+
+  .memo-body{
+    border: solid #dee2e6;
+    background-color: #f2f2f2;
+    padding: 8px;
+  }
+}
+
 /* question
    ========================================================================== */
 
@@ -607,43 +656,8 @@ header {
     cursor: pointer;
     border-bottom: solid 1px #E9E9E7;
 
-    &:hover,
-    &:active,
-    &.open{
+    &:hover{
       background-color: #EEF8FC;
-    }
-
-    &::before{
-      content: "";
-      position: absolute;
-      top: 50%;
-      right: 25px;
-      width: 15px;
-      height: 2px;
-      /*縦線に*/
-      transform: rotate(90deg);
-      background: #000;
-      transition: all .3s ease-in-out;
-    }
-
-    &::after{
-      content: "";
-      position: absolute;
-      top: 50%;
-      right: 25px;
-      /*横線*/
-      width: 15px;
-      height: 2px;
-      background: #000;
-      transition: all .2s ease-in-out;
-    }
-
-    &.open::before {
-      transform: rotate(180deg);
-    }
-
-    &.open::after {
-      opacity: 0;
     }
 
     .date{
@@ -660,22 +674,7 @@ header {
       padding: 12.5px 20px;
     }
   }
-  .accordion-content {
-    display: none;
-    padding-left: 2.3125em;
-    border: 1px solid #EEF8FC;
-    @include tab(){
-      padding: 0;
-    }
-    .row{
-      flex-wrap: nowrap;
-    }
-    audio{
-      @include tab(){
-        max-width: 250px;
-      }
-    }
-  }
+
   .yet{
     padding: 12.5px 0px;
     @include tab(){
@@ -683,4 +682,3 @@ header {
     }
   }
 }
-
