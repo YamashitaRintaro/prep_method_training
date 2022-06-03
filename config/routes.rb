@@ -20,7 +20,8 @@ Rails.application.routes.draw do
   resources :categories, only: %i[show]
   resources :questions
   resources :trainings, only: %i[show new create] do
-    resources :voices, only: %i[create]
+    resources :voices, only: %i[new create]
+    resources :memos, only: %i[create edit update]
   end
   resources :password_resets, only: %i[new create edit update]
   post "oauth/callback", to: "oauths#callback"

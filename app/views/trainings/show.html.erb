@@ -1,44 +1,37 @@
 <% content_for(:title, t('.title')) %>
-<div class = "container">
-  <div class = "phase d-flex mx-auto mt-3">
-    <div id = "point">
-      <div class = "text-center font-2x"><strong>P</strong>oint</div>
-      <div class = "text-center font">結論</div>
-    </div>
-    <div id = "reason">
-      <div class = "text-center font-2x"><strong>R</strong>eason</div>
-      <div class = "text-center font">理由</div>
-    </div>
-    <div id = "example">
-      <div class = "text-center font-2x"><strong>E</strong>xample</div>
-      <div class = "text-center font">具体例</div>
-    </div>
-    <div id = "second-point">
-      <div class = "text-center font-2x"><strong>P</strong>oint</div>
-      <div class = "text-center font">結論</div>
+<div class="container">
+  <div class="row">
+    <div class="training-container">
+      <h3 class="mb-5 mt-5"><%= @training.created_at.strftime('%Y/%m/%d')  %> <%= @question.title %></h3>
+        <% if @training.voices.present? %>
+          <% @voices.each do |voice| %>
+            <div class = "align-items-center row border-bottom">
+              <div class = "col-md-3 text-center"><%= voice.phase_i18n %></div>
+              <div class = "col-md-9 text-center"><%= audio_tag(voice.voice_data, controls: true) %></div>
+            </div>
+          <% end %>
+          <div class="memo">
+          <% if @memos.present? %>
+            <div class="memo-items">
+              <div class = "font-weight-bold font">メモ</div>
+              <%= link_to "編集", edit_training_memo_path(@training, @memos), class: "btn bg" %>
+            </div>
+            <div class = "memo-body"><%= simple_format(@memos.body) %></div>
+          <% else %>
+            <div class="memo-items">
+              <div class = "font-weight-bold font">メモ</div>
+            </div>
+            <%= form_with model: @memo, url: training_memos_path(@training), id: 'new_memo', local: true  do |f| %>
+              <%= f.text_area :body, class: 'form-control mb-3', placeholder: '反省点などのメモ' %>
+              <%= f.submit t('defaults.save'), class: 'btn bg' %>
+            <% end %>
+          <% end %>
+        </div>
+        <% else %>
+          <div class = "yet">まだ練習していません  
+            <%= link_to "練習する", new_training_voice_path(@training) %>
+          </div>
+        <% end %>
     </div>
   </div>
-
-  <div class = "main-controls">
-    <%= image_tag "interviewer.png", class: "img-fluid" %>
-  </div>
-
-  <div class = "text-center mt-3 mb-3">
-    <h2 id = "question_title"><%= @question_title %></h2>
-  </div>
-
-    <div id = "buttons", class = 'text-center'>
-      <button class = "record btn btn-lg bg text-white"><i class="fas fa-microphone fa-lg pr-3"></i>録音スタート</button>
-      <button class = "stop d-none btn btn-lg bg text-white">次のフェーズへ</button>
-      <%= link_to "完了",question_path(@question), id: 'finish', class: "d-none", data: { 'turbolinks': false } %>
-    </div>
-    <%= audio_tag(@question_voice_data, id: "question-voice") %>
-    <p id = "seconds" class = "d-none"><%= @question_voice_data_seconds %></p>
-    <%= form_with model: @voice, url: training_voices_path(@training), id: "voiceform" do |f| %>
-      <%= f.hidden_field :training_id,value: @training.id %>
-      <%= f.hidden_field :phase %>
-      <%= f.hidden_field :voice_data  %>
-    <% end %>
-
 </div>
-<%= javascript_pack_tag 'app' %>

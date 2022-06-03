@@ -1,9 +1,10 @@
 class QuestionsController < ApplicationController
   before_action :set_question, only: %i[show edit update destroy]
-  before_action :require_admin, except: %i[show]
+  before_action :require_admin, except: %i[index show]
 
   def index
-    @question = Question.all.order(:category_id, :id)
+    @training = Training.new
+    @questions = Question.where(category_id: current_user.category_id).order(:id)
   end
 
   def new
@@ -21,15 +22,14 @@ class QuestionsController < ApplicationController
 
   def show
     @trainings = @question.trainings.order('id')
-    @current_user_trainings = @trainings.where(user_id: current_user.id).includes(:voices)
-    @voices = Question.includes(trainings: :voices).all.order('id')
+    @current_user_trainings = @trainings.where(user_id: current_user.id)
   end
 
   def edit; end
 
   def update
     if @question.update(question_params)
-      redirect_to questions_path
+      redirect_to admin_questions_path
     else
       render :edit
     end

@@ -7,7 +7,7 @@ class UserCategoriesController < ApplicationController
 
   def update
     if @user.update(user_params)
-      redirect_to new_training_path
+      redirect_to questions_path
     else
       flash.now['danger'] = t('defaults.message.not_updated', item: User.model_name.human)
       render :edit

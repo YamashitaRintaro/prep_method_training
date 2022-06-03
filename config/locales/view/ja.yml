@@ -1,6 +1,7 @@
 ja:
   defaults:
     register: '登録'
+    save: '保存'
     login: 'ログイン'
     logout: 'ログアウト'
     show: '詳細'
@@ -53,6 +54,12 @@ ja:
       fail: '質問を選択してください'
     show:
       title: '録音'
+  voices:
+    new:
+      title: '録音'
+  memos:
+    edit:
+      title: 'メモ編集'
   questions:
     index:
       title: '質問一覧'
