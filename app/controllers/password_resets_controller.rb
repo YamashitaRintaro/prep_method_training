@@ -1,5 +1,6 @@
 class PasswordResetsController < ApplicationController
   skip_before_action :require_login
+  skip_before_action :require_category_id
 
   def new; end
 

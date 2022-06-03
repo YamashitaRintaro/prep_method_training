@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :memo do
-    body { "MyText" }
+    body { 'MyText' }
     training { nil }
   end
 end

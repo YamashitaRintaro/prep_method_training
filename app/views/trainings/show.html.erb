@@ -10,26 +10,23 @@
               <div class = "col-md-9 text-center"><%= audio_tag(voice.voice_data, controls: true) %></div>
             </div>
           <% end %>
-          <% if @memos.present? %>
-            <div class="memo">
-              <div class="memo-items">
-                <div class = "font-weight-bold font">メモ</div>
-                <%= link_to "編集", edit_training_memo_path(@training, @memos), class: "btn bg" %>
-              </div>
-                <div class = "memo-body"><%= simple_format(@memos.body) %></div>
-            </div>
-          <% else %>
           <div class="memo">
+          <% if @memos.present? %>
+            <div class="memo-items">
+              <div class = "font-weight-bold font">メモ</div>
+              <%= link_to "編集", edit_training_memo_path(@training, @memos), class: "btn bg" %>
+            </div>
+            <div class = "memo-body"><%= simple_format(@memos.body) %></div>
+          <% else %>
             <div class="memo-items">
               <div class = "font-weight-bold font">メモ</div>
             </div>
             <%= form_with model: @memo, url: training_memos_path(@training), id: 'new_memo', local: true  do |f| %>
-              <%= f.text_area :body, class: 'form-control mb-3', id: 'js-new-comment-body', row: 4, placeholder: '反省点などのメモ' %>
-              <%= f.hidden_field :training_id, value: @training.id %>
+              <%= f.text_area :body, class: 'form-control mb-3', placeholder: '反省点などのメモ' %>
               <%= f.submit t('defaults.save'), class: 'btn bg' %>
             <% end %>
-          </div>
-        <% end %>
+          <% end %>
+        </div>
         <% else %>
           <div class = "yet">まだ練習していません  
             <%= link_to "練習する", new_training_voice_path(@training) %>

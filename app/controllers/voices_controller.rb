@@ -7,7 +7,7 @@ class VoicesController < ApplicationController
     @question_voice_data = @training.question.question_voice_data
     @question_voice_data_seconds = @training.question.question_voice_data_seconds
   end
-  
+
   def create
     @voice = Voice.new(voice_params)
     @voice.save!

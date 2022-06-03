@@ -10,8 +10,8 @@ class MemosController < ApplicationController
     end
   end
 
-  def edit;end
-  
+  def edit; end
+
   def update
     if @memo.update(memo_params)
       redirect_to training_path(@training)
@@ -19,7 +19,7 @@ class MemosController < ApplicationController
       render :edit
     end
   end
-  
+
   private
 
   def memo_params
