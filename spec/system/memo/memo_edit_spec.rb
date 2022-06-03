@@ -1,18 +1,16 @@
 require 'rails_helper'
 
-RSpec.describe 'Question#show', type: :system do
-  describe '質問詳細' do
+RSpec.describe 'Memo#show', type: :system do
+  describe 'メモ編集' do
     let(:user) { create(:user) }
     let(:question) { create(:question, category_id: user.category_id) }
     let(:training) { create(:training, user_id: user.id, question_id: question.id, title: question.title) }
     let(:point) { create(:voice, :point, training_id: training.id) }
-    let(:reason) { create(:voice, :reason, training_id: training.id) }
-    let(:example) { create(:voice, :example, training_id: training.id) }
-    let(:second_point) { create(:voice, :second_point, training_id: training.id) }
+    let(:memo) { create(:memo, training_id: training.id) }
 
     context 'ログイン前' do
       it 'ページにアクセスできないこと' do
-        visit question_path(question.id)
+        visit edit_training_memo_path(training.id, memo.id)
         expect(page).to have_content 'ログインしてください'
         expect(page).to have_current_path login_path, ignore_query: true
       end
@@ -24,19 +22,18 @@ RSpec.describe 'Question#show', type: :system do
         question
         training
         point
-        reason
-        example
-        second_point
-        visit question_path(question.id)
       end
 
       it 'ページにアクセスできること' do
-        expect(page).to have_content '練習内容を振り返りましょう'
-        expect(page).to have_content question.title
+        visit edit_training_memo_path(training.id, memo.id)
+        expect(page).to have_current_path edit_training_memo_path(training.id, memo.id), ignore_query: true
       end
 
-      it '練習が表示されていること' do
-        expect(page).to have_content '1回目の練習'
+      it 'メモを編集できること' do
+        visit edit_training_memo_path(training.id, memo.id)
+        fill_in 'js-new-memo-body',	with: 'テスト'
+        click_button '保存'
+        expect(page).to have_content 'テスト'
       end
     end
   end

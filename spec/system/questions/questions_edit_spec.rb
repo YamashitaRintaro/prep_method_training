@@ -39,34 +39,30 @@ RSpec.describe 'Question#edit', type: :system do
             visit edit_question_path(question.id)
             fill_in 'Category',	with: category.id
             click_button '登録'
-            expect(page).to have_content '質問一覧'
             expect(page).to have_content category.id
-            expect(page).to have_current_path questions_path, ignore_query: true
+            expect(page).to have_current_path admin_questions_path, ignore_query: true
           end
 
           it 'titleを編集できること' do
             visit edit_question_path(question.id)
             fill_in 'Title',	with: '自己PRをしてください'
             click_button '登録'
-            expect(page).to have_content '質問一覧'
             expect(page).to have_content '自己PRをしてください'
-            expect(page).to have_current_path questions_path, ignore_query: true
+            expect(page).to have_current_path admin_questions_path, ignore_query: true
           end
 
           it 'question_voice_dataを編集できること' do
             visit edit_question_path(question.id)
             attach_file 'Question voice data', Rails.root.join('spec/fixtures/question24.wav')
             click_button '登録'
-            expect(page).to have_content 'question24.wav'
-            expect(page).to have_current_path questions_path, ignore_query: true
+            expect(page).to have_current_path admin_questions_path, ignore_query: true
           end
 
           it 'question_voice_data_secondsを編集できること' do
             visit edit_question_path(question.id)
             fill_in 'Question voice data seconds',	with: 5
             click_button '登録'
-            expect(page).to have_content '5'
-            expect(page).to have_current_path questions_path, ignore_query: true
+            expect(page).to have_current_path admin_questions_path, ignore_query: true
           end
         end
       end

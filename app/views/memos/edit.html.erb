@@ -5,7 +5,7 @@
       <div class = "font-weight-bold font">メモ編集</div>
     </div>
     <%= form_with model: @memo, url: training_memo_path(@training), id: 'new_memo', local: true  do |f| %>
-      <%= f.text_area :body, class: 'form-control mb-3', id: 'js-new-comment-body', row: 4, placeholder: '反省点などのメモ' %>
+      <%= f.text_area :body, class: 'form-control mb-3', id: 'js-new-memo-body', row: 4, placeholder: '反省点などのメモ' %>
       <%= f.submit t('defaults.save'), class: 'btn bg' %>
     <% end %>
   </div>

@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe 'UserCategories', type: :system do
   let(:user) { create(:user) }
   let(:user_category_nil) { create(:user, category_id: '') }
+  let(:question) { create(:question, category_id: user.category_id) }
 
   describe 'カテゴリー選択' do
     context 'ログイン前' do
@@ -40,13 +41,13 @@ RSpec.describe 'UserCategories', type: :system do
         end
 
         it '質問選択画面に遷移させない' do
-          visit new_training_path
+          visit questions_path
           expect(page).to have_content '面接シーンを選択してください'
           expect(page).to have_current_path edit_user_category_path, ignore_query: true
         end
 
         it '質問詳細画面に遷移させない' do
-          visit new_training_path
+          visit question_path(question.id)
           expect(page).to have_content '面接シーンを選択してください'
           expect(page).to have_current_path edit_user_category_path, ignore_query: true
         end
@@ -59,7 +60,7 @@ RSpec.describe 'UserCategories', type: :system do
           fill_in 'password', with: 'password'
           click_button 'ログイン'
           expect(page).to have_content '質問を選択してください'
-          expect(page).to have_current_path new_training_path, ignore_query: true
+          expect(page).to have_current_path questions_path, ignore_query: true
         end
       end
     end
