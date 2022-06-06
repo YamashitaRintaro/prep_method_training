@@ -50,7 +50,6 @@ if (navigator.mediaDevices.getUserMedia) {
       const blob = new Blob(chunks, { 'type' : 'audio/ogg; codecs=opus' });
       chunks = [];
       let formData = new FormData();
-      formData.append('training_id', document.querySelector('#training_id').value);
       formData.append('voice_data', blob, 'voicedata');
       if (count == 1) {
         formData.append('phase', 'point');

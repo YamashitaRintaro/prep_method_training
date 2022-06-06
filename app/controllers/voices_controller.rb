@@ -20,6 +20,6 @@ class VoicesController < ApplicationController
   end
 
   def voice_params
-    params.permit(:training_id, :phase, :voice_data)
+    params.permit(:phase, :voice_data).merge(training_id: params[:training_id])
   end
 end
