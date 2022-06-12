@@ -6,7 +6,7 @@
             <%= link_to "今すぐはじめる", new_user_path, class: "cta", data: { 'turbolinks': false } %>
             <%= link_to "試してみる", guest_login_path, method: :post, class: "guest" %>
           <% else %>
-            <%= link_to "練習する", new_training_path, class: "cta font" %>
+            <%= link_to "練習する", questions_path, class: "cta font" %>
           <% end %>
       </div>
       <div class="hero-image">

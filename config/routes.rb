@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   resource :user_category, only: %i[edit update]
   resources :categories, only: %i[show]
   resources :questions
-  resources :trainings, only: %i[show new create] do
+  resources :trainings, only: %i[show create] do
     resources :voices, only: %i[new create]
     resources :memos, only: %i[create edit update]
   end

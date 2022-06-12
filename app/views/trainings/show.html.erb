@@ -2,7 +2,7 @@
 <div class="container">
   <div class="row">
     <div class="training-container">
-      <h3 class="mb-5 mt-5"><%= @training.created_at.strftime('%Y/%m/%d')  %> <%= @question.title %></h3>
+      <h3 class="mb-5 mt-5"><%= l @training.created_at %> <%= @question.title %></h3>
         <% if @training.voices.present? %>
           <% @voices.each do |voice| %>
             <div class = "align-items-center row border-bottom">

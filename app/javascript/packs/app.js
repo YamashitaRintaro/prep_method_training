@@ -48,10 +48,9 @@ if (navigator.mediaDevices.getUserMedia) {
       count++;
 
       const blob = new Blob(chunks, { 'type' : 'audio/ogg; codecs=opus' });
-      chunks = [];
+      chunks = []; // フェーズことに音声を区切るために、録音毎に空にする
       let formData = new FormData();
-      formData.append('training_id', document.querySelector('#training_id').value);
-      formData.append('voice_data', blob, 'voicedata');
+      formData.append('voice_data', blob);
       if (count == 1) {
         formData.append('phase', 'point');
         stop.textContent = '具体例フェーズへ';

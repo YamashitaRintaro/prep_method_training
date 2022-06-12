@@ -1,5 +1,5 @@
 class Voice < ApplicationRecord
-  belongs_to :training, -> { includes :question }
+  belongs_to :training
 
   mount_uploader :voice_data, VoiceDataUploader
   validates :training_id, presence: true
