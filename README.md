@@ -62,7 +62,7 @@ https://ja.wikipedia.org/wiki/PREP%E6%B3%95
 
 ## **ER図**
 
-![er drawio](https://user-images.githubusercontent.com/80795057/172048033-a456e97c-8f83-460f-8a38-4e508c855acc.png)
+![er_diagram drawio](https://user-images.githubusercontent.com/80795057/173466407-dfb2dbdc-a824-4324-a4d4-67c3b6b1d2eb.png)
 ## **画面遷移図**
 
 https://www.figma.com/file/bIMYuvZYxv60sQgFhBiCv2/%E3%83%9D%E3%83%BC%E3%83%88%E3%83%95%E3%82%A9%E3%83%AA%E3%82%AA?node-id=409%3A83
